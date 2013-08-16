@@ -9,7 +9,7 @@ SUFF        = pdf
 
 CHECK_RERUN = grep Rerun $*.log
 
-all: hk.pdf
+all: sk.pdf
 
 %.pdf: %.tex
 	${LATEX} $<
