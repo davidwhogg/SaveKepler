@@ -19,7 +19,7 @@ license
 -------
 **Copyright 2013 the contributors.**
 All rights reserved.
-Any use of this content requires citation (of, *eg*, this repository).
+Any use of this content *requires citation* (of, *eg*, this repository).
 
 history
 -------
