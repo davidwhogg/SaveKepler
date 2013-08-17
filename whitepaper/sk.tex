@@ -1,20 +1,80 @@
 \documentclass[12pt]{article}
+\usepackage{enumitem, color, hyperref}
+\definecolor{hypercolor}{RGB}{0,0,127}
+\hypersetup{%
+  citecolor=hypercolor,%
+  linkcolor=hypercolor,%
+  urlcolor=hypercolor%
+}%
+
+\newcommand{\observatory}[1]{\textsl{#1}}
+\newcommand{\kepler}{\observatory{Kepler}}
+\newcommand{\Kepler}{\kepler}
 
 \begin{document}
 
-\section*{title}
+\section*{Maximizing \Kepler\ science return \\ per telemetered pixel:}
+\subsection*{Image modeling for the discovery of Earth-like planets around Sun-like stars}
 \noindent
-author \\
-author \\
-author
+A white paper submitted in response to the \Kepler\ Project Office
+\textit{Call for White Papers: Soliciting Community Input for
+  Alternate Science Investigations for the Kepler
+  Spacecraft}\footnote{\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}}
+released 2013 August 02.
 
-\begin{abstract}
-one-paragraph description
-\end{abstract}
+\begin{description}[style=nextline,itemsep=0ex]
+\item[David W. Hogg]
+\textit{Center for Cosmology and Particle Physics, New York University}
+\item[Tom Barclay]
+\textit{NASA Ames Research Center}
+\item[Rebekah Dawson]
+\textit{Havard--Smithsonian Center for Astrophysics}
+\item[Rob Fergus]
+\textit{Courant Institute of Mathematical Sciences, New York University}
+\item[Dan Foreman-Mackey]
+\textit{Center for Cosmology and Particle Physics, New York University}
+\item[Michael Hirsch]
+\textit{Max-Planck-Institut f\"ur Intelligente Systeme}
+\item[Dustin Lang]
+\textit{McWilliams Center for Cosmology, Carnegie Mellon University}
+\item[Ben Montet]
+\textit{Department of Astronomy, California Institute of Technology}
+\item[David Schiminovich]
+\textit{Department of Astrophysics, Columbia University}
+\item[Bernhard Sch\"olkopf]
+\textit{Max-Planck-Institut f\"ur Intelligente Systeme}
+\end{description}
 
 \clearpage
 
 \section{Executive summary}
+
+Fundamentally, this whitepaper advocates \emph{image modeling}---%
+  building a detailed model of the pixel sensitivities and point-spread function
+  as a function of focal-plane position,
+  along with a model of the position and brightness of every star in the field.
+This level of modeling has not happened with \Kepler\ up to now
+  because the data have been made extremely precise with good pointing
+  and aperture photometry.
+In the two-wheel era, \Kepler\ will not maintain precise pointing.
+This is a benefit as well as a curse:
+It reduces the precision of naive aperture photometry,
+  but it provides data diversity that permits inference
+  of the sensitivity map and point-spread function
+  that is not perfectly covariant with the morphology of the true scene.
+We propose capitalizing on this to develop a probabilistic generative model of the \Kepler\ pixels.
+We argue that this modeling will permit continuance of photometry at 10-ppm-level precision.
+In \sectionname~\ref{sec:extant}
+
+
+We can be the best in the world at this, and we should make this the front-and-center idea of our proposal.  The Killer App (tm) would be if we can show that we can *increase the precision* of *existing* Kepler data by image modeling.  If we could show that, then we would have a good argument that we can go a long way towards mitigating precision-loss in the post-reaction-wheel era.
+
+
+
+- Shortened target list.  We are learning a lot about stellar variability and what stars can possibly be used to detect small planets.  I think we should cut the target list down to a smaller set that are most promising.  By going smaller on the list, we can increase cadence and increase pixels-per-star, both of which might be critical.
+
+- Maintain Kepler core science goals.  We should continue to focus on finding habitable-zone planets around Sun-like stars.  That's an important goal and aligned with the interests of Kepler and NASA.  I also think we should continue to work in the same Kepler field, because that's where we understand the stars well.  We should be careful not conflict with or compete with the goals of TESS.
+
 
 \section{Philosophy and motivation}
 
