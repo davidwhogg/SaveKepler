@@ -24,7 +24,7 @@ Any use of this content *requires citation* (of, *eg*, this repository).
 history
 -------
 **2013 May:**
-Fergus (NYU) calls meeting at NYU to discuss "giving ideas" back to the *Kepler* team
+Fergus (NYU) calls meeting at NYU to discuss giving ideas back to the *Kepler* team
 about how they might profitably operate in a two-wheel mode.
 
 **2013 August 02:**
