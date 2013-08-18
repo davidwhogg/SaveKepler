@@ -2,8 +2,8 @@ SaveKepler
 ==========
 Development of a whitepaper for the call to repurpose the *NASA Kepler* satellite.
 
-contributors
-------------
+contributors / acknowledgements
+-------------------------------
 - Tom Barclay (NASA Ames)
 - Rebekah Dawson (Harvard)
 - Rob Fergus (NYU)
@@ -14,6 +14,7 @@ contributors
 - Ben Montet (Caltech)
 - David Schiminovich (Columbia)
 - Bernhard Schölkopf (MPI-IS)
+- Martin Still (NASA Ames)
 
 license
 -------
