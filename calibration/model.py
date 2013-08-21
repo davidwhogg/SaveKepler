@@ -13,7 +13,7 @@ def build_matrix(x, nwindow):
     return X
 
 
-def load_data(predict_id=0, train_ids=[1, 2, 3, 4], train_frac=0.6, nwindow=5):
+def load_data(predict_id=0, train_ids=[2, ], train_frac=0.6, nwindow=5):
     # Load the target list and dataset.
     targets = map(int, open("targets.txt").read().splitlines())
     data = np.loadtxt("dataset_1.txt")
@@ -54,9 +54,12 @@ if __name__ == "__main__":
     ind = 20
 
     (X_train, y_train), (X_test, y_test) = load_data()
-    y_train[ind] += 1e-4 * np.sin(np.arange(len(y_train[ind])) * 1e-2)
+    # y_train[ind] += 1e-4 * np.sin(np.arange(len(y_train[ind])) * 1e-2)
     # y_train[ind, 50:100] -= 1e-4
     c, r, rank, s = np.linalg.lstsq(X_train, y_train[ind])
+
+    print(np.sum((np.dot(X_train, c) - y_train[ind]) ** 2))
+    print(np.sum((np.dot(X_test, c) - y_test[ind]) ** 2))
 
     pl.figure()
     pl.subplot(211)
@@ -65,4 +68,13 @@ if __name__ == "__main__":
     pl.subplot(212)
     pl.plot(np.arange(len(y_train[ind])), y_train[ind] - np.dot(X_train, c),
             ".k")
-    pl.savefig("blah.png")
+    pl.savefig("train.png")
+
+    pl.figure()
+    pl.subplot(211)
+    pl.plot(np.arange(len(y_test[ind])), y_test[ind], ".k")
+
+    pl.subplot(212)
+    pl.plot(np.arange(len(y_test[ind])), y_test[ind] - np.dot(X_test, c),
+            ".k")
+    pl.savefig("test.png")
