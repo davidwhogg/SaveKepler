@@ -13,7 +13,7 @@ def build_matrix(x, nwindow):
     return X
 
 
-def load_data(predict_id=0, train_ids=[2, ], train_frac=0.6, nwindow=5):
+def load_data(predict_id=0, train_ids=[1], train_frac=0.6, nwindow=5):
     # Load the target list and dataset.
     targets = map(int, open("targets.txt").read().splitlines())
     data = np.loadtxt("dataset_1.txt")
@@ -35,6 +35,8 @@ def load_data(predict_id=0, train_ids=[2, ], train_frac=0.6, nwindow=5):
 
     train_mask = np.sum([target_ids == int(targets[i]) for i in train_ids],
                         axis=0)
+    print(train_mask)
+    print([targets[i] for i in train_ids])
     x = data[train_mask, :]
 
     # Separate into test and train sets.
@@ -55,7 +57,7 @@ if __name__ == "__main__":
 
     (X_train, y_train), (X_test, y_test) = load_data()
     # y_train[ind] += 1e-4 * np.sin(np.arange(len(y_train[ind])) * 1e-2)
-    # y_train[ind, 50:100] -= 1e-4
+    y_test[ind, 50:100] -= 1e-4
     c, r, rank, s = np.linalg.lstsq(X_train, y_train[ind])
 
     print(np.sum((np.dot(X_train, c) - y_train[ind]) ** 2))
@@ -77,4 +79,5 @@ if __name__ == "__main__":
     pl.subplot(212)
     pl.plot(np.arange(len(y_test[ind])), y_test[ind] - np.dot(X_test, c),
             ".k")
+    pl.ylim(-0.001, 0.001)
     pl.savefig("test.png")
