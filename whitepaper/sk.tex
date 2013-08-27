@@ -55,10 +55,9 @@ released 2013 August 02.
 
 \section{Executive summary}
 
-\paragraph{primary recommendation:}
-Fundamentally, this \documentname\ advocates \emph{image modeling}---%
-  building a detailed model of the pixel sensitivities and point-spread function
-  as a function of focal-plane position,
+Fundamentally, this \documentname\ advocates \emph{image modeling}%
+  ---building a detailed model of the pixel sensitivities and point-spread function
+  as a function of focal-plane position---%
   along with a model of the position and brightness of every star in the field.
 This level of modeling has not happened with \Kepler\ up to now
   because the data have been made extremely precise with good pointing
@@ -107,14 +106,21 @@ If using such fields becomes a requirement of the repurposed mission,
   once per year. It will only find 1/~20 of them in each field, but will look at 20 fields per year, so the 
   net number of 1AU planets observed will be conserved. Difficulty: 180 day planets will also be observed once/year,
   as will 90, 45, etc. Can be dealt with statistically, through transit durations, and/or with space-based follow up
-  (ie JWST) -btm)
+  (ie JWST) -btm  Okay I agree with this; let's move this to whitepaper 2! -Hogg)
 
 \section{Philosophy and motivation}
 
 Image modeling will deliver many bits; we will get more science per
 downloaded pixel than the naive predictions of degradation.
 
-Kepler core goals remain outrageously interesting.
+\Kepler\ data are taken in a mode that is
+near-pessimal\footnote{Neologism ``pessimal'' is the antonym of
+  ``optimal''.} for the determination or inference of calibration
+parameters such as point-spread function, pixel-level or large-scale
+sensitivity map, bias, dark, sky, or contributions from overlapping
+sources.
+
+\Kepler\ core goals remain outrageously interesting.
 
 We know a lot about the prevalance of planets and the stars in which
 we could possibly detect them; we should use this to reduce our data
@@ -134,5 +140,15 @@ shorter cadence.
 \section{Spacecraft pointing}\label{sec:pointing}
 
 \section{Aperture selection for telemetry}\label{sec:telemetry}
+
+\section{Possible showstoppers}\label{sec:stop}
+
+In principle any physical effect can be covered by the modeling
+methods we propose.
+
+Heterogeneity or time dependence in intrapixel sensitivity variations
+could be very difficult to model.
+
+Propose multipole expansion to begin to address this.
 
 \end{document}
