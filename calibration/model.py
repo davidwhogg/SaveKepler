@@ -13,7 +13,8 @@ def build_matrix(x, nwindow):
     return X
 
 
-def load_data(predict_id=0, train_ids=[1], train_frac=0.6, nwindow=5):
+def load_data(predict_id=0, train_ids=[1], train_frac=0.6, nwindow=5,
+              self_offset=24, l2=0.1):
     # Load the target list and dataset.
     targets = map(int, open("targets.txt").read().splitlines())
     data = np.loadtxt("dataset_1.txt")
@@ -33,23 +34,46 @@ def load_data(predict_id=0, train_ids=[1], train_frac=0.6, nwindow=5):
     predict_ids = target_ids == int(targets[predict_id])
     y = data[predict_ids, :]
 
+    # Extract the flux time series from the training target(s).
     train_mask = np.sum([target_ids == int(targets[i]) for i in train_ids],
                         axis=0)
-    print(train_mask)
-    print([targets[i] for i in train_ids])
     x = data[train_mask, :]
 
     # Separate into test and train sets.
     train_number = int(train_frac * data.shape[-1])
-    y_train, y_test = y[:, :train_number], y[:, train_number:]
-    x_train, x_test = x[:, :train_number], x[:, train_number:]
+    i0 = self_offset + nwindow
+    y_train, y_test = y[:, i0:train_number-i0], y[:, train_number+i0:-i0]
+    x_train, x_test = x[:, i0:train_number-i0], x[:, train_number+i0:-i0]
 
     # Build the x matrix.
     X_train = build_matrix(x_train, nwindow)
     X_test = build_matrix(x_test, nwindow)
 
+    # Extract the lagged time series from the target series.
+    X_train = np.concatenate((X_train,
+                              build_matrix(y[:, :train_number-2*i0], nwindow),
+                              build_matrix(y[:, 2*i0:train_number], nwindow),
+                              np.ones((X_train.shape[0], 1))),
+                             axis=1)
+    X_test = np.concatenate((X_test,
+                             build_matrix(y[:, train_number:-2*i0], nwindow),
+                             build_matrix(y[:, train_number+2*i0:], nwindow),
+                             np.ones((X_test.shape[0], 1))),
+                            axis=1)
+
+    # Trim the ends off the flux arrays.
     nw = int(np.floor(0.5 * nwindow))
-    return (X_train, y_train[:, nw:-nw-1]), (X_test, y_test[:, nw:-nw-1])
+    y_train, y_test = y_train[:, nw:-nw-1], y_test[:, nw:-nw-1]
+
+    # Add L2 regularization.
+    X_train = np.concatenate((X_train, l2 * np.ones((1, X_train.shape[1]))))
+    y_train = np.concatenate((y_train, np.zeros((y_train.shape[0], 1))),
+                             axis=1)
+
+    X_test = np.concatenate((X_test, l2 * np.ones((1, X_test.shape[1]))))
+    y_test = np.concatenate((y_test, np.zeros((y_test.shape[0], 1))), axis=1)
+
+    return (X_train, y_train), (X_test, y_test)
 
 
 if __name__ == "__main__":
