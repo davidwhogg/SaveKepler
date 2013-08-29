@@ -11,12 +11,15 @@
 }%
 
 \newcommand{\sectionname}{Section}
-\newcommand{\documentname}{\textsl{White Paper}}
+\newcommand{\documentname}{\textsl{white paper}}
 \newcommand{\foreign}[1]{\textit{#1}}
 \newcommand{\vs}{\foreign{vs}}
 \newcommand{\observatory}[1]{\textsl{#1}}
 \newcommand{\kepler}{\observatory{Kepler}}
 \newcommand{\Kepler}{\kepler}
+\newcounter{hoggitem}
+\setcounter{hoggitem}{0}
+\newcommand{\hoggitem}{\refstepcounter{hoggitem}\textbf{\textsl{(\thehoggitem)}}}
 
 \begin{document}
 
@@ -56,58 +59,79 @@ released 2013 August 02.
 
 \section{Executive summary}
 
-Fundamentally, this \documentname\ advocates \emph{image modeling}%
-  ---building a detailed model of the pixel sensitivities and point-spread function
+\paragraph{primary recommendation:}
+\hoggitem~Fundamentally, this \documentname\ advocates \emph{image modeling}%
+  ---building a detailed model of pixel sensitivities
+  (including possibly intra-pixel sensitivity maps),
+  point-spread function,
+  and sky, bias, and dark signals,
   as a function of focal-plane position---%
   along with a model of the position and brightness of every star in the field.
 This level of modeling has not happened with \Kepler\ up to now
   because the data have been made extremely precise with good pointing
   and aperture photometry.
 In the two-wheel era, \Kepler\ will not maintain precise pointing.
-This is a benefit as well as a curse:
+This is a blessing as well as a curse:
 It reduces the precision of naive aperture photometry,
   but it provides data diversity that permits inference
   of the sensitivity map and point-spread function
   that is not perfectly covariant with the morphology of the true scene.
 We propose capitalizing on this to
   \textbf{develop a probabilistic generative model of the \Kepler\ pixels.}
-We argue that this modeling will permit continuance of photometry at 10-ppm-level precision.
-In \sectionname~\ref{sec:extant} we show that we can improve \Kepler\ photometric precision with a focal-plane model.
-In \sectionname~\ref{sec:future} we show that the expected drift or jitter in positions in the two-weel era
-  will \textsl{(a)}~help with constraining this kind of model,
+We argue that this modeling may permit continuance of photometry at 10-ppm-level precision.
+We demonstrate baby steps towards focal-plane models
+  along two different directions:
+In one, the model is physical;
+  its parameters are parameters of the spacecraft, detectors, and optics.
+In the other, the model is data-driven but motivated by ideas of causality;
+  in this case the parameters control the ways
+  disparate data sources can be used to predict one another.
+We demonstrate that the expected drift or jitter in positions in the two-weel era
+  will \textsl{(a)}~help with constraining these kinds of model,
   and \textsl{(b)}~be obviated (in terms of loss of precision) by such modeling.
 These results are relevant to \emph{almost any} scientific goal for the repurposed mission,
   independent of our secondary recommendations.
 
-\paragraph{secondary recommendation 1:}
-Shorten exposure times and increase cadence.
-Note value for TTVs and asteroseismology.
+\paragraph{secondary recommendations:}
+\hoggitem~We recommend shortening exposure times, and increasing cadence,
+  to reduce the effect of pointing drift and increase the sensitivity of the models.
+Increased cadence will lead to better value of the data for
+  transit-timing variations and asteroseismology.
 
-\paragraph{secondary recommendation 2:}
-If we are right that current mission precision can be maintained in the two-wheel era,
-  then it is our (admittedly debatable) view that the highest-impact scientific project for the \Kepler\ spacecraft
-  remains in the area of exoplanet detection and characterization.
-In particular, we advocate de-scoping the mission to focus on
-  \textbf{finding Earth-like planets on year-ish orbits around Sun-like stars}.
-This de-scope would involve
-  \textsl{(a)}~reducing the \Kepler-field target list to increase the fraction of Sun-like stars
-  (and reduce the total number of telemetered sources, compensating for the cost of higher cadence),
-  \textsl{(b)}~removing from the target list stars that are known to be stochastically variable
-  at a level that would render unlikely the discovery of an Earth-like planet
-  (to further reduce number of telemetered sources),
-  and \textsl{(c)}~continuing observations in the current \Kepler\ field
-  (to extend the observations beyond four years).
-That is, we specifically make the (radical) proposal to continue observations in the current \Kepler\ field,
-  despite the stellar positional drift we expect for such observations.
-As of writing, there is talk of increased pointing precision for fields with particular auspicious Sun angles.
-If using such fields becomes a requirement of the repurposed mission,
-  this would recommend against making year-ish orbit planets a high priority.
-  (this isn't necessarily true! If \Kepler\ changes pointings every 20 days, returning to the same pointing once
-  per year, it will still be well-positioned to observe transits of certain planets; i.e. planets that transit
-  once per year. It will only find 1/~20 of them in each field, but will look at 20 fields per year, so the
-  net number of 1AU planets observed will be conserved. Difficulty: 180 day planets will also be observed once/year,
-  as will 90, 45, etc. Can be dealt with statistically, through transit durations, and/or with space-based follow up
-  (ie JWST) -btm  Okay I agree with this; let's move this to whitepaper 2! -Hogg)
+\hoggitem~The telemetry burden of increased cadence can be offset
+  by reducing the number of target stars.
+We would recommend (for scientific reasons) aggressively shrinking the target lists around
+  bright, non-variable Sun-like and M-type stars.
+
+\hoggitem~It will be imperative to operate the spacecraft
+  with one or both of the following modifications to operational software:
+The pointing will need to be adjusted frequently using
+  the two operational wheels and some propellant,
+  or the focal-plane apertures telemetered down at each detector
+  read will have to be adapted in real time to follow drifting stars.
+
+\hoggitem~It will also be further capitalize on the ``blessing'' of the drift
+  by diversifying the observations in other ways:
+Deliberate focus pulls, dithers, and integration-time adjustments,
+  either throughout the mission
+  or else in specified ``calibration periods''
+  will provide much more data support for model parameters.
+
+\hoggitem~Whether the two-wheel survey strategy ends up being
+  to continue observations in the current \Kepler\ field,
+  or to work in a set of new ``low-torque'' fields around the Ecliptic,
+  it is our view that \Kepler\ can still accomplish
+  what many of the present authors consider its key scientific goal,
+  which is 
+  \textbf{to find Earth-like planets on year-ish orbits around Sun-like stars}.
+With a multi-pronged image-modeling effort and
+  a bit of good luck (with respect to assumptions about the hardware),
+  it is our view that a \Kepler\ two-wheel mission can still
+  be used to pursue this deep and important mission.
+That said, what's written in this \documentname\ is fundamentally
+  agnostic about the scientific program in the two-wheel era.
+
+\clearpage
 
 \section{Philosophy and motivation}
 
@@ -131,6 +155,15 @@ TESS is coming; we can help with that.
 
 Asteroseismology and transit timing variations both benefit from
 shorter cadence.
+
+If using such fields becomes a requirement of the repurposed mission,
+  this would recommend against making year-ish orbit planets a high priority.
+  (this isn't necessarily true! If \Kepler\ changes pointings every 20 days, returning to the same pointing once
+  per year, it will still be well-positioned to observe transits of certain planets; i.e. planets that transit
+  once per year. It will only find 1/~20 of them in each field, but will look at 20 fields per year, so the
+  net number of 1AU planets observed will be conserved. Difficulty: 180 day planets will also be observed once/year,
+  as will 90, 45, etc. Can be dealt with statistically, through transit durations, and/or with space-based follow up
+  (ie JWST) -btm  Okay I agree with this; let's move this to whitepaper 2! -Hogg)
 
 \section{Modeling of extant \Kepler\ data}\label{sec:extant}
 
