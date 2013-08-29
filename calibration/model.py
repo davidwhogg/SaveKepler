@@ -103,5 +103,5 @@ if __name__ == "__main__":
     pl.subplot(212)
     pl.plot(np.arange(len(y_test[ind])), y_test[ind] - np.dot(X_test, c),
             ".k")
-    pl.ylim(-0.001, 0.001)
+    # pl.ylim(-0.001, 0.001)
     pl.savefig("test.png")
