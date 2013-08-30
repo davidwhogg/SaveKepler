@@ -206,6 +206,20 @@ We encourage the \Kepler\ community to fork, build on, and contribute back to th
 
 \subsection{Data-driven conditional models of Kepler data}
 
+The core Kepler science team has developed various methods for removing some
+systematic instrumental signals from the extracted light curves.
+The set of algorithms called PDC \citep{map-pdc1,map-pdc2} are particularly
+successful because they remove instrumental effects (assumed common between
+nearby targets on the detector) while retaining astrophysical signals (assumed
+unique to the target of interest).
+These methods use a data-driven linear model built directly from the aperture
+photometry of nearby stars.
+Here, we present an extension to this model that takes advantage of the causal
+structure of the problem (CITE SOMETHING).
+We also argue that this procedure is best performed \emph{at the pixel level}
+instead of on the extracted photometric time series.
+
+
 Suppose we are given a number of time series
 $$(y_i(t_j))_{i=1,\dots,n; j=1,\dots,T}$$
 where $y_i(t_j)$ is the read out intensity of pixel $i$ at time $t_j$.
@@ -392,6 +406,12 @@ Theory, 56, 5168
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
 Reichenbach,~H., \emph{The Direction of Time}, University of California
 Press, 1956
+
+\bibitem[Smith \etal(2012)]{map-pdc2}
+Smith, J.~C., Stumpe, M.~C., Van Cleve, J.~E., \etal\ 2012, \pasp, 124, 1000
+
+\bibitem[Stumpe \etal(2012)]{map-pdc1}
+Stumpe, M.~C., Smith, J.~C., Van Cleve, J.~E., \etal\ 2012, \pasp, 124, 985
 
 \end{thebibliography}
 
