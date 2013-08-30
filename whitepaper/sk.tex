@@ -220,7 +220,7 @@ Here, we present an extension to this model that takes advantage of the causal
 structure of the problem (CITE SOMETHING).
 We also argue that this procedure is best performed \emph{at the pixel level}
 instead of on the extracted photometric time series.
-To start, we will describe a model to remove systematic effects from the time
+To start, we describe a model to remove systematic effects from the time
 series in a single pixel using the fluxes of pixels from some $K\ge1$ nearby
 star(s) and the ``historical'' time series of the target pixel.
 The main insight of this method is that the systematic effects are actually
@@ -228,6 +228,20 @@ The main insight of this method is that the systematic effects are actually
 In other words, the (recent) history of the detector sensitivity provides a
 very better estimate of the conditions at a given moment than an
 instantaneous measurement considered alone.
+This is implemented by building the model of the systematics in pixel $i$ at
+time $t_j$ using the fluxes of the training pixels $k \ne i$ in a sliding
+window $t_j - \delta t \le t \le t_j + \delta t$.
+We can further improve the predictive power of the model by including data
+from the target pixel ugh.
+
+\paragraph{Terminology}
+We are trying to calibrate pixel $i$ of target star $n$ at time $t_k$ using
+the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t \le t
+\le t_k + \delta t$.
+As an extension, we can also use the data in pixels $i^\prime$ from the target
+$n$ (including pixel $i$) in the windows $t_k - \Delta t - \delta t \le t \le
+t_k - \Delta t$ and $t_k + \Delta t \le t \le t_k + \Delta t + \delta t $ for
+$\Delta t \gg $ the timescale of the signal of interest (a transit).
 
 Suppose we are given a number of time series
 $$(y_i(t_j))_{i=1,\dots,n; j=1,\dots,T}$$
