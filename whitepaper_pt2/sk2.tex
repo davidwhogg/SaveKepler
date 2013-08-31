@@ -1,0 +1,237 @@
+%\documentclass{emulateapj}
+\documentclass[12pt, preprint]{aastex}
+%\usepackage{natbib,graphicx,amsmath,amsthm,ulem,color, lscape, caption,subfigure}
+\usepackage{natbib,graphicx,amsmath,amsthm,ulem, subfigure, enumitem}
+
+
+
+\newcommand{\sectionname}{Section}
+\newcommand{\documentname}{\textsl{white paper}}
+\newcommand{\foreign}[1]{\textit{#1}}
+\newcommand{\vs}{\foreign{vs}}
+\newcommand{\observatory}[1]{\textsl{#1}}
+\newcommand{\kepler}{\observatory{Kepler}}
+\newcommand{\Kepler}{\kepler}
+\newcounter{hoggitem}
+\setcounter{hoggitem}{0}
+\newcommand{\hoggitem}{\refstepcounter{hoggitem}\textbf{\textsl{(\thehoggitem)}}}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
+\shorttitle{Save Kepler 2}
+\shortauthors{Montet et al.}
+
+\bibliographystyle{apj}
+\begin{document}\sloppy\sloppypar\thispagestyle{empty}
+
+\section*{Maximizing science return per telemetered pixel \\
+  with detailed models of the \Kepler\ focal plane: Scientific advantanges}
+\noindent
+A white paper submitted in response to the \Kepler\ Project Office
+\textit{Call for White Papers: Soliciting Community Input for
+  Alternate Science Investigations for the Kepler
+  Spacecraft}\footnote{\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}}
+released 2013 August 02.
+
+
+\begin{description}[style=nextline,itemsep=0ex]
+\item[Benjamin T. Montet]
+\textit{Department of Astronomy, California Institute of Technology}
+\item[Tom Barclay]
+\textit{NASA Ames Research Center}
+\item[Rebekah Dawson]
+\textit{Havard--Smithsonian Center for Astrophysics}
+\item[Rob Fergus]
+\textit{Courant Institute of Mathematical Sciences, New York University}
+\item[Dan Foreman-Mackey]
+\textit{Center for Cosmology and Particle Physics, New York University}
+\item[Michael Hirsch]
+\textit{Max-Planck-Institut f\"ur Intelligente Systeme}
+\item[David W. Hogg]
+\textit{Center for Cosmology and Particle Physics, New York University}
+\item[Dustin Lang]
+\textit{McWilliams Center for Cosmology, Carnegie Mellon University}
+\item[David Schiminovich]
+\textit{Department of Astrophysics, Columbia University}
+\item[Bernhard Sch\"olkopf]
+\textit{Max-Planck-Institut f\"ur Intelligente Systeme}
+\end{description}
+
+
+\section{Executive summary}
+
+\paragraph{primary recommendation:}
+In Paper I (Hogg et al.) we propose image modeling techniques to 
+  maintain 10-ppm-level precision photometry even with only two working 
+  reaction wheels. 
+While these results are relevant to many scientific goals
+  for the repurposed mission, we advocate for a change of strategy; namely, 
+  \textbf{observing bright stars continuously in ``low-torque'' fields across the ecliptic plane.}
+There are considerable benefits of such a strategy. 
+\begin{itemize}
+\item
+The first scienfitic goal\footnote{\url{http://kepler.nasa.gov/science/about/scientificgoals/}} of \Kepler\ is to \textbf{determine the frequency 
+ of terrestrial and larger planets in or near the habitable zone of a wide 
+ variety of spectral types of stars}. 
+Not only does this recommendation not detract from this strategy, it may 
+ provide the best chance to answer this question moving forward.
+\item
+By limiting ourselves to bright stars, the \kepler\ long cadence integrations of 29.4 minutes can be shortened, allowing for more sensitive observations of transit timing and transit duration variations.
+These stars will be later observed by TESS, but only for 30 days; there will not be enough transits observed to detect variations due to planet-planet interactions.
+Therefore, by observing bright stars that can be followed up by TESS, this will enable dynamical studies that could not be undertaken with either telescope alone.
+\item
+Similarly, shorter integrations may allow for asteroseismological studies of 
+ more stars. 
+Many asteroseismological targets have been subgiant or giant stars, for which 
+ the period of oscillations are long enough so that they can be observed in 
+ long cadence data (Chaplin Ann Rev. 2013)
+By decreasing the integration time, solar-type oscillations can be observed 
+ on less massive stars.
+On these stars, asteroseismological signals are smaller, but by focusing on 
+ bright stars we expect the signals to still be observable.
+\end{itemize}
+This white paper is organized as follows. In \textsection\ref{Targets}, we outline our target selection and observing strategies. In \textsection\ref{Haul}, we project the expected number of planets detected by this strategy. In \textsection{HZ}, we explain how this strategy will enable completion of the primary scientific goal of the \Kepler\ mission. \textsection\ref{Dynamics} and \textsection\ref{AS} outline the dynamical and asteroseismological ``bonus science'' that can be accomplished, the former especially in a synergistic manner with TESS. 
+
+\section{Target Selection}
+\label{Targets}
+TRILEGAL simulations. Plenty of bright, coolish stars around. Aim for 30,000 
+ in each field? Enough  Allows for a 5 minute long cadence mode. Stay on one 
+ field for 3 months, then move to another one. Return to the same field every 
+ year. In total, 120k stars, each observed for 3/12 months. 
+
+\section{Expected Planet Detections}
+\label{Haul}
+In each field, find all the planets out to 30 day periods, limited by our 
+ expected precision. There are many! Beyond 30 days, we can get lucky. What 
+ is the total number? Must be at least 1000. Boley and Ford say $>$10\% of stars 
+ host STIPS, meaning we'd have 12k STIP hosts. 5\% transit probability gives us
+ 600 systems there, or $>$1200 planets. Plus things further out, hot and warm 
+ Jupiters, we'll have many planets. Need to quantify this.
+
+
+\section{The frequency of ``habitable-zone'' planets}
+\label{HZ}
+For M-dwarfs, we get everything in the HZ, so we're set there. For stars around 
+ 1 solar radius, we get one transit per year. Only a 25 percent chance we're 
+ looking at the right time, but looking at 4x the number of fields cancels that 
+ out. We won't technically know if planets unearthed (don't use this word!) are
+ Earth analogoues or aliased 180 or 90 day planets. But we can determine this 
+ statiscally through transit durations. Earths will have a ~10 hour duration. If they are shorter periods, the durations are only this long if the planets are 
+ eccentric, in which case they're not terribly likely to transit anyway. We'll
+ also break the degeneracy with follow up: NOTE---JWST is only a 5 year mission. If TESS  runs into delays and JWST stops running into delays it won't find its  planets  until JWST is nearly over. We can make sure JWST will have planets to 
+ characterize).
+
+Takeaway, there's no reason we can't find at least as many HZ-earth sized 
+ planets as the primary  mission, if we also have a 3-4 year go at it. 
+
+
+\section{Dynamics with \Kepler\ and TESS}
+\label{Dynamics}
+\subsection{The Flatness of Transiting Exoplanetary Systems}
+Despite the tremendous success of \Kepler\ at finding planets, questions remain
+ as to the flatness of the exoplanetary systems uncovered. 
+While the vast majority of transiting systems must have inclinations of a 
+ few degrees or fewer, it is unclear how flat is ``flat.'' 
+Moreover, in special cases we may expect inclined companions to transiting 
+ planets. 
+For example, hot Jupiters may be formed by early dynamical interactions with a 
+ mutually inclined perturber, initially exchanging inclination for eccentricity
+ and then circularizing through tidal effects. 
+If this scenario is accurate, then we would expect inclined companions to 
+ slowly perturb transiting planets. 
+As the inclination of a transiting planet changes, so does the chord the planet
+ cuts across the face of its star. This also necessarily changes the 
+ \emph{duration} of the planet transit, especially for large impact parameters
+ when a small change in inclination significantly affects the length of the 
+ transit chord.
+
+Due to its four year mission lifetime, \Kepler\ is not optimal for observing 
+ these secular effects, which occur with timescales 
+\begin{equation}
+\tau = \frac{M_\star}{M_p}P_{tr}
+\end{equation}
+with $M_\star$ the mass of the host star, $M_p$ the perturber's mass, and
+ $P_{tr}$ the period of the transiting planet. 
+For a planet in a 10-day orbit perturbed by a $2 M_J$ object, this cycle is 
+ approximately 14 years. 
+ However, a repurposed \Kepler\ working in concert with
+ TESS or a future TESS-like mission would be the ideal instrument for this 
+ study. 
+\Kepler\ will be able to measure the transit durations of large, warm 
+ transiting planets in a few fields in 2014. 
+Moreover, with an increased cadence the precision of observations will be 
+ enhanced over the work currently accomplished in the \Kepler\ field. 
+Observing transits each year will enable a search for transit duration 
+ variations (TDVs). 
+When these fields are revisited in 2018-2019 with TESS, we will immediately have
+ at least a five year baseline to compare transit durations against. 
+\textbf{This is a science objective that could not be carried out by TESS or 
+ \Kepler\ alone}. 
+A search for TDVs will enable key outstanding questions about the architecture
+ of exoplanetary systems to be answered;  there are not any missions current or
+ planned that will be able to study the flatness of exoplanetary systems as 
+ well as the combination of a repurposed \Kepler\ and TESS
+\emph{Perhaps add in a line about apsidal precession? Exomoons?}
+ 
+
+\subsection{Masses of Transiting Planets}
+An unexpected success of the \Kepler\ mission has been the discovery of many 
+ systems with tightly-packed inner planets (hereafter STIPs, e.g. Boley 
+ and Ford 2013). 
+Ten percent or more of stars appear to have planets a few Earth radii in size
+ with periods smaller than 20 days. 
+These systems appear to form around stars of a variety of spectral types, from 
+ Solar-type stars (Kepler-11, Lissauer et al. 2011) to mid M dwarfs. 
+ (Kepler-42, Muirhead et al. 2012).
+While their existence is unquestioned, their formation is uncertain. 
+Boley \& Ford (2013) propose \textit{in-situ} formation via aerodynamic drift, 
+ while Cossou et al. (2013) and Swift et al. (2013) propose migration of 
+ planetary embryos. 
+To better understand the formation and evolution of these systems, it 
+ is imperative to understand their mass (and thus density) distributions. 
+The most effective method to determine masses of small transiting planets 
+ to date has been the characterization of transit timing variations (TTVs) 
+ (e.g. Fabrycky et al. 2012), the effects of gravitational perturbations
+ between planets near each conjunction. 
+
+Far and away the most common type of TTV observed with 
+ \Kepler\ is variations that occur on the timescale of planetary conjunctions
+ for near-resonant systems (the ones described above). 
+A mission that observes systems for approximately one month per year is 
+ suboptimal for detailed characterization of this type of TTV for specific 
+ systems. 
+However, all hope is not lost.
+In the commonly observed case where both near-resonant planets transit, the 
+ period of the TTV signal is known and equal to the period of conjunctions,
+ leaving the only free parameters the amplitude of the TTV signal and its phase.
+As the typical period of these conjunctions is 1-2 years, one quarter of
+ observations is not enough to determine the masses of the transiting planets. 
+However, return observations of these systems over multiple years with \Kepler\
+ and eventually with TESS can enable a full cycle to be observed, allowing for 
+ masses to be estimated. Even when a full cycle can not be observed, strong 
+ upper limits can be placed on the masses of the planets from TTV nondetections.
+
+\Kepler\ was, fundamentally, a statistical mission. 
+A study such as this will  help us better understand the statistics of TTV 
+ systems. 
+While we will likely not be able to characterize systems as well as can be
+ presently accomplished  (e.g. KOI-142, Nesvorny et al. 2013), statistical
+ analyses that lack sufficent numbers of TTV systems will be able to be 
+ undertaken. 
+If the updated \Kepler\ mission collects four pointings each of 30,000 stars, 
+ then of the 120,000 stars observed, 12,000 would be expected to host STIPs
+ and approximately 600 of these systems would be expected to trasit.
+Adding numbers such as these to the current sample will allow a tremendous 
+ increase in our understanding of the properties of these systems and provide
+ insight into their formation.
+
+
+ 
+
+\section{Asteroseismology}
+\label{AS}
+We need an expert here. Tom, does Dan Huber want to help?
+
+\end{document}
