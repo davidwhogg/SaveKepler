@@ -228,52 +228,42 @@ The main insight of this method is that the systematic effects are actually
 In other words, the (recent) history of the detector sensitivity provides a
 very better estimate of the conditions at a given moment than an
 instantaneous measurement considered alone.
-This is implemented by building the model of the systematics in pixel $i$ at
-time $t_j$ using the fluxes of the training pixels $k \ne i$ in a sliding
-window $t_j - \delta t \le t \le t_j + \delta t$.
-We can further improve the predictive power of the model by including data
-from the target pixel ugh.
 
-\paragraph{Terminology}
-We are trying to calibrate pixel $i$ of target star $n$ at time $t_k$ using
-the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t \le t
-\le t_k + \delta t$.
+\paragraph{Implementation}
+In this section,
+we will discuss the calibration of pixel $i$ of target star $n$ at time $t_k$
+using the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t
+\le t \le t_k + \delta t$.
 As an extension, we can also use the data in pixels $i^\prime$ from the target
 $n$ (including pixel $i$) in the windows $t_k - \Delta t - \delta t \le t \le
 t_k - \Delta t$ and $t_k + \Delta t \le t \le t_k + \Delta t + \delta t $ for
-$\Delta t \gg $ the timescale of the signal of interest (a transit).
+$\Delta t \gg $ the timescale of the signal of interest (for example, a
+transit).
 
-Suppose we are given a number of time series
-$$(y_i(t_j))_{i=1,\dots,n; j=1,\dots,T}$$
-where $y_i(t_j)$ is the read out intensity of pixel $i$ at time $t_j$.
-
-We assume that $y_i(t_j)$ is a function of the following variables:
+We start by making the (reasonable) assumption that the observed signal---the
+flux measured in pixel $i$ at time $t_k$: $y_i (t_k)$---is a function of only
+the following variables:
 \begin{itemize}
 \item
-the true flux $f_i(t_j)$ arriving at the location of pixel $i$ during the
-integration time
+the ``true'' flux $f_i(t_k)$ arriving at the location of pixel $i$ during the
+integration time,
+
 \item
-confounding factors inherent to the spacecraft, affecting all pixels (but not
-necessarily the same way (e.g., temperature, pointing errors)
+bulk variations caused by the conditions of the spacecraft (for example,
+pointing shifts and temperature fluctuations) that affect every pixel in a
+systematic---but not identical---way, and
+
 \item
-confounders related to the position of the spacecraft, e.g., $\pi/2$ rotations
-around the optical axis, or position angle of the spacecraft on its orbit
-around the sun
-\item
-HOGG: if there's anything else, add it here
+instrumental noise due to the detector.
 \end{itemize}
+The goal is to find (or model) the true fluxes $f_i(t_k)$ conditioned on the
+observations $y_i(t_k)$.
+In practice, this is hard because we don't have a physical model accurate at
+the required levels.
+Instead, we propose an effective model based on the observations described
+above.
 
-Our goal is to model the true fluxes, but this maybe be hard if we cannot get
-a handle on the values of the confounders, nor on the precise mechanisms by
-which the confounders affect the measurements $y_i(t_j)$.
-
-However, we can apply a data-driven approach which attempts to remove the
-confounding effects influencing $y_i(t_j)$ in as far as they can be predicted
-from the other time series $y_{i'}(t_j)$, $i'\ne i$. (N.B.: whenever we write
-$i\ne i'$, it is understood that the two pixels $i$ and $i'$ should belong to
-different stars with non-overlapping PSFs.)
-
-This relies on the following assumptions:
+The efficaciousness of our method relies on the following assumptions:
 \begin{itemize}
 \item Independence:
 we assume that the true fluxes are independent, i.e., $f_i(t_j) \independent
@@ -287,6 +277,7 @@ j,j'=1,\dots,T$), in the sense that the overall confounding effect on
 $y_i(t_j)$ can in principle be predicted from from the confounding effects
 on the other $y_{i'}(t_{j'})$.
 \end{itemize}
+
 To motivate our independence assumption, we refer to Reichenbach's principle
 \citep{Reichenbach1956}. It states that whenever we find two observables to be
 statistically dependent, then there must be an underlying causal structure
