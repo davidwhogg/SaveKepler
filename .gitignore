@@ -1,5 +1,6 @@
 *~
 *.aux
+*.brf
 *.log
 *.out
 *.pdf
