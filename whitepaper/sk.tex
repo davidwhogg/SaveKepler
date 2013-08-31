@@ -265,26 +265,30 @@ above.
 
 The efficaciousness of our method relies on the following assumptions:
 \begin{itemize}
-\item Independence:
-we assume that the true fluxes are independent, i.e., $f_i(t_j) \independent
-f_{i'}(t_{j'})$ for all $i\ne i', j,j'=1,\dots,T$.
-We also assume there may be additional observables (e.g.\ temperature) for
-which this independence holds.
-\item Joint confounding:
-we assume that any confounder affecting $y_i(t_j)$ for some $i,j$ will also
-affect a number of other values $y_{i'}(t_{j'})$ (where $i\ne i',
-j,j'=1,\dots,T$), in the sense that the overall confounding effect on
-$y_i(t_j)$ can in principle be predicted from from the confounding effects
-on the other $y_{i'}(t_{j'})$.
-\end{itemize}
+\item
+\emph{Independence}:
+we assume that the true fluxes are independent: $f_i(t_k) \independent
+f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$.
+We also assume there may be additional observables (for example, temperature)
+for which this independence holds.
 
+\item
+\emph{Joint confounding}:
+we assume that any confounding effect on $y_i(t_k)$ will also affect a number
+of other values $y_{i^\prime} (t_{k^\prime})$ (where $i \ne i^\prime$ and
+$t_{k^\prime}$ is not necessarily equal to $t_k$).
+This means that the overall systematic affecting $y_i(t_j)$ can (in
+principle) be predicted from from the other $y_{i^\prime}(t_{k^\prime})$.
+\end{itemize}
 To motivate our independence assumption, we refer to Reichenbach's principle
-\citep{Reichenbach1956}. It states that whenever we find two observables to be
-statistically dependent, then there must be an underlying causal structure
-responsible for these dependences. This structure can be a direct causal link,
-or an unobserved confounder affecting both observables. Vice versa, if there
-is no causal structure connecting both observables, they must be statistically
-independent.
+\citep{Reichenbach1956}.
+It states that whenever we find two observables to be statistically dependent,
+then there must be an underlying causal structure responsible for these
+dependences.
+This structure can be a direct causal link, or an unobserved confounder
+affecting both observables.
+Vice versa, if there is no causal structure connecting both observables, they
+must be statistically independent.
 
 The idea behind our approach is that if we now try to predict a measurement
 $y_i(t_j)$ (or features thereof, such as the local time derivative) from
