@@ -291,25 +291,21 @@ Vice versa, if there is no causal structure connecting both observables, they
 must be statistically independent.
 
 The idea behind our approach is that if we now try to predict a measurement
-$y_i(t_j)$ (or features thereof, such as the local time derivative) from
-variables known to be \emph{independent} of $f_i(t_j)$ (the true flux), then
-whatever we \emph{can} predict has nothing to do with $f_i(t_j)$. Whatever is
-predictable better than chance (i.e., whatever statistical dependence we find)
-must, by Reichenbach's principle, be due to joint confounders that affect both
-our measurement and the other variables we are using to predict it.
+$y_i (t_k)$ from variables known to be \emph{independent} of $f_i (t_k)$ (the
+true flux), then whatever we \emph{can} predict has nothing to do with
+$f_i (t_k)$.
+Whatever is predictable better than chance---whatever statistical dependence
+we find---must, by Reichenbach's principle, be due to joint confounders that
+affect both our measurement and the other variables we are using to predict
+it.
 
-Our goal should thus be to factor out exactly that influence. This is
-particularly easy if the following assumption holds true (although it may
-also be possible in a more general case):
-\begin{itemize}
-\item
-we assume that the confounding effects are additive, i.e.,
-\begin{equation}
-\label{confounding}
-y_i(t_j) = f_i(t_j) + c\left( (f_{i'}(t_j))_{i'\ne i'; j=1,\dots,T}\right),
-\mbox{~where~} i\ne i'
-\end{equation}
-\end{itemize}
+For simplicity, we assume that the systematic confounders affect the signal
+additively but it may be possible to generalize the method.
+Under this assumption, the model can be written as
+\begin{eqnarray}
+y_i(t_k) = f_i (t_k) + \sum_{i^\prime,\,k^\prime} c_{i^\prime\,k^\prime}\,
+    y_{i^\prime} (t_{k^\prime}) \quad.
+\end{eqnarray}
 
 If all of the above assumptions hold true, we propose to estimate $c$ by
 training an auto-regressive model to predict $y_i(t_j)$ from
