@@ -2,13 +2,15 @@
 % Copyright 2013 the authors.
 
 \documentclass[letterpaper,12pt,preprint]{aastex}
-\usepackage{enumitem, color, hyperref}
+\usepackage{enumitem, color}
 \definecolor{hypercolor}{RGB}{0,0,127}
-\hypersetup{%
+\usepackage[%
   citecolor=hypercolor,%
   linkcolor=hypercolor,%
-  urlcolor=hypercolor%
-}%
+  urlcolor=hypercolor,%
+  backref=false,%
+  pagebackref=false%
+]{hyperref}%
 
 \newcommand{\sectionname}{Section}
 \newcommand{\documentname}{\textsl{white paper}}
