@@ -182,19 +182,48 @@ There is an \emph{overwhelming abundance} of information in the data
   and even \emph{more} information if the particular functions
   are different for every exposure (as they are expected to be).
 
+While it is obvious \emph{in principle} that we can infer
+  the intra-exposure s/c pointing drift and jitter history,%
+  \footnote{Indeed inference of non-trivial intra-exposure
+    camera pointing inference has been demonstrated in the far more difficult
+    case of single-exposure natural images (HOGG CITE CAMERA SHAKE PAPERS).
+  That is, the three-axis history of camera
+    has been inferred without even multiple exposures to use
+    and no knowledge of the details of the ``true scene''.
+  Relative to these situations, the \Kepler\ problem is a walk in the park.
+  That said, the precision requirements of \Kepler\ science
+    are much more challenging than those of natural image de-blurring.}
+  it is not yet obvious that such inference will directly lead to very precise photometry.
+After all, recovery of precise photometry from a source
+  that is moving across the focal plane
+  requires knowledge of the device geometry and sensitivity
+  (flat-field) at the pixel level,
+  along with the point-spread function (PSF) and its variations with time and position.
+When---as with \Kepler---all data have been taken at rigidly fixed pointing,
+  it is hard (or maybe impossible) to obtain independent data-supported models of
+  the PSF and the flat-field,
+  let alone any intra-pixel sensitivity variations
+  or pixel-level additive signals (like bias or dark currents).
+That is, 
+  \Kepler\ data are taken in a mode that is
+  near-pessimal%
+  \footnote{Neologism ``pessimal'' is the antonym of ``optimal''.}
+  for the determination or inference of calibration parameters.
+
+The death of \Kepler's second wheel (taking it down to two)
+  occurred at a tragic moment:
+The mission is on track to discover Earth-like planets
+  orbiting Sun-like stars on year-ish (habitable-zone) orbits,
+  and for such targets, five or six years is a lot better than four.
+Indeed, when signals are sparse, significance
+  (as estimated by, say, a p-value)
+  can grow much faster than any small power of mission lifetime.
+It is our view that \emph{\Kepler\ core goals remain outrageously interesting}.
+With this in mind, we advocate using \emph{methods of image modeling} to retain
+  or approximate three-wheel photometric precision
+  in an era of two-wheel pointing degradation.
 
 
-Image modeling will deliver many bits; we will get more science per
-downloaded pixel than the naive predictions of degradation.
-
-\Kepler\ data are taken in a mode that is
-near-pessimal\footnote{Neologism ``pessimal'' is the antonym of
-  ``optimal''.} for the determination or inference of calibration
-parameters such as point-spread function, pixel-level or large-scale
-sensitivity map, bias, dark, sky, or contributions from overlapping
-sources.
-
-\Kepler\ core goals remain outrageously interesting.
 
 We know a lot about the prevalance of planets and the stars in which
 we could possibly detect them; we should use this to reduce our data
