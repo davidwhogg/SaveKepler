@@ -153,6 +153,37 @@ That said, what's written in this \documentname\ is fundamentally
 
 \section{Philosophy and motivation}
 
+The \Kepler\ satellite%
+  ---like other very precise time-domain photometric projects---%
+  achieves its precision by a combination of two principles:
+The first is to make a telescope and camera that is as stable and controlled as possible.
+The second is to make each observation as identical as possible to all previous observations.
+The great success of this joint strategy is evident in \Kepler's discoveries, to wit,
+  enormous numbers of planets of a wide range of sizes and periods.
+
+In the two-wheel era, it will not be possible
+  to make each observation as identical to the fiducial observation
+  as it was in the three- and four-wheel eras (HOGG CITE TECH DOCUMENTS).
+However, the fact that the telescope and camera were so stable
+  (plus perhaps some appeal to the determinism of the macroscopic laws of physics)
+  implies that must be possible to build a deterministic, predictive model
+  of the imager that can account for pointing changes or drift over time.
+One way of stating it is this:
+Bad spacecraft (s/c) pointing leads to the existence of
+  three unknown functions of time
+  (which can be thought of as the three solid-body Euler angles).
+These three Euler-angle functions affect%
+  ---in a predictable way---%
+  every single one of the hundreds of thousands of detectable stars
+  in the camera field of view,
+  each of which affects the intensity field touching a few to many pixels.
+There is an \emph{overwhelming abundance} of information in the data
+  to constrain these three functions,
+  and even \emph{more} information if the particular functions
+  are different for every exposure (as they are expected to be).
+
+
+
 Image modeling will deliver many bits; we will get more science per
 downloaded pixel than the naive predictions of degradation.
 
