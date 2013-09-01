@@ -233,9 +233,9 @@ we will discuss the calibration of pixel $i$ of target star $n$ at time $t_k$
 using the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t
 \le t \le t_k + \delta t$.
 As an extension, we can also use the data in pixels $i^\prime$ from the target
-$n$ (including pixel $i$) in the windows $t_k - \Delta t - \delta t \le t \le
-t_k - \Delta t$ and $t_k + \Delta t \le t \le t_k + \Delta t + \delta t $ for
-$\Delta t \gg $ the timescale of the signal of interest (for example, a
+$n$ (including pixel $i$) in the windows $t_k - \Delta - \delta t \le t \le
+t_k - \Delta$ and $t_k + \Delta \le t \le t_k + \Delta + \delta t $ for
+$\Delta \gg $ the timescale of the signal of interest (for example, a
 transit).
 
 We start by making the (reasonable) assumption that the observed signal---the
@@ -312,28 +312,32 @@ This works because (as described above) the signal is independent of the
 functions $y_{i^\prime} (t_{k^\prime})$ being used to build the model.
 
 \paragraph{Autoregressive generalization}
-Suppose we are only interested in the \emph{dips} in the light curves (i.e.,
-we now think of $f_i$ as the fraction of star light that is not occluded by
-the exoplanet --- all the star's brightness fluctuations are now considered
-as confounding effects). In this case, we can make the model more specific by
-also using information from the past of the pixel time series we are trying
-to predict. In this case, the independence  $f_i(t_j) \independent
-f_{i'}(t_{j'})$ holds true,
-\begin{enumerate}
-\item as above, for all $i\ne i', j,j'=1,\dots,T$, and
-\item for $i=i'$, $|j-j'|>\delta$ where $\delta$ is an upper bound on the
-    expected duration of a transit.
-\end{enumerate}
+The model discussed in the previous section should retain \emph{any true
+astrophysical signals} because there is no physical mechanism that would
+induce correlations between these signals in different targets.
+Suppose that we are only interested in temporally compact astrophysical
+signals---exoplanet transits, for example.
+In this case, we can substantially improve the predictive power of the model
+by using information from the (recent) past of the pixels targeting the star
+that we are trying to model.
+In this context, a weaker version of the independence assumptions still
+applies.
+The signal is independent of the data targeting \emph{other stars} and the
+observations targeting the target of interest for times $t_{k^\prime}$ where
+$|t_k - t_{k^\prime}| > \Delta$ where $\Delta$ is longer than the maximum
+duration of a transit.
 This independence assumption also has a physical interpretation: in addition
 to all the above independences, the star's light emission is independent of
-where the planet is located around the star. Therefore, the light arriving
-from the star system contains no information about the dip in the light curve
-except while the planet is in front of (or behind) the star. This can be
-viewed as an assumption of independence of input (star brightness
-distribution) and conditional (i.e., the occluding mechanism by which the
+where the planet is located around the star.
+Therefore, the light arriving from the star system contains no information
+about the transit signal except while the planet is in front of (or behind)
+the star.
+This can be viewed as an assumption of independence of the stellar limb
+darkening profile and the geometric mechanism by which the
 star-planet system ``converts'' the star brightness into an observable
-brightness of the joint system. This kind of assumption has recently studied
-in the field of causal inference \citep{JanSch10}.
+brightness of the joint system.
+This kind of assumption has recently studied in the field of causal inference
+by \citet{JanSch10}.
 
 \section{Toy simulations of future data}\label{sec:future}
 
