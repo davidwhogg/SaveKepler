@@ -30,8 +30,6 @@
 \setcounter{hoggitem}{0}
 \newcommand{\hoggitem}{\refstepcounter{hoggitem}\textbf{\textsl{(\thehoggitem)}}}
 
-\newcommand{\etal}{\foreign{et al.}}
-
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
@@ -306,16 +304,14 @@ Under this assumption, the model can be written as
 y_i(t_k) = f_i (t_k) + \sum_{i^\prime,\,k^\prime} c_{i^\prime\,k^\prime}\,
     y_{i^\prime} (t_{k^\prime}) \quad.
 \end{eqnarray}
+We propose to estimate the vector of coefficients $\mathbf{c}$ by training a
+regression model on the values $y_{i^\prime} (t_{k^\prime})$.
+In this model, the true flux $f_i (t_k)$ is considered ``noise''---even though
+it the main signal of interest.
+This works because (as described above) the signal is independent of the
+functions $y_{i^\prime} (t_{k^\prime})$ being used to build the model.
 
-If all of the above assumptions hold true, we propose to estimate $c$ by
-training an auto-regressive model to predict $y_i(t_j)$ from
-$(f_{i'}(t_j))_{i'\ne i'; j=1,\dots,T}$.
-Note that predicting $y_i(t_j)$ is \emph{not} the same as predicting $c$.
-However, by (\ref{confounding}), they only differ by $f_i(t_j)$, which by the
-independence assumption \emph{cannot} be predicted from
-$(f_{i'}(t_j))_{i'\ne i'; j=1,\dots,T}$ -- for the regression, this is
-``noise'' (even though for us, it's the main signal).
-
+\paragraph{Autoregressive generalization}
 Suppose we are only interested in the \emph{dips} in the light curves (i.e.,
 we now think of $f_i$ as the fraction of star light that is not occluded by
 the exoplanet --- all the star's brightness fluctuations are now considered
