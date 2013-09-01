@@ -14,9 +14,16 @@
 \newcommand{\documentname}{\textsl{white paper}}
 \newcommand{\foreign}[1]{\textit{#1}}
 \newcommand{\vs}{\foreign{vs}}
+\newcommand{\etal}{\foreign{et~al.}}
 \newcommand{\observatory}[1]{\textsl{#1}}
-\newcommand{\kepler}{\observatory{Kepler}}
-\newcommand{\Kepler}{\kepler}
+\newcommand{\Kepler}{\observatory{Kepler}}
+\newcommand{\TESS}{\observatory{TESS}}
+\newcommand{\SDSS}{\observatory{SDSS}}
+\newcommand{\WISE}{\observatory{WISE}}
+\newcommand{\project}[1]{\textsl{#1}}
+\newcommand{\MAST}{\project{MAST}}
+\newcommand{\TheTractor}{\project{The~Tractor}}
+\newcommand{\emcee}{\project{emcee}}
 \newcounter{hoggitem}
 \setcounter{hoggitem}{0}
 \newcommand{\hoggitem}{\refstepcounter{hoggitem}\textbf{\textsl{(\thehoggitem)}}}
@@ -70,8 +77,8 @@ released 2013 August 02.
   (including possibly intra-pixel sensitivity maps),
   point-spread function,
   and sky, bias, and dark signals,
-  as a function of focal-plane position---%
-  along with a model of the position and brightness of every star in the field.
+  all as a function of focal-plane position%
+  ---along with a model of the position and brightness of every star in the field.
 This level of modeling has not happened with \Kepler\ up to now
   because the data have been made extremely precise with good pointing
   and aperture photometry.
@@ -174,9 +181,28 @@ If using such fields becomes a requirement of the repurposed mission,
   as will 90, 45, etc. Can be dealt with statistically, through transit durations, and/or with space-based follow up
   (ie JWST) -btm  Okay I agree with this; let's move this to whitepaper 2! -Hogg)
 
+One final point of philosophy:
+All of the code used to make the demonstrations in this \documentname
+  are available as open-source or at least publicly readable code on the web.%
+\footnote{Our toy future-data simulation---and code for physical modeling thereof---is at
+  \url{http://astrometry.net/svn/trunk/projects/kepler/};
+  it is a sub-project of our general image-modeling framework
+  called ``\TheTractor'' (\citealt{hoggtractor}, \citealt{langtractor}), which is at
+  \url{http://theTractor.org/}.
+  Our data-driven modeling code is at
+  \url{https://github.com/dfm/causal-kepler}.
+  Code to build physical models of the pixels in the extant \Kepler\ data is at
+  \url{https://github.com/dfm/kpsf}.
+  Our Python wrapping of the \MAST\ interface to the \Kepler\ data is at
+  \url{https://github.com/dfm/kplr},
+  and most of our probabilistic inference involves ensemble sampling
+  with \emcee\ (\citealt{emcee}), which is at
+  \url{http://dan.iel.fm/emcee/}.}
+We encourage the \Kepler\ community to fork, build on, and contribute back to these code bases.
+
 \section{Modeling of extant \Kepler\ data}\label{sec:extant}
 
-\subsection{Causal conditional models of Kepler data}
+\subsection{Data-driven conditional models of Kepler data}
 
 Suppose we are given a number of time series
 $$(y_i(t_j))_{i=1,\dots,n; j=1,\dots,T}$$
@@ -283,7 +309,7 @@ star-planet system ``converts'' the star brightness into an observable
 brightness of the joint system. This kind of assumption has recently studied
 in the field of causal inference \citep{JanSch10}.
 
-\section{Future data \vs\ extant data}\label{sec:future}
+\section{Toy simulations of future data}\label{sec:future}
 
 \section{Target selection}\label{sec:target}
 
@@ -314,10 +340,30 @@ releasing the Ceres non-linear least squares solver
 (\url{https://code.google.com/p/ceres-solver/}) and for making suggestions
 that enabled this work.
 
+% ---
+% despite what astronomers say, let's put titles in the references
+% ---
 \begin{thebibliography}{}\raggedright%
 
+\bibitem[Foreman-Mackey \etal(2013)]{emcee}
+Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
+\emcee:\ The MCMC Hammer,
+\pasp, 125, 306--312.
+
+\bibitem[Hogg \& Lang(2013)]{hoggtractor}
+Hogg,~D.~W. \& Lang,~D., 2013,
+Replacing standard galaxy profiles with mixtures of Gaussians,
+\pasp, 125, 719--730
+
+\bibitem[Lang \& Hogg(2014)]{langtractor}
+Lang,~D. \& Hogg,~D.~W., 2014,
+\TheTractor:\ A framework for image modeling, with applications to \SDSS, \WISE, and \Kepler,
+in preparation
+
 \bibitem[Janzing \& Sch{\"o}lkopf(2010)]{JanSch10}
-Janzing,~D.\ \& Sch{\"o}lkopf,~B., 2010, IEEE Transactions on Information
+Janzing,~D.\ \& Sch{\"o}lkopf,~B., 2010,
+% DFM NEED TITLE
+IEEE Transactions on Information
 Theory, 56, 5168
 
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
