@@ -514,7 +514,55 @@ We do this in a very simple way;
 The true and recovered flat-fields are shown in \figurename~\ref{fig:toyflat}.
 We do a good job of recovering the flat-field...HOGG
 
-HOGG: MERGE IN DSTN's NEXT EXPERIMENT HERE.
+\subsection{Inferring an intrapixel flat-field}\label{sec:intrapixel}
+
+Next, we tested whether there is any chance within these toy simulations
+  that we could recover a sub-pixel sensitivity map;
+  that is, is it possible to constrain the flat-field at an angular resolution
+  higher than the read-out data?
+The simulations are similar to the above,
+  except this time we produced the simulated images on a pixel grid of twice the true resolution,
+  and randomly generated a flat-field with this same resolution.
+After scaling the double-resolution by the double-resolution flat-field,
+  we binned down (summed) $2\times 2$ to produce images at the detector read-out resolution,
+  but now with sub-pixel variations in the sensitivity.
+In this simple version then, each pixel has 4 ``zones'' of different sensitivity.
+
+Using our modeling framework,
+  it is straightforward to infer such a double-resolution flat-field
+  given the normal-resolution images.
+As when producing the simulations,
+  we render the model images at twice the resolution and scale by a model (parameterized) flat-field
+  (that has four times as many parameters as there are device pixels)
+  before binning and comparing with the observed images.
+As in the previous experiment,
+  we first solve for a PSF model,
+  then solve for the brightness of each source,
+  then solve for the (double-resolution) flat field.
+That is, we stay in the fit--fit--fit mode rather than performing simultaneous inference
+  of the three components, which should in the end perform better.
+We determine the best-fit flat-field by iteratively solving a linearized least-squares problem:
+Starting at a constant flat-field,
+  we compute changes to the flat-field pixels that will minimize the difference
+  between the model (predicted) images and the observed images.
+As before, we fit simultaneously a stack of 48 images, each a 30-minute coadd.
+In this experiment, the stars drift horizontally across the field,
+  and some regions do not see many stars during the exposure.
+To avoid numerical overfitting, we add a prior on the flat-field values,
+with the same variance as the distribution from which the true flat-field was drawn ($\sigma = 2$~percent).
+
+The results---shown in \figurename~\ref{fig:intrapixel}---%
+  are that we can successfully recover a sub-pixel flat-field (sensitivity map),
+  especially in regions that are jointly constrained by having stars drift through.
+In other words, the quality of the intrapixel flat recovery is a strong function of the history
+  of detector illumination, but it is better where we need it to be better (on the stars).
+This experiment used only 48 exposures,
+  while in practice we would likely attempt to infer a finer sensitivity map
+  over a much larger number of exposures: likely months or more of observations.
+The degraded pointing and drift of Kepler in two-wheel mode is actually a boon here,
+  since it increases the diversity of stars that touch different combinations of pixels.
+
+These experiments justify great optimism about the prospects for modeling the \Kepler\ data in the 2-wheel era.
 
 \subsection{PSF modeling}\label{sec:psf}
 \begin{itemize}
@@ -674,7 +722,7 @@ Bryson, S.~T., The Kepler Pixel Response Function, The Astrophysical Journal Let
 
 \begin{figure}
 \includegraphics[width=0.49\textwidth]{sim-103.png}%
-\includegraphics[width=0.49\textwidth]{sim-104.png}%
+\includegraphics[width=0.49\textwidth]{sim-104.png}
 \caption{Toy simulated 2-wheel simulated science data \textsl{(left)} and models \textsl{(right)}.
 The model images are created by fitting the amplitude of a (rigidly fit) PSF model for each image,
   and thereby inferring the brightness of each source.
@@ -683,12 +731,31 @@ The three images shown are the first, middle, and last images
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=\textwidth]{sim-105.png}\\
-\includegraphics[width=\textwidth]{sim-106.png}%
+\includegraphics[width=0.49\textwidth]{sim-105.png}%
+\includegraphics[width=0.49\textwidth]{sim-106.png}
 \caption{Toy simulated true flat-field \textsl{(top)} and point-estimation thereof,
   found by taking ratios of models to data after fitting the drifted, effective PSF and brightness of every source in the field.
   The true flat-field in the image has Gaussian variation with 1~percent standard deviation.
   We estimated the flat-field with the pixel-wise ratio between the model image and data.\label{fig:toyflat}}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.49\textwidth]{sim2-103.png}%
+\includegraphics[width=0.49\textwidth]{sim2-200a.png}\\
+\includegraphics[width=0.49\textwidth]{sim2-200.png}%
+\includegraphics[width=0.49\textwidth]{sim2-201.png}\\
+\includegraphics[width=0.49\textwidth]{sim2-202.png}
+\caption{Demonstration that we can fit the intrapixel flat, at least in principle.
+\textsl{(top two b/w images)}~Three toy images from the simulated data with $2\times 2$ sub-pixel 2-percent flat-field variations,
+  and the coadd of all 48 toy images, showing the 371-roll drift and the coverage of this field patch by stars.
+\textsl{(bottom three color images)}~True sub-pixel flat-field, estimated sub-pixel flat-field, and residuals.
+  These objects have four times as many parameters as pixels in each of the 48 individual simulated data read-outs.
+  Because of the regularization we added to avoid overfitting,
+  regions that did not see a fairly bright star are relatively poorly constrained
+  and therefore tend to keep the flat-field near unity, and tend to fit original-sized pixel blocks.
+Regions through which bright stars drift are much better constained and very closely approximate the true flat field.
+In practice, we would likely fit much larger series of images (months or more),
+rather than the 48-exposure series used here, so performance could in principle become excellent.\label{fig:intrapixel}}
 \end{figure}
 
 \end{document}
