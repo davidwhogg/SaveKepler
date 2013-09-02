@@ -41,15 +41,15 @@
   Detailed models of the focal plane in the two-wheel era\altaffilmark{\ref{kcall}}}
 
 \author{%
-  David~W.~Hogg\altaffilmark{\ref{CCPP},\ref{MPIA}},
+  David~W.~Hogg\altaffilmark{\ref{CCPP},\ref{MPIA},\ref{email}},
   Ruth~Angus\altaffilmark{\ref{Oxford}},
   Tom~Barclay\altaffilmark{\ref{Ames}},
   Rebekah~Dawson\altaffilmark{\ref{CfA}},
   Rob~Fergus\altaffilmark{\ref{Courant}},
-  Dan~Foreman-Mackey\altaffilmark{\ref{CCPP}},
+  Dan~Foreman-Mackey\altaffilmark{\ref{CCPP},\ref{datadriven}},
   Stefan Harmeling\altaffilmark{\ref{MPIIS}},
-  Michael~Hirsch\altaffilmark{\ref{UCL}, \ref{MPIIS}},
-  Dustin~Lang\altaffilmark{\ref{CMU}},
+  Michael~Hirsch\altaffilmark{\ref{UCL},\ref{MPIIS}},
+  Dustin~Lang\altaffilmark{\ref{CMU},\ref{physical}},
   Benjamin~T.~Montet\altaffilmark{\ref{Caltech}},
   David~Schiminovich\altaffilmark{\ref{Columbia}} \&
   Bernhard~Sch\"olkopf\altaffilmark{\ref{MPIIS}}%
@@ -57,7 +57,7 @@
 
 \setcounter{address}{1}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{kcall}%
-  A white paper submitted in response to the \Kepler\ Project Office
+  A \documentname\ submitted in response to the \Kepler\ Project Office
   \textit{Call for White Papers: Soliciting Community Input for
     Alternate Science Investigations for the Kepler Spacecraft}
   released 2013 August 02
@@ -66,6 +66,8 @@
   Center for Cosmology and Particle Physics, Department of Physics, New York University}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{MPIA}%
   Max-Planck-Institut f\"ur Astronomie, Heidelberg, Germany}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{email}%
+  To whom correspondence should be addressed; \texttt{<david.hogg@nyu.edu>}.}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Oxford}%
   Department of Physics, Oxford University}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Ames}%
@@ -74,12 +76,16 @@
   Havard--Smithsonian Center for Astrophysics}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Courant}%
   Courant Institute of Mathematical Sciences, New York University}
-\altaffiltext{\theaddress}{\stepcounter{address}\label{UCL}%
-  Department of Physics and Astronomy, University College London}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{datadriven}%
+  Foreman-Mackey is responsible for the data-driven modeling shown in this \documentname.}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{MPIIS}%
   Max-Planck-Institut f\"ur Intelligente Systeme, T\"ubingen}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{UCL}%
+  Department of Physics and Astronomy, University College London}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{CMU}%
   McWilliams Center for Cosmology, Carnegie Mellon University}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{physical}%
+  Lang is responsible for the toy data simulations and the physical modeling shown in this \documentname.}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Caltech}%
   Department of Astronomy, California Institute of Technology}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Columbia}%
@@ -151,7 +157,7 @@ That said, what's written in this \documentname\ is fundamentally
 
 \section{Philosophy and motivation}
 
-The \Kepler\ satellite%
+The \Kepler\ Satellite%
   ---like other very precise time-domain photometric projects---%
   achieves its precision by a combination of two principles:
 The first is to make a telescope and camera that is as stable and controlled as possible.
@@ -258,7 +264,7 @@ Since \Kepler's mission so far has taught us a lot about the variability
 We present these scientific proposals in a separate, companion white paper (Montet \etal),
   because although we love eta-Earth,
   \emph{what we say here about image modeling is equally applicable
-  to any two-wheel repurpose} for the \Kepler\ satellite.
+  to any two-wheel repurpose} for the \Kepler~Satellite.
 
 Right now, all of \Kepler's spine-tingling precision
   has been obtained by peforming rigid integer-pixel aperture photometry
@@ -748,7 +754,7 @@ Causal inference using the algorithmic Markov condition,
 IEEE Transactions on Information Theory, 56, 5168
 
 \bibitem[K\"ohler \etal(2012)]{koehler2012}
-Köhler,~R., Hirsch,~M., Mohler~B., Sch\"olkopf~B., \& Harmeling, S., 2012,
+K\"ohler,~R., Hirsch,~M., Mohler~B., Sch\"olkopf~B., \& Harmeling, S., 2012,
 Recording and Playback of Camera Shake:\ Benchmarking Blind Deconvolution with a Real-World Database,
 12th European Conference on Computer Vision (ECCV 2012)
 
@@ -806,7 +812,7 @@ The three images shown are the first, middle, and last images
 \includegraphics[width=0.49\textwidth]{sim2-205}
 \includegraphics[width=0.49\textwidth]{sim2-206}
 \includegraphics[width=0.49\textwidth]{sim2-207}
-\caption{Toy simulated true flat-field \textsl{(top)} and point-estimation thereof,
+\caption{Toy simulated true flat-field \textsl{(top left)} and point-estimation thereof \textsl{(top right)},
   found by taking ratios of models to data after fitting the drifted, effective PSF and brightness of every source in the field.
   The true flat-field in the image has Gaussian variation with 1~percent standard deviation.
   We estimated the flat-field with the pixel-wise ratio between the model image and data.\label{fig:toyflat}}
