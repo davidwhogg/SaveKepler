@@ -161,8 +161,10 @@ The great success of this joint strategy is evident in \Kepler's discoveries, to
 
 In the two-wheel era, it will not be possible
   to make each observation as identical to the fiducial observation
-  as it was in the three- and four-wheel eras\footnote{\url{http://keplerscience.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}}
-(HOGG CITE TECH DOCUMENTS).
+  as it was in the three- and four-wheel eras.%
+  \footnote{See, for example, the \textit{Explanatory Appendix to the Kepler Project
+      call for white papers:\ Kepler 2-Wheel Pointing Control}
+    (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf})}
 However, the fact that the telescope and camera were so stable
   (plus perhaps some appeal to the determinism of the macroscopic laws of physics)
   implies that it must be possible to build a deterministic, predictive model
@@ -468,21 +470,23 @@ As with the previous \sectionname, the demonstrations and discussions here are d
 
 \subsection{Toy simulation and modeling}\label{sec:toys}
 
-Motivated by the \emph{371-roll scenario}%
-  \footnote{See the \textit{Explanatory Appendix to the Kepler Project
+Motivated by what we call the ``371-roll scenario''%
+  \footnote{More-or-less the most stable pointing option according to
+    the \textit{Explanatory Appendix to the Kepler Project
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
   we produced a series of toy (that is, unrealistic in various ways)
   simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsec jitter.
 Drift and jitter were simulated by moving the boresight of the simulated telescope
   every 6~seconds during the integration.
-We examine an aperture around a single target,
+An aperture is examined around a single target,
   where the aperture is large enough to contain the full drift path
   of the target over the 24-hour observing window.
+(This may be an over-optimistic assessment of what can be downlinked.)
 The input (true) positions and brightnesses of the stars in the simulation are
   taken from the \Kepler\ Input Catalog.
 The input (true) PSF is a very much simplified double-Gaussian.
-We introduced variations in the flat-field,
+Variations are introduced in the (true, toy) flat-field,
    drawn pixelwise iid from a Gaussian with 1~percent standard deviation.
 We produced a series of 48 simulated coadds,
    corresponding to one day's observations between rolls.
@@ -491,7 +495,7 @@ In order to simplify the modeling task,
   in addition to the science exposure
   we rendered a ``perfect'', bright, isolated, noise-free star with an unperturbed flat-field.
 The star is drifted and jittered in each coadd identically with the full science field.
-We use this ideal star to learn the PSF model in each coadd.
+This ideal star is used to independently learn (fit, estimate) the PSF model in each coadd.
 For a PSF model we use a very simple mixture of 4 Gaussians.
 That is \emph{we used a different model to generate the data than we used to fit the data},
   which is conservative and realistic in this context.
@@ -499,8 +503,8 @@ The fake PSF-determination data and a model of it are visualized in \figurename~
 
 After learning a PSF model for each image,
   we infer the brightness of each source in the field.
-We assume we have the true source positions from the \Kepler\ Input Catalog
-  (the same positions used to produce the simulations),
+It is assumed that we have the true source positions from the \Kepler\ Input Catalog
+  (the same positions used to produce the simulations, that is, truth),
   and the multi-Gaussian model of the drift-path-wrecked PSF.
 This model is unrealistic because we have only considered a single PSF and only two-dimensional
   field shifts in generating the PSF;
@@ -510,8 +514,8 @@ The toy data and models are visualized in  \figurename~\ref{fig:toydata}.
 
 After fitting for the brightness of each source,
    we estimate the flat-field.
-We do this in a very simple way;
-  we take the geometric mean of the ratio of the model to simulated images.
+This is estimated simply by taking
+  the geometric mean of the ratio of the model to simulated images.
 (This method is overly naive; we could do better in principle with simultaneous modeling.)
 The true and recovered flat-fields are shown in \figurename~\ref{fig:toyflat}.
 We do a good job of recovering the flat-field.
@@ -523,10 +527,10 @@ Next, we tested whether there is any chance within these toy simulations
   that is, is it possible to constrain the flat-field at an angular resolution
   higher than the read-out data?
 The simulations are similar to the above,
-  except this time we produced the simulated images on a pixel grid of twice the true resolution,
+  except this time the simulated images were produced on a pixel grid of twice the true resolution,
   and randomly generated a flat-field with this same resolution.
 After scaling the double-resolution by the double-resolution flat-field,
-  we binned down (summed) $2\times 2$ to produce images at the detector read-out resolution,
+  the images were binned down (summed) $2\times 2$ to produce images at the detector read-out resolution,
   but now with sub-pixel variations in the sensitivity.
 In this simple version then, each pixel has 4 ``zones'' of different sensitivity.
 
@@ -534,7 +538,7 @@ Using our modeling framework,
   it is straightforward to infer such a double-resolution flat-field
   given the normal-resolution images.
 As when producing the simulations,
-  we render the model images at twice the resolution and scale by a model (parameterized) flat-field
+  the model images are rendered at twice the resolution and scale by a model (parameterized) flat-field
   (that has four times as many parameters as there are device pixels)
   before binning and comparing with the observed images.
 As in the previous experiment,
@@ -543,15 +547,15 @@ As in the previous experiment,
   then solve for the (double-resolution) flat field.
 That is, we stay in the fit--fit--fit mode rather than performing simultaneous inference
   of the three components, which should in the end perform better.
-We determine the best-fit flat-field by iteratively solving a linearized least-squares problem:
+In this version, the the best-fit flat-field is determined by iteratively solving a linearized least-squares problem:
 Starting at a constant flat-field,
-  we compute changes to the flat-field pixels that will minimize the difference
+  changes to the flat-field pixels are computed that will minimize the difference
   between the model (predicted) images and the observed images.
 As before, we fit simultaneously a stack of 48 images, each a 30-minute coadd.
 In this experiment, the stars drift horizontally across the field,
   and some regions do not see many stars during the exposure.
-To avoid numerical overfitting, we add a prior on the flat-field values,
-with the same variance as the distribution from which the true flat-field was drawn ($\sigma = 2$~percent).
+To avoid numerical overfitting, we added a smoothness prior on the flat-field values,
+  with the same variance as the distribution from which the true flat-field was drawn ($\sigma = 2$~percent).
 
 The results---shown in \figurename~\ref{fig:intrapixel}---%
   are that we can successfully recover a sub-pixel flat-field (sensitivity map),
