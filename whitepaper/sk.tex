@@ -353,8 +353,8 @@ instantaneous measurement considered alone.
 \paragraph{Implementation}
 In this section,
 we will discuss the calibration of pixel $i$ of target star $n$ at time $t_k$
-using the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t
-\le t \le t_k + \delta t$.
+using the pixels $i^\prime$ on target $m \ne n$ in the sliding window $t_k -
+\delta t \le t_{k^\prime} \le t_k + \delta t$.
 % As an extension, we can also use the data in pixels $i^\prime$ from the target
 % $n$ (including pixel $i$) in the windows $t_k - \Delta - \delta t \le t \le
 % t_k - \Delta$ and $t_k + \Delta \le t \le t_k + \Delta + \delta t $ for
@@ -455,6 +455,9 @@ star-planet system ``converts'' the star brightness into an observable
 brightness of the joint system.
 This kind of assumption has recently studied in the field of causal inference
 by \citet{JanSch10}.
+
+\paragraph{Demonstration}
+
 
 \subsection{Deep learning}\label{sec:deep}
 
