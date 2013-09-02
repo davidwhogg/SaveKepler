@@ -197,7 +197,7 @@ While it is obvious \emph{in principle} that we can infer
   the intra-exposure s/c pointing drift and jitter history,%
   \footnote{Indeed inference of non-trivial intra-exposure
     camera pointing trajectories has been demonstrated in the far more difficult
-    case of single-exposure natural images (HOGG CITE CAMERA SHAKE PAPERS).
+    case of single-exposure natural images (\cite{whyte2010,hirsch2011}).
   That is, the three-axis history of camera orientation path
     can be reliably inferred in an individual image,
     without even multiple exposures to use
@@ -516,13 +516,13 @@ HOGG: MERGE IN DSTN's NEXT EXPERIMENT HERE.
   will tie up on the work of \cite{bryson2010} and allow a precise
   model of Kepler's instrument PSF with the help of a detailed
   analysis of the temporal stability of Kepler's pixel response
-  function (PRF). While in \cite{bryson} isolated non-saturated star
-  observations during commissioning have been used to build a model of
-  Kepler's PRF as a piecewise-continuous polynomial on a sub-pixel
-  mesh, in principle any non-saturated star images from the Kepler
-  Input Catalog can be used. We argue that more data will in general
-  facilitate the estimation and at the same time improve modeling
-  accuracy. 
+  function (PRF). While in \cite{bryson2010} isolated non-saturated
+  star observations during commissioning have been used to build a
+  model of Kepler's PRF as a piecewise-continuous polynomial on a
+  sub-pixel mesh, in principle any non-saturated star images from the
+  Kepler Input Catalog can be used. We argue that more data will in
+  general facilitate the estimation and at the same time improve
+  modeling accuracy.
 
   The second PSF component stemming from spacecraft motion/drift is
   affecting the image in a globally consistent way. Hence, with
@@ -537,7 +537,7 @@ HOGG: MERGE IN DSTN's NEXT EXPERIMENT HERE.
   allowing for physically plausible motion only has been applied with
   great success to the problem of camera shake removal with
   non-stationary blur within the computational photography and
-  computer vision community (see \cite{hirsch2011}).
+  computer vision community (\cite{whyte2010,hirsch2011}).
 
 \item For PSF modeling we explore two alternative, yet complimentary
   strategies: parametric and non-parametric description of the PSF.
@@ -626,9 +626,19 @@ Stumpe, M.~C., Smith, J.~C., Van Cleve, J.~E., \etal\ 2012, \pasp, 124, 985
 \bibitem[Bryson \etal(2010)]{bryson2010}
 Bryson, S.~T., The Kepler Pixel Response Function, The Astrophysical Journal Letters 713 (2010) L97. 
 
+\bibitem[Whyte \etal(2010)]{whyte2010} Whyte, O., Sivic, J.,
+  Zissermann, A., Ponce, J., Non-uniform Deblurring for Shaken Images,
+  Proceedings of the IEEE International Conference on Computer Vision
+  and Pattern Recognition (CVPR) 2010.
+
 \bibitem[Hirsch \etal(2011)]{hirsch2011} Hirsch, M., Schuler, C.~J.,
   Sch\"olkopf, B., Harmeling, S., Fast Removal of Non-uniform camera
-  shake, International Conference on Computer Vision (ICCV) 2011.
+  shake, Proceedings of the IEEE International Conference on Computer
+  Vision (ICCV) 2011.
+
+\bibitem[Fergus \etal(2006)]{fergus2006} Fergus, R., Singh, B.,
+  Hertzmann, A., Roweis, S.~T., Freeman, W.~T., Removing camera shake
+  from a single image, ACM Transactions on Graphics (SIGGRAPH).
 \end{thebibliography}
 
 \end{document}
