@@ -297,8 +297,6 @@ DFM:  HERE EITHER YOU OR I COULD PUT A SEGUE THAT SAYS
   and WE ARE STARTING WITH DATA-DRIVEN.
 ALSO MAYBE INTRODUCE TRAIN, VALID, TEST?
 
-\subsection{Data-driven conditional models of Kepler data}
-
 The core Kepler science team has developed various methods for removing some
 systematic instrumental signals from the extracted light curves.
 The set of algorithms called PDC \citep{map-pdc1,map-pdc2} are particularly
@@ -432,9 +430,32 @@ brightness of the joint system.
 This kind of assumption has recently studied in the field of causal inference
 by \citet{JanSch10}.
 
-\section{Toy simulations of future data}\label{sec:future}
+DFM: HERE'S WHERE I WOULD PUT THE FERGUS TEXT.
 
-HOGG IS STILL MERGING THIS SECTION IN
+\section{Physical modeling}\label{sec:physical}
+
+Data-driven models of the types described above can work
+  because the relationships between the different data flowing from the system
+  (telemetered pixel values, in this case)
+  are set by an underlying set of physical devices
+  (a s/c, optics, detectors, and electronics, in this case),
+  each of which is deterministic or stationary or at least predictable probabilistically.
+Data-driven models have the advantage of flexibility%
+  ---we don't have to decide in advance exactly what freedoms to give the model---%
+  but they have the disadvantage that they don't represent all of our prior beliefs
+  about what \emph{can} happen and why.
+For these reasons, it is worth thinking about physical models.
+In a physical model, we build highly parameterized models
+  of the s/c attitude, PSF, flat-field (and possibly intrapixel sensitivity),
+  and DC signals.
+These are compared with the data probabilistically,
+  through a likelihood function.
+For the purposes of demonstrating the physical modeling direction,
+  in this part of the \documentname\ we use simulated \Kepler\ data,
+  to demonstrate feasibility.
+As with the previous \sectionname, the demonstrations here are designed
+  to be \emph{illustrative};
+  we have not yet proven that 10~ppm precision is straightforwardly obtained by these methods.
 
 Motivated by the ``371-roll'' scenario (HOGG CITATION),
   we produced a series of toy (that is, unrealistic in various ways)
