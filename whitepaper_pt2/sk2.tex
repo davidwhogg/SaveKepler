@@ -60,7 +60,7 @@ released 2013 August 02.
 \end{description}
 
 
-\section{Executive summary}
+\section{Executive Summary}
 
 \paragraph{primary recommendation:}
 In Paper I (Hogg et al.) we propose image modeling techniques to 
@@ -96,35 +96,178 @@ This white paper is organized as follows. In \textsection\ref{Targets}, we outli
 
 \section{Target Selection}
 \label{Targets}
-TRILEGAL simulations. Plenty of bright, coolish stars around. Aim for 30,000 
- in each field? Enough  Allows for a 5 minute long cadence mode. Stay on one 
- field for 3 months, then move to another one. Return to the same field every 
- year. In total, 120k stars, each observed for 3/12 months. 
+Simulations suggest pointing errors from a two wheel \Kepler\ will be 
+ minimized by pointing in the ecliptic plane, where the torque exerted on 
+ the telescope by solar pressure is approximately zero. 
+Such areas are expected to be stable for approximately six months, so that the 
+ expected drift is negligible over a 30 minute or shorter integration.
+We propose to observe fields in the ecliptic plane for this reason. 
+To avoid the Earth crossing the field of view, it is recommended the telescope
+ point only in the direction opposite motion, meaning each field is stable 
+ \emph{and observable} for only three months.
+\textbf{Fortunately, the ecliptic plane is ideal for the \Kepler\ telescope}.
+Recall the \Kepler\ field is situated 8-18 degrees out of the galactic plane.
+This location provides a compromise between having a sufficent quantity of 
+ $K_p < 16$ stars to observe and a lack of crowding in the telescope's 4 
+ arcsecond pixels. 
+The ecliptic plane and galactic plane cross twice, at RA of approximately
+ 7 and 19. 
+It is therefore possible to choose four fields, each separated by
+ approximately 6 hours in RA, that are both on the ecliptic plane and
+ approximately the same distance from the galactic plane as the \Kepler\
+ field. 
+These are located near RA of 3, 9, 15, and 21. 
+
+In this paper, we do not attempt to choose specific fields, but instead
+ simply show that there are sufficent observable stars such that our proposed
+ observations are feasible.
+In part, this is because as Hogg et al. discuss, our image modeling techniques
+ may be more successful when the drift is larger. 
+With degraded pointing and additional drift, the diversity of stars that touch
+ different combinations of pixels is increased. 
+More simulations are required to determine the optimal positioning of the 
+ telescope with respect to the ecliptic so that the drift is large enough 
+ to maximize our abilities to model pixel sensitivities but small enough 
+ that the stars stay within their apertures.
+Fortunately, it is quite simple to select four fields that are both near the 
+ ecliptic and well separated such that each can be observed for approximately
+ three months.
+
+We recommend shorter integration times than the long cadence observations, 
+ as we discuss more fully below. 
+As a result, fewer targets are available for observations than have been 
+ previously observed. 
+We aim for approximately \emph{thirty thousand targets per field}, with 
+ preference given to brighter stars. 
+Here, ``brighter'' is intentionally left as an ambiguous term. If our goal is to detect Earth-sized planets, then M dwarfs are allowed
+ to be fainter than G dwarfs because of their deeper transit signal. 
+
+If our image modeling techniques are successful, then a field similar to the 
+ original \Kepler\ field with respect to the galactic plane will contain 
+ a sufficent number of viable solar-type and smaller targets. 
+To verify each field will contain enough stars, we simulate the population 
+ of the nearby galaxy with TRILEGAL (Girardi et al. 2002). 
+
+We first consider the current \Kepler\ field. 
+TRILEGAL is limited to fields of 10 square degrees. 
+To combat this, we simulate three regions of 8 square degrees across the 
+ \Kepler\ field orthogonal to the galactic plane. 
+We then estimate the extinction in the galaxy by calibrating the extinction 
+ value at infinity using the values found in the extinction map created by 
+ Schlegel, Finkbeiner, and Davis (1998). 
+We return the \Kepler\ magnitude of each star in our field.
+
+Fig. \ref{Kep1} shows the distribution of stars as a function of effective 
+ temperature and apparent magnitude. 
+Ideally, stars in the lower left region of the figure would be chosen. 
+The number of simulated stars found is comparable with the true number of 
+ observable stars in the \Kepler\ field.
+
+There are sufficent hypothetical fields near both the ecliptic and galactic 
+ planes to develop four similar fields from which 30,000 stars could each 
+ be selected. 
+It is of considerable importance, however, that \textbf{if new fields are 
+ selected, they should be located a similar distance from the galactic plane}. 
+We provide evidence in support of this claim in the form of Fig. \ref{Kep2}. 
+This figure was developed in an identical manner to Fig. \ref{Kep1}, but 
+ the numbers correspond to the expected yield in a region of the sky far away
+ from the galactic plane (0:00:00, +0:00:00, blue) and very close to the center
+ of the galactic plane, pointing away from the galactic center (6:00:00, 
+ +23:30:00, red). 
+Out of the galactic plane, solar-type stars are an order of magnitude less 
+ common; in it, these stars are a factor of two more common, meaning crowding
+ (and background eclipsing binary false positives) would be even more a concern
+ than in the original misison\footnote{This is not a problem for a future M 
+ dwarf mission: because the stars are intrinsically faint, most M dwarfs 
+ brighter than 16th magnitude are within 100 parsec and distributed 
+ approximately isotropically across the sky.}.
+Therefore, if new fields are selected we \emph{strongly recommend} selecting 
+ four fields near the ecliptic plane and approximately 15 degrees from the 
+ galactic plane. 
+ 
+ 
+
+
 
 \section{Expected Planet Detections}
 \label{Haul}
-In each field, find all the planets out to 30 day periods, limited by our 
- expected precision. There are many! Beyond 30 days, we can get lucky. What 
- is the total number? Must be at least 1000. Boley and Ford say $>$10\% of stars 
- host STIPS, meaning we'd have 12k STIP hosts. 5\% transit probability gives us
- 600 systems there, or $>$1200 planets. Plus things further out, hot and warm 
- Jupiters, we'll have many planets. Need to quantify this.
+To determine the number of planets we would expect to find with this new 
+ observing strategy, we consider the best source of information on transiting 
+ exoplanets, the \Kepler\ list of planet candidates found on the NASA 
+ Exoplanet Archive\footnote{\url{http://exoplanetarchive.ipac.caltech.edu}}.
+The number of detections depends on the level of success of our image modeling
+ efforts, which has not yet been precisely quantified. 
+A \textit{reasonable, conservative} estimate is that we can expect to detect 
+ planets larger than 3 Earth radii around Sun-like stars. 
+Planet transit signals induced by these planets would be, of course, nine times
+ deeper than the transit of an Earth analogue, and is detectable by eye in the 
+ current \Kepler\ data. 
+
+By our mission design strategy, we would stare at each of four fields for one 
+ quarter of a year, or 93 days. 
+To observe three transits of a planet, we would then be limited to planets with 
+ periods of 31 days or smaller. 
+We search the Exoplanet Archive for objects that are listed as ``candidates'' 
+ with periods less than 31 days and transit depths larger than 756 parts per 
+ million, 9 times that of an Earth analogue. 
+In the Q1-Q6 catalogue, there are 620 matches to these criteria (in the full 
+ catalogue, this number increases by less than 10 percent). 
+ 
+Since we propose to observe 120,000 stars, not the 190,000 observed in the 
+ primary mission, we scale this number and find we would expect to detect 
+ \textbf{392} candidate planets (after a similar amount of vetting for false 
+ positives to the current mission! We would expect to discard 165
+ false positives) with periods shorter than 31 days and 
+ radii larger than thrice Earth's. 
+If our image modeling is successful, these are conservative predictions.
+If we are able to detect objects twice the size of Earth, the number of 
+ expected candidates jumps to \textbf{749}.
+Moreover, this thought experiment assumes a one year new mission. 
+If the  remaining two reaction wheels encounter no problems, we would expect 
+ to be able to push our detections to longer periods. 
+Moreover, we would be biased toward planets with approximately one year periods
+ due to our unique observing cadence. 
+The proposed cadence is both a blessing and a curse for finding planets in the 
+ so-called habitable zone, as we explain in the next section.
+ 
 
 
-\section{The frequency of ``habitable-zone'' planets}
+
+
+\section{The Frequency of ``Habitable-Zone'' Planets}
 \label{HZ}
-For M-dwarfs, we get everything in the HZ, so we're set there. For stars around 
- 1 solar radius, we get one transit per year. Only a 25 percent chance we're 
- looking at the right time, but looking at 4x the number of fields cancels that 
- out. We won't technically know if planets unearthed (don't use this word!) are
- Earth analogoues or aliased 180 or 90 day planets. But we can determine this 
- statiscally through transit durations. Earths will have a ~10 hour duration. If they are shorter periods, the durations are only this long if the planets are 
- eccentric, in which case they're not terribly likely to transit anyway. We'll
- also break the degeneracy with follow up: NOTE---JWST is only a 5 year mission. If TESS  runs into delays and JWST stops running into delays it won't find its  planets  until JWST is nearly over. We can make sure JWST will have planets to 
- characterize).
+Goal 1 of the \Kepler\ mission is the determine the frequency of terrestrial 
+ and larger planets in or near the habitable zone of a wide variety of 
+ spectral types of stars. 
+For M dwarfs the habitable zone varies considerably by spectral type,
+ but is always located at periods inside of 30 days (\emph{citation} goes 
+ here).
+Thus, in a one-year mission we would expect to determine the frequency of 
+ M dwarf habitable systems. This number is presently poorly constrained due 
+ to the small number of M dwarfs observed in the primary mission; we hope
+ this is given prime consideration in the future plans for the telescope.
 
-Takeaway, there's no reason we can't find at least as many HZ-earth sized 
- planets as the primary  mission, if we also have a 3-4 year go at it. 
+The true frequency of habitable zone planets is less constrained for solar-type 
+ stars.
+If our image modeling techniques are successful, such a strategy as the 
+ one proposed here will enable an estimate of this value in a multi-year 
+ extended mission. 
+Because we return to the same field every year, we will be biased towards 
+ planets that transit once per year. 
+Planets that transit exactly twice (or three, or $N$) times per year will 
+ also appear in our sample as habitable zone ``imposters.'' 
+Such imposters can be accounted for in a statistical sense by an analysis of 
+ transit durations (which increase as a function of period), and for 
+ individual highly interesting systems by future space-based follow up. 
+Therefore, we do not expect such ``imposters'' to be a significant hinderance.
+
+For each field, because of our cadence, we expect to miss a significant 
+ fraction (approximately $75\%$) of the transiting habitable zone planets. 
+This is an unavoidable effect from this observing strategy, but should 
+ not affect our results. 
+Because \Kepler\ would always be staring at one of the four proposed fields, 
+ it will always be on the lookout for \emph{some} transiting, potentially 
+ habitable systems; this missed systems can be accounted for statistically.
 
 
 \section{Dynamics with \Kepler\ and TESS}
@@ -230,8 +373,78 @@ Adding numbers such as these to the current sample will allow a tremendous
 
  
 
-\section{Asteroseismology}
+\section{Other Benefits}
 \label{AS}
-We need an expert here. Tom, does Dan Huber want to help?
+In some ways, the proposed mission is similar to a mini-TESS. 
+There are considerable benefits to such a strategy. 
+Many have been outlined above; the potential to open up TESS to searching for 
+ TDVs and TTVs over 400 square degrees of the sky cannot be overstated. 
+TESS will also have the ability to search for longer-period planets in these 
+ fields, when its data is combined with \Kepler\ data.
+It is worth mentioning that this proposed survey will only cover one percent 
+ of the sky, and will thus not impinge on TESS' discovery space in any 
+ significant way. 
+It is of our opinion that the benefits to observing these fields in the 
+ first half of this decade as a precursor to TESS only serves to enhance 
+ the future mission, as opposed to detracting from it.
+
+Observing brighter stars at a higher cadence will allow asteroseismological 
+ studies of more stars than were observable with the completed
+  \Kepler\ mission. 
+With decreasing stellar density, both the magnitude of the pulsations and 
+ their periods increase, making giants more appropriate asteroseismological  
+ targets. With brighter targets at a higher cadence, if carefully planned, 
+ we can open up these studies to stars nearer the main sequence. \textbf{Tom, 
+ this discussion is very superficial, perhaps because that is the best word to 
+ describe my knowledge of asteroseismology. Does Dan Huber want to add 
+ something here?}
+
+An additional benefit to focusing on brighter stars is the increased ability 
+ for radial velocity (RV) followup. 
+If our proposed obsering strategy is undertaken, there will
+ be four new \Kepler\ fields, two near a declination of +20 degrees and two 
+ near -20 degrees. 
+These are ideally placed for follow up radial velocity work
+ by existing telescopes in Hawaii and Chile, as well as future 30-meter class
+ telescopes. 
+The faintest stars in the \Kepler\ field are too faint to be observed 
+ effeciently on existing telescopes, and with observing time as competitive 
+ as it will likely be on the proposed giant telescopes, this is unlikely to 
+ change.
+Therefore, a focus on brighter stars (perhaps $K_p < 15$ for solar-type stars) 
+ will enable more effecient and successful RV follow up.
+ 
+Finally, and perhaps most significantly, such a mission will allow potentially 
+ interesting objects to be found before the launch of the James Webb Space 
+ Telescope (JWST). 
+Scheduled to launch in \sout{2011} \sout{2015} 2018, JWST will be placed at 
+ the inaccessable L2 Lagrange point, making it necessarily a fixed-length 
+ mission. 
+Moreover, by this time the \textit{Spitzer} telescope will have drifted too 
+ far from Earth to still be scientifically useful.
+TESS is scheduled to launch at approximately the same time as JWST, but 
+ space telescopes do occassionally run into delays for various reasons\footnote{see also: JWST}.
+If TESS were to be delayed, and JWST ran for only its nominal five year mission, it is conceivable that many of TESS' most interesting discoveries will occur 
+ at a time when there are no available infrared space facilities available for 
+ follow up work.
+Certainly, even if both telescopes proceed according to plan, time will be 
+ limited between publication of TESS' results and the end of the JWST mission.
+This proposal, which intends to find interesting transiting systems across 
+ the sky, will accomplish this feat well before the launch of JWST, allowing 
+ considerable time to plan observations with the future observatory before 
+ launch and assuring that JWST will have an abundance of planets to 
+ characterize.
+
+\section{Summary and Conclusions}
+Our strategy outlined here is one possible observing strategy. 
+If our image  modeling techniques are successful, we feel such a strategy 
+ provides a unique opportunity for the contributions of \Kepler\ to continue 
+ unhindered for the next decade, through a combination of its observations and 
+ those planned in the future by TESS. 
+
+Blah blah blah \textit{Anyone else want to contribute a writeup?}
+
+\section{Acknowledments}
+Blatant stealing of text from Hogg's paper goes here.
 
 \end{document}
