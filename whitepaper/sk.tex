@@ -514,8 +514,6 @@ We do this in a very simple way;
 The true and recovered flat-fields are shown in \figurename~\ref{fig:toyflat}.
 We do a good job of recovering the flat-field...HOGG
 
-Fig 3 (next two plots): Flat-field recovery.  The true flat-field in the image has Gaussian variation with 1~percent standard deviation.  We estimate the flat-field based on the mean pixelwise ratio between the model image and (simulated) data.
-
 HOGG: MERGE IN DSTN's NEXT EXPERIMENT HERE.
 
 \subsection{PSF modeling}\label{sec:psf}
@@ -682,6 +680,15 @@ The model images are created by fitting the amplitude of a (rigidly fit) PSF mod
   and thereby inferring the brightness of each source.
 The three images shown are the first, middle, and last images
   in a 48-image sequence in the 371-roll scenario.\label{fig:toydata}}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=\textwidth]{sim-105.png}\\
+\includegraphics[width=\textwidth]{sim-106.png}%
+\caption{Toy simulated true flat-field \textsl{(top)} and point-estimation thereof,
+  found by taking ratios of models to data after fitting the drifted, effective PSF and brightness of every source in the field.
+  The true flat-field in the image has Gaussian variation with 1~percent standard deviation.
+  We estimated the flat-field with the pixel-wise ratio between the model image and data.\label{fig:toyflat}}
 \end{figure}
 
 \end{document}
