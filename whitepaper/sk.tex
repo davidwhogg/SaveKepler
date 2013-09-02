@@ -449,7 +449,7 @@ factors in the system which will obscure the transit signal. To leave
 only the transit signal in the residual, these non-linear factors much
 be captured with a more powerful model. This will be done using *Deep
 Learning* approaches that have recently proven very successful for
-complex image domain tasks such as object recognition [Kriz12].
+complex image domain tasks such as object recognition \citep{Kriz12}.
 
 The Deep Learning models we intend to apply in this instance will be a
 convolutional neural network (CNN), similar in spirit to the LeNet
@@ -469,7 +469,9 @@ functions.
 
 We intend to adapt this model our application in the following ways:
 
-1. Spatial-only: In this model, we just attempt to model the spatial
+\begin{enumerate}
+\item
+\emph{Spatial-only}: In this model, we just attempt to model the spatial
 structure within a single 2D image. The input will be a set of stars
 around a pixel whose brightness we wish to predict (the immediately
 surrounding pixels will be masked).The output will be the brightness
@@ -481,7 +483,8 @@ the model might be expected to learn the PSF, while the higher layers
 will learn the dependencies between the brightnesses of stars (which
 should just be from confounding sources).
 
-2. Temporal-only: The drawback to the spatial-only model is that it
+\item
+\emph{Temporal-only}: The drawback to the spatial-only model is that it
 cannot capture the temporal dependencies in the data. To do this we
 can take as input time series from pixels (e.g. centers of nearby
 stars) and the time series of the star of interest as output. The
@@ -491,11 +494,13 @@ direction, but fully connected across the pixels. The size of the
 convolutional window dictates the amount of "history" the model can
 use for prediction.
 
-3. Spatio-temporal: This combines the above models and allows spatial
+\item
+\emph{Spatio-temporal}: This combines the above models and allows spatial
 and temporal structure to be learned. The input is a 3D sequence of
 images, with 3D convolutional filters used to produce 3D feature maps.
 The output will be sequence of patches, containing the star of
 interest over time.
+\end{enumerate}
 
 All three models will use data split into three disjoint sets for
 training, validation and testing, all carefully screened to avoid any
