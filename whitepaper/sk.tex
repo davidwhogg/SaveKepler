@@ -29,6 +29,7 @@
 \newcounter{hoggitem}
 \setcounter{hoggitem}{0}
 \newcommand{\hoggitem}{\refstepcounter{hoggitem}\textbf{\textsl{(\thehoggitem)}}}
+\newcounter{address}
 
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
@@ -36,46 +37,58 @@
 \begin{document}\sloppy\sloppypar\thispagestyle{empty}
 
 \title{Maximizing \Kepler\ science return per telemetered pixel: \\
-  Detailed models of the focal plane in the two-wheel era}
-\noindent
-A white paper submitted in response to the \Kepler\ Project Office
-\textit{Call for White Papers: Soliciting Community Input for
-  Alternate Science Investigations for the Kepler
-  Spacecraft}\footnote{\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}}
-released 2013 August 02.
+  Detailed models of the focal plane in the two-wheel era\altaffilmark{\ref{kcall}}}
 
-\begin{description}[style=nextline,itemsep=0ex]
-\item[David W. Hogg]
-\textit{Center for Cosmology and Particle Physics, New York University}\\
-and \textit{Max-Planck-Institut f\"ur Astronomie}
-\item[Ruth Angus]
-\textit{Department of Physics, Oxford University}
-\item[Tom Barclay]
-\textit{NASA Ames Research Center}
-\item[Rebekah Dawson]
-\textit{Havard--Smithsonian Center for Astrophysics}
-\item[Rob Fergus]
-\textit{Courant Institute of Mathematical Sciences, New York University}
-\item[Dan Foreman-Mackey]
-\textit{Center for Cosmology and Particle Physics, New York University}
-\item[Michael Hirsch]
-\textit{Max-Planck-Institut f\"ur Intelligente Systeme}
-\item[Dustin Lang]
-\textit{McWilliams Center for Cosmology, Carnegie Mellon University}
-\item[Ben Montet]
-\textit{Department of Astronomy, California Institute of Technology}
-\item[David Schiminovich]
-\textit{Department of Astrophysics, Columbia University}
-\item[Bernhard Sch\"olkopf]
-\textit{Max-Planck-Institut f\"ur Intelligente Systeme}
-\end{description}
+\author{%
+  David~W.~Hogg\altaffilmark{\ref{CCPP},\ref{MPIA}},
+  Ruth~Angus\altaffilmark{\ref{Oxford}},
+  Tom~Barclay\altaffilmark{\ref{Ames}},
+  Rebekah~Dawson\altaffilmark{\ref{CfA}},
+  Rob~Fergus\altaffilmark{\ref{Courant}},
+  Dan~Foreman-Mackey\altaffilmark{\ref{CCPP}},
+  Michael~Hirsch\altaffilmark{\ref{UCL}, \ref{MPIIS}},
+  Dustin~Lang\altaffilmark{\ref{CMU}},
+  Ben~Montet\altaffilmark{\ref{Caltech}},
+  David~Schiminovich\altaffilmark{\ref{Columbia}}, \&
+  Bernhard~Sch\"olkopf\altaffilmark{\ref{MPIIS}}%
+}
 
+\setcounter{address}{1}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{kcall}%
+  A white paper submitted in response to the \Kepler\ Project Office
+  \textit{Call for White Papers: Soliciting Community Input for
+    Alternate Science Investigations for the Kepler Spacecraft}
+  released 2013 August 02
+  (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf})}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{CCPP}%
+  Center for Cosmology and Particle Physics, Department of Physics, New York University}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{MPIA}%
+  Max-Planck-Institut f\"ur Astronomie, Heidelberg, Germany}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{Oxford}%
+  Department of Physics, Oxford University}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{Ames}%
+  NASA Ames Research Center}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{CfA}%
+  Havard--Smithsonian Center for Astrophysics}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{Courant}%
+  Courant Institute of Mathematical Sciences, New York University}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{UCL}%
+  Department of Physics and Astronomy, University College London}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{MPIIS}%
+  Max-Planck-Institut f\"ur Intelligente Systeme, T\"ubingen}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{CMU}%
+  McWilliams Center for Cosmology, Carnegie Mellon University}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{Caltech}%
+  Department of Astronomy, California Institute of Technology}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{Columbia}%
+  Department of Astrophysics, Columbia University}
+
+~
 \clearpage
 
-\section{Executive summary}
-
-\paragraph{primary recommendation:}
-\hoggitem~Fundamentally, this \documentname\ advocates \emph{image modeling}%
+\paragraph{executive summary:}
+\hoggitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
+  is \emph{image modeling}%
   ---building a detailed model of pixel sensitivities
   (including possibly intra-pixel sensitivity maps),
   point-spread function,
@@ -104,10 +117,9 @@ In the other, the model is data-driven but motivated by ideas of causality;
 We demonstrate that the expected drift or jitter in positions in the two-weel era
   will \textsl{(a)}~help with constraining these kinds of model,
   and \textsl{(b)}~be obviated (in terms of loss of precision) by such modeling.
-These results are relevant to \emph{almost any} scientific goal for the repurposed mission,
-  independent of our secondary recommendations.
+These results are relevant to \emph{almost any} scientific goal for the repurposed mission.
+We have several secondary recommendations:
 
-\paragraph{secondary recommendations:}
 \hoggitem~If \Kepler\ continues to observe the current \Kepler\ field,
   we would recommend shortening exposure times to about 5\,min, and increasing cadence,
   to reduce the effect of pointing drift and increase the sensitivity of the models.
