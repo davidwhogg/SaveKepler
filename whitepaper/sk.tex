@@ -30,6 +30,7 @@
 \setcounter{inlineitem}{0}
 \newcommand{\inlineitem}{\refstepcounter{inlineitem}\textbf{\textsl{(\theinlineitem)}}}
 \newcounter{address}
+\setlength{\parskip}{0ex}
 
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
@@ -91,37 +92,31 @@
 \inlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
   is \emph{image modeling}%
   ---building a detailed model of pixel sensitivities
-  (including possibly intra-pixel sensitivity maps),
   point-spread function,
   and sky, bias, and dark signals,
   all as a function of focal-plane position%
   ---along with a model of the position and brightness of every star in the field.
-This level of modeling has not happened with \Kepler\ up to now
-  because the data have been made extremely precise with good pointing
-  and aperture photometry.
-In the two-wheel era, \Kepler\ will not maintain precise pointing.
-This is a blessing as well as a curse:
+This level of modeling has been required for \Kepler\ so far
+  because the photometric precision has been maintained through pointing stability.
+The degraded pointing precision in two-wheel operations will be a blessing as well as a curse:
 It reduces the precision of naive aperture photometry,
-  but it provides data diversity that permits independent inference
-  of the sensitivity map and the point-spread function.
-We propose capitalizing on this to
-  \textbf{develop a probabilistic generative model of the \Kepler\ pixels.}
-We argue that this modeling may permit continuance of photometry at 10-ppm-level precision.
-We demonstrate baby steps towards focal-plane models
-  along two different directions:
-In one, the model is physical;
-  its parameters are parameters of the spacecraft, detectors, and optics.
-In the other, the model is data-driven but motivated by ideas of causality;
-  in this case the parameters control the ways
-  disparate data sources can be used to predict one another.
+  but it provides data diversity that permits inference
+  of the detector sensitivity map and the point-spread function.
+\textbf{We propose developing a probabilistic generative model of the \Kepler\ pixels.}
+We argue that this may permit continuance of photometry at 10-ppm-level precision.
+We demonstrate some baby steps towards precise models
+  along both data-driven (flexible) and physics-driven (interpretably parameterized)n
+  directions.
 We demonstrate that the expected drift or jitter in positions in the two-weel era
-  will \textsl{(a)}~help with constraining these kinds of model,
+  will \textsl{(a)}~help with constraining these kinds of models,
   and \textsl{(b)}~be obviated (in terms of loss of precision) by such modeling.
+We also show that we can infer the device flat-field at \emph{higher than pixel resolution};
+  that is, we can infer variations in intra-pixel sensivity.
 These results are relevant to \emph{almost any} scientific goal for the repurposed mission.
 We have several secondary recommendations:
 
-\inlineitem~If \Kepler\ continues to observe the current \Kepler\ field,
-  we would recommend shortening exposure times to about 5\,min, and increasing cadence,
+\inlineitem~If \Kepler\ continues to observe its current field,
+  we recommend shortening exposure times to 5\,min, and increasing cadence,
   to reduce the effect of pointing drift and increase the sensitivity of the models.
 If \Kepler\ switches to observing a set of new but specially chosen ``low-torque'' fields,
   it could continue with its current exposure times.
@@ -129,15 +124,14 @@ The telemetry burden of any increase in cadence can be offset
   by reducing the number of target stars.
 
 \inlineitem~It will be imperative to operate the spacecraft
-  with at least one of the following modifications to operational software:
+  with modifications to software:
 Either the pointing will need to be adjusted frequently using
   the two operational wheels and some propellant;
   or else the telemetered focal-plane apertures will have to be enlarged;
   or else the apertures will have to be adapted in real time to follow drifting stars.
 
-\inlineitem~It will also be wise to further capitalize on the ``blessing'' of the drift
-  by diversifying the observations in other ways:
-Deliberate focus pulls, dithers, and integration-time adjustments,
+\inlineitem~It will also be wise to further diversify by performing
+  deliberate focus pulls, dithers, and integration-time adjustments,
   either throughout the mission
   or else in specified ``calibration periods''
   will provide much more data support for hard-to-constrain model parameters.
@@ -512,7 +506,7 @@ We do this in a very simple way;
   we take the geometric mean of the ratio of the model to simulated images.
 (This method is overly naive; we could do better in principle with simultaneous modeling.)
 The true and recovered flat-fields are shown in \figurename~\ref{fig:toyflat}.
-We do a good job of recovering the flat-field...HOGG
+We do a good job of recovering the flat-field.
 
 \subsection{Inferring an intrapixel flat-field}\label{sec:intrapixel}
 
@@ -562,7 +556,10 @@ This experiment used only 48 exposures,
 The degraded pointing and drift of Kepler in two-wheel mode is actually a boon here,
   since it increases the diversity of stars that touch different combinations of pixels.
 
-These experiments justify great optimism about the prospects for modeling the \Kepler\ data in the 2-wheel era.
+These experiments justify great optimism about the prospects for modeling the \Kepler\ data in the two-wheel era.
+They also show that the drift is not just a curse but also a blessing:
+The movement of target stars over the device
+  permits determination of very detailed instrument calibration information.
 
 \subsection{PSF modeling}\label{sec:psf}
 \begin{itemize}
@@ -616,34 +613,26 @@ These experiments justify great optimism about the prospects for modeling the \K
 
 \end{itemize}
 
-\section{Changes to operations and telemetry}\label{sec:operations}
+\section{Changes to operations}\label{sec:operations}
 
-need to reduce targets?
-
-need to make apertures bigger or real-time adaptive?
-
-need to telemeter down more housekeeping data?
+\paragraph{exposure times:}
+jitter / drift of about one pixel.
 
 need to do more active and frequent work with the jets?
 
-\section{Calibration strategy}\label{sec:calibration}
+\paragraph{telemetry of pixels:}
+need to make apertures bigger or real-time adaptive?
 
+\paragraph{target list:}
+need to reduce targets?
+
+\paragraph{telemetry of housekeeping data:}
+need to telemeter down more housekeeping data?
+
+\paragraph{calibration observations:}
 Will self-cal be enough?
 
 Should we pull focus and dither and exercise exposure time options?  Yes.
-
-\section{Possible showstoppers}\label{sec:stop}
-
-In principle any physical effect can be covered by the modeling
-  methods we propose.
-Since the well pointed \Kepler\ was good (with lots of post-processing)
-  at the $10^{-5}$ level,
-  the badly pointed must also be predictable at this level.  No?
-
-Heterogeneity or time dependence in intrapixel sensitivity variations
-could be very difficult to model.
-
-Propose multipole expansion to begin to address this.
 
 \section{Acknowledgments}
 
@@ -671,7 +660,8 @@ Replacing standard galaxy profiles with mixtures of Gaussians,
 \pasp, 125, 719--730
 
 \bibitem[Lang \& Hogg(2014)]{langtractor}
-Lang,~D. \& Hogg,~D.~W., 2014,
+Lang,~D. \&
+Hogg,~D.~W., 2014,
 \TheTractor:\ A framework for image modeling, with applications to \SDSS, \WISE, and \Kepler,
 in preparation
 
@@ -714,7 +704,7 @@ Bryson, S.~T., The Kepler Pixel Response Function, The Astrophysical Journal Let
 \includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-100.png}%
 \includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-101.png}%
 \includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-102.png}
-\caption{Toy simulated 2-wheel \Kepler\ PSF-determination data and models.
+\caption{Toy simulated two-wheel \Kepler\ PSF-determination data and models.
 \textsl{(left)}~``Perfect'' (that is, extremely high signal-to-noise) PSF simulated image, shown on a log scale with a dynamic range of $10^6$.  These simulations were made with a simple PSF model but then 371-roll-level drift and jitter in s/c pointing.
 \textsl{(middle)}~Model maximum-likelihood PSFs.  These are 4-component Gaussian mixtures (23 parameters total); that is, the model used to fit the PSF lives in a different space than the model used to generate the toy data.
 \textsl{(right)}~PSF-model residuals.  The stretch is $\pm 10^{-4}$.\label{fig:toypsf}}
@@ -723,7 +713,7 @@ Bryson, S.~T., The Kepler Pixel Response Function, The Astrophysical Journal Let
 \begin{figure}
 \includegraphics[trim=0.75in 0.5in 0.75in 0.5in, width=0.49\textwidth]{sim-103.png}%
 \includegraphics[trim=0.75in 0.5in 0.75in 0.5in, width=0.49\textwidth]{sim-104.png}
-\caption{Toy simulated 2-wheel simulated science data \textsl{(left)} and models \textsl{(right)}.
+\caption{Toy simulated two-wheel simulated science data \textsl{(left)} and models \textsl{(right)}.
 The model images are created by fitting the amplitude of a (rigidly fit) PSF model for each image,
   and thereby inferring the brightness of each source.
 The three images shown are the first, middle, and last images
