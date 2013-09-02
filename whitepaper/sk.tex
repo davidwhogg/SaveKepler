@@ -424,8 +424,19 @@ HOGG IS STILL MERGING THIS SECTION IN
 
 Motivated by the ``371-roll'' scenario (HOGG CITATION),
   we produced a series of toy (that is, unrealistic in various ways)
-  simulated 30-minute coadd images with $\sim$ half-pixel drift and 1~arcsec jitter.
-Drift and jitter were simulated by moving the boresight of the simulated telescope every 6 seconds during the integration.  We examine an aperture around a target, where the aperture is large enough to contain the full drift path of the target over the 24-hour observing window.  The stars in the simulation are real Kepler input catalog sources.  The point-spread function is a very much simplified double-Gaussian.  We introduced variations in the flat-field, drawn pixelwise from a Gaussian with 1% standard deviation.  We produced a series of 48 coadds, corresponding to one day's observations between rolls.
+  simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsec jitter.
+Drift and jitter were simulated by moving the boresight of the simulated telescope
+  every 6~seconds during the integration.
+We examine an aperture around a target,
+  where the aperture is large enough to contain the full drift path
+  of the target over the 24-hour observing window.
+The input (true) positions of the stars in the simulation are
+  taken from the \Kepler\ Input Catalog.
+The input (true) PSF is a very much simplified double-Gaussian.
+We introduced variations in the flat-field,
+   drawn pixelwise iid from a Gaussian with 1~percent standard deviation.
+We produced a series of 48 coadds,
+   corresponding to one day's observations between rolls.
 
 In order to simplify the modeling task, in addition to the science exposure we rendered a ``perfect'', bright, isolated, noise-free star with an unperturbed flat-field.  The star is still drifted and jittered in each coadd.  We use this ideal star to learn the PSF model in each coadd.  For a PSF model we use a very simple mixture of 4 Gaussians.  See figure 1.
 
@@ -437,15 +448,21 @@ Fig 2 (next two plots): Simulated and modelled images.  The model images are cre
 
 After fitting for the brightness of each source, we estimate the flat field.  We do this in a very simple way, by taking the geometric mean of the ratio of the model to simulated images.  The true and recovered flat-fields are shown in figure 3.
 
-Fig 3 (next two plots): Flat-field recovery.  The true flat-field in the image has Gaussian variation with 1% standard deviation.  We estimate the flat-field based on the mean pixelwise ratio between the model image and (simulated) data.
+Fig 3 (next two plots): Flat-field recovery.  The true flat-field in the image has Gaussian variation with 1~percent standard deviation.  We estimate the flat-field based on the mean pixelwise ratio between the model image and (simulated) data.
 
-My plan, on the off chance I get some more time to work on this today, is to make a true flat-field with twice the resolution of the data -- subpixel sensitivity variations, with 4 regions per pixel -- and see if I can infer it. Simple enough, conceptually: render the model at twice the resolution, multiply by flat-field, and sum 2x2 to produce the original-resolution image.  Optimize the 4 x number-of-pixels subpixel flat-field vector to best match the observed image.
+HOGG: MERGE IN DSTN's NEXT EXPERIMENT HERE.
 
-\section{Target selection}\label{sec:target}
+HOGG: SHOULD THIS SECTION COME BEFORE THE PREVIOUS SECTION?
 
-\section{Spacecraft pointing}\label{sec:pointing}
+\section{Changes to operations and telemetry}\label{sec:operations}
 
-\section{Aperture selection for telemetry}\label{sec:telemetry}
+need to reduce targets?
+
+need to make apertures bigger or real-time adaptive?
+
+need to telemeter down more housekeeping data?
+
+need to do more active and frequent work with the jets?
 
 \section{Calibration strategy}\label{sec:calibration}
 
