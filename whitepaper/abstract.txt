@@ -12,9 +12,9 @@ precise models in both data-driven (flexible) and physics-driven
 drift or jitter in positions in the two-weel era will help with
 constraining calibration parameters.  In particular, we show that we
 can infer the device flat-field at higher than pixel resolution; that
-is, we can infer pixel-to-pixel variations in intra-pixel sensivity.
+is, we can infer pixel-to-pixel variations in intra-pixel sensitivity.
 These results are relevant to almost any scientific goal for the
 repurposed mission; image modeling ought to be a part of any two-wheel
 repurpose for the satellite.  We make other recommendations for Kepler
 operations, but fundamentally advocate that the project stick with its
-core mission of finding Earth analogs.
+core mission of finding Earth analogs. [abridged]
