@@ -445,7 +445,7 @@ Data-driven models of the types described above can work
   because the relationships between the different data flowing from the system
   (telemetered pixel values, in this case)
   are set by an underlying set of physical devices
-  (a s/c, optics, detectors, and electronics, in this case),
+  (s/c, optics, detectors, and electronics, in this case),
   each of which is deterministic or stationary or at least predictable probabilistically.
 Data-driven models have the advantage of flexibility%
   ---we don't have to decide in advance exactly what freedoms to give the model---%
@@ -466,9 +466,10 @@ As with the previous \sectionname, the demonstrations and discussions here are d
 
 \subsection{Toy simulation and modeling}\label{sec:toys}
 
-Motivated by the ``371-roll'' scenario%
-  \footnote{See the \textit{Explanatory Appendix to the Kepler Project call for white papers:
-    Kepler 2-Wheel Pointing Control} (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
+Motivated by the \emph{371-roll scenario}%
+  \footnote{See the \textit{Explanatory Appendix to the Kepler Project
+      call for white papers:\ Kepler 2-Wheel Pointing Control}
+    (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
   we produced a series of toy (that is, unrealistic in various ways)
   simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsec jitter.
 Drift and jitter were simulated by moving the boresight of the simulated telescope
@@ -484,15 +485,34 @@ We introduced variations in the flat-field,
 We produced a series of 48 coadds,
    corresponding to one day's observations between rolls.
 
-In order to simplify the modeling task, in addition to the science exposure we rendered a ``perfect'', bright, isolated, noise-free star with an unperturbed flat-field.  The star is still drifted and jittered in each coadd.  We use this ideal star to learn the PSF model in each coadd.  For a PSF model we use a very simple mixture of 4 Gaussians.  See figure 1.
+In order to simplify the modeling task,
+  in addition to the science exposure
+  we rendered a ``perfect'', bright, isolated, noise-free star with an unperturbed flat-field.
+The star is drifted and jittered in each coadd identically with the full science field.
+We use this ideal star to learn the PSF model in each coadd.
+For a PSF model we use a very simple mixture of 4 Gaussians.
+That is \emph{we used a different model to generate the data than we used to fit the data},
+  which is conservative and realistic in this context.
+The fake PSF-determination data and a model of it are visualized in \figurename~\ref{fig:toypsf}.
 
-Fig 1 (first three plots): (a) ``perfect'' PSF simulated image, shown on a log scale with a dynamic range of $10^6$. (b) Model PSFs.  These are 4-component Gaussian mixtures (23 parameters total).  (c) PSF model residuals.  The stretch is $\pm 10^{-4}$.
+After learning a PSF model for each image,
+  we infer the brightness of each source in the field.
+We assume we have the true source positions from the \Kepler\ Input Catalog
+  (the same positions used to produce the simulations),
+  and the multi-Gaussian model of the drift-path-wrecked PSF.
+This model is unrealistic because we have only considered a single PSF and only two-dimensional
+  field shifts in generating the PSF;
+  in reality there would be a model of the PSF over the field
+  and three degrees of freedom to the s/c drift model (pointing and orientation).
+The toy data and models are visualized in  \figurename~\ref{fig:toydata}.
 
-After learning a PSF model for each image, we infer the brightness of each source in the field.  We assume we have the true source positions from the Kepler input catalog (the same positions used to produce the simulations), and the predicted drift path.
-
-Fig 2 (next two plots): Simulated and modelled images.  The model images are created by fitting a PSF model for each image, and then inferring the brightness of each source.  The three images shown are the first, middle, and last images in the 48-image sequence.
-
-After fitting for the brightness of each source, we estimate the flat field.  We do this in a very simple way, by taking the geometric mean of the ratio of the model to simulated images.  The true and recovered flat-fields are shown in figure 3.
+After fitting for the brightness of each source,
+   we estimate the flat-field.
+We do this in a very simple way;
+  we take the geometric mean of the ratio of the model to simulated images.
+(This method is overly naive; we could do better in principle with simultaneous modeling.)
+The true and recovered flat-fields are shown in \figurename~\ref{fig:toyflat}.
+We do a good job of recovering the flat-field...HOGG
 
 Fig 3 (next two plots): Flat-field recovery.  The true flat-field in the image has Gaussian variation with 1~percent standard deviation.  We estimate the flat-field based on the mean pixelwise ratio between the model image and (simulated) data.
 
@@ -632,5 +652,26 @@ Bryson, S.~T., The Kepler Pixel Response Function, The Astrophysical Journal Let
   Sch\"olkopf, B., Harmeling, S., Fast Removal of Non-uniform camera
   shake, International Conference on Computer Vision (ICCV) 2011.
 \end{thebibliography}
+
+\clearpage
+\begin{figure}
+\includegraphics[width=0.32\textwidth]{sim-100.png}%
+\includegraphics[width=0.32\textwidth]{sim-101.png}%
+\includegraphics[width=0.32\textwidth]{sim-102.png}
+\caption{Toy simulated 2-wheel \Kepler\ PSF-determination data and models.
+\textsl{(left)}~``Perfect'' (that is, extremely high signal-to-noise) PSF simulated image, shown on a log scale with a dynamic range of $10^6$.  These simulations were made with a simple PSF model but then 371-roll-level drift and jitter in s/c pointing.
+\textsl{(middle)}~Model maximum-likelihood PSFs.  These are 4-component Gaussian mixtures (23 parameters total); that is, the model used to fit the PSF lives in a different space than the model used to generate the toy data.
+\textsl{(right)} PSF-model residuals.  The stretch is $\pm 10^{-4}$.\label{fig:toypsf}}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.49\textwidth]{sim-103.png}%
+\includegraphics[width=0.49\textwidth]{sim-104.png}%
+\caption{Toy simulated 2-wheel simulated science data \textsl{(left)} and models \textsl{(right)}.
+The model images are created by fitting the amplitude of a (rigidly fit) PSF model for each image,
+  and thereby inferring the brightness of each source.
+The three images shown are the first, middle, and last images
+  in a 48-image sequence in the 371-roll scenario.\label{fig:toydata}}
+\end{figure}
 
 \end{document}
