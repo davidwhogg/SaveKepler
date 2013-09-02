@@ -41,15 +41,15 @@
   Detailed models of the focal plane in the two-wheel era\altaffilmark{\ref{kcall}}}
 
 \author{%
-  David~W.~Hogg\altaffilmark{\ref{CCPP},\ref{MPIA}},
+  David~W.~Hogg\altaffilmark{\ref{CCPP},\ref{MPIA},\ref{email}},
   Ruth~Angus\altaffilmark{\ref{Oxford}},
   Tom~Barclay\altaffilmark{\ref{Ames}},
   Rebekah~Dawson\altaffilmark{\ref{CfA}},
   Rob~Fergus\altaffilmark{\ref{Courant}},
-  Dan~Foreman-Mackey\altaffilmark{\ref{CCPP}},
+  Dan~Foreman-Mackey\altaffilmark{\ref{CCPP},\ref{datadriven}},
   Stefan Harmeling\altaffilmark{\ref{MPIIS}},
-  Michael~Hirsch\altaffilmark{\ref{UCL}, \ref{MPIIS}},
-  Dustin~Lang\altaffilmark{\ref{CMU}},
+  Michael~Hirsch\altaffilmark{\ref{UCL},\ref{MPIIS}},
+  Dustin~Lang\altaffilmark{\ref{CMU},\ref{physical}},
   Benjamin~T.~Montet\altaffilmark{\ref{Caltech}},
   David~Schiminovich\altaffilmark{\ref{Columbia}} \&
   Bernhard~Sch\"olkopf\altaffilmark{\ref{MPIIS}}%
@@ -57,7 +57,7 @@
 
 \setcounter{address}{1}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{kcall}%
-  A white paper submitted in response to the \Kepler\ Project Office
+  A \documentname\ submitted in response to the \Kepler\ Project Office
   \textit{Call for White Papers: Soliciting Community Input for
     Alternate Science Investigations for the Kepler Spacecraft}
   released 2013 August 02
@@ -66,6 +66,8 @@
   Center for Cosmology and Particle Physics, Department of Physics, New York University}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{MPIA}%
   Max-Planck-Institut f\"ur Astronomie, Heidelberg, Germany}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{email}%
+  To whom correspondence should be addressed; \texttt{<david.hogg@nyu.edu>}.}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Oxford}%
   Department of Physics, Oxford University}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Ames}%
@@ -74,16 +76,20 @@
   Havard--Smithsonian Center for Astrophysics}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Courant}%
   Courant Institute of Mathematical Sciences, New York University}
-\altaffiltext{\theaddress}{\stepcounter{address}\label{UCL}%
-  Department of Physics and Astronomy, University College London}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{MPIIS}%
   Max-Planck-Institut f\"ur Intelligente Systeme, T\"ubingen}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{UCL}%
+  Department of Physics and Astronomy, University College London}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{CMU}%
   McWilliams Center for Cosmology, Carnegie Mellon University}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Caltech}%
   Department of Astronomy, California Institute of Technology}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Columbia}%
   Department of Astrophysics, Columbia University}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{datadriven}%
+  DFM is responsible for most of the data-driven modeling shown in this \documentname.}
+\altaffiltext{\theaddress}{\stepcounter{address}\label{physical}%
+  DL is responsible for most of the toy data simulations and the physical modeling shown in this \documentname.}
 
 ~
 \clearpage
@@ -151,7 +157,7 @@ That said, what's written in this \documentname\ is fundamentally
 
 \section{Philosophy and motivation}
 
-The \Kepler\ satellite%
+The \Kepler\ Satellite%
   ---like other very precise time-domain photometric projects---%
   achieves its precision by a combination of two principles:
 The first is to make a telescope and camera that is as stable and controlled as possible.
@@ -187,7 +193,7 @@ While it is obvious \emph{in principle} that we can infer
   the intra-exposure s/c pointing drift and jitter history,%
   \footnote{Indeed inference of non-trivial intra-exposure
     camera pointing trajectories has been demonstrated in the far more difficult
-    case of single-exposure natural images (\citealt{fergus2006,whyte2010,hirsch2011}).
+    case of single-exposure natural images (\citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).
   That is, the three-axis history of camera orientation path
     can be reliably inferred in an individual image,
     without even multiple exposures to use
@@ -258,7 +264,7 @@ Since \Kepler's mission so far has taught us a lot about the variability
 We present these scientific proposals in a separate, companion white paper (Montet \etal),
   because although we love eta-Earth,
   \emph{what we say here about image modeling is equally applicable
-  to any two-wheel repurpose} for the \Kepler\ satellite.
+  to any two-wheel repurpose} for the \Kepler~Satellite.
 
 Right now, all of \Kepler's spine-tingling precision
   has been obtained by peforming rigid integer-pixel aperture photometry
@@ -541,7 +547,7 @@ As with the previous \sectionname, the demonstrations and discussions here are d
 \subsection{Toy simulation and modeling}\label{sec:toys}
 
 Motivated by what we call the ``371-roll scenario''%
-  \footnote{More-or-less the most stable pointing option according to
+  \footnote{More-or-less the most stable pointing option for the \Kepler~Field according to
     the \textit{Explanatory Appendix to the Kepler Project
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
@@ -695,6 +701,58 @@ The movement of target stars over the device
 
 \end{itemize}
 
+MH: DESCRIPTION OF TOY EXAMPLE FOR PHOTOMETRY WITH PSF MODELING FOLLOWS SHORTLY.
+
+steady    $0.0190 \pm 0.0103$
+drift     $0.0281 \pm 0.0153$
+average   $0.0462 \pm 0.0221$
+
+MH: THE FOLLOWING TEXT NEEDS TO BE REVISED TO BE MORE IN PROPOSAL STYLE.
+
+Drift will cause the PSF to vary from exposure to exposure due to the
+random nature of the jitter introduced by pointing inaccuracy. While
+previously due to stable pointing the jitter contributed to the
+Kepler's optical PSF in form of an enlarged PSF, in the two-wheel era
+jitter will render the PSF time-varying and to change from exposure to
+exposure. Therefore, we argue that precise PSF modeling is required on
+an individual exposure level to maintain high-precision photometry.
+
+The PSF in Kepler's two-wheel era can be decomposed in two distinct
+components: one that describes Kepler's (unchanged) system PSF and a
+second that describes the global motion/drift of the spacecraft during
+exposure.
+
+For modeling the former, previous Kepler data is invaluable, which
+will tie up on the work of \cite{bryson2010} and allow a precise model
+of Kepler's instrument PSF with the help of a detailed analysis of the
+temporal stability of Kepler's pixel response function (PRF). While in
+\cite{bryson2010} isolated non-saturated star observations during
+commissioning have been used to build a model of Kepler's PRF as a
+piecewise-continuous polynomial on a sub-pixel mesh, in principle any
+non-saturated star images from the Kepler Input Catalog can be
+used. We argue that more data will in general facilitate the
+estimation and at the same time improve modeling accuracy.
+
+The second PSF component stemming from spacecraft motion/drift is
+affecting the image in a globally consistent way. Hence, with precise
+knowledge of the detector's geometry and its possibly time and
+space-varying PRF, all star images from an individual exposure will
+help to constrain this (to some extent unkown) motion. Any additional
+knowledge about the spacecraft's pointing position will facilitate the
+estimation procedure. Note, that for an individual exposure we can be
+agnostic about the chronological history and temporal evolution, as we
+are interested in its time integrated effect on the image only. The
+incorporation of a geometric model allowing for physically plausible
+motion only has been applied with great success to the problem of
+camera shake removal with non-stationary blur within the computational
+photography and computer vision community
+(\cite{fergus2006,whyte2010,hirsch2011,koehler2012}).
+
+
+% For PSF modeling we explore two alternative, yet complimentary
+%  strategies: parametric and non-parametric description of the PSF.
+
+
 \section{Changes to operations}\label{sec:operations}
 
 Here are some thoughts about operational changes, relevant to image
@@ -703,16 +761,18 @@ modeling.
 \paragraph{exposure times:}
 In the pointing-stability best-case 371-roll scenario,
   the long cadence of 30-min exposures can be continued without change.
-If the science program decides to stay in the \Kepler\ Field
-  (which is consistent with our philosophy)
-  then exopsure times will have to get shorter.
-We advise setting exposure times to obtain something close to 1 pixel
+If the science program obviates the 371-roll,
+  then exopsure times might have to get shorter.
+In a worst-case scenario%
+  ---of either a failure of the 371-roll predictions,
+  or else requirements that make it impossible to implement---%
+  we advise setting exposure times to obtain something close to 1 pixel
   of jitter or drift during the exposure.
 Much less than this, and the exposures are ``over-resolving'' the jitter
   (thereby wasting telemetry bandwidth)
 Much more than this, and the angular resolution and PSF estimation is
   likely to degrade in ways that affect photometric precision.
-One interesting consequence of sticking with the \Kepler\ Field and shortening
+One interesting consequence of sticking with the \Kepler~Field and shortening
   exposure times is that the mission could deliver better information
   about transit-timing variations, transit-duration variations, and asteroseismology.
 
@@ -743,6 +803,7 @@ Because recovery of pointing history is so important to image modeling,
   it makes sense to telemeter down housekeeping data from the
   satellite fine guidance sensors and tracking and pointing software.
 We suspect that even maximal downlink of pointing-related housekeeping data
+  (SC + LC + star tracker HK, ideally at 5~Hz)
   is tiny compared to the scientific data.
 If so---and if it is not already being downlinked---%
   we would recommend making the relevant changes to the flight software.
@@ -771,6 +832,10 @@ It is a pleasure to thank Sameer Agarwal (Google) and Keir Mierle
   (Locu) for releasing the \project{Ceres} non-linear least squares
   solver (\url{https://code.google.com/p/ceres-solver/}) and for making
   suggestions that enabled this work.
+We benefitted from useful conversations with
+  Ross Fadely (NYU),
+  Malte Kuhlmann (MPI-IS), and
+  Hans-Walter Rix (MPIA).
 DWH, RF, and DFM are all partially supported by NSF grant IIS-1124794.
 MH acknowledges support from the European Research Council in the form of a Starting Grant with number 240672.
 BTM is supported by the NSF Graduate Research Fellowship grant DGE-1144469.
@@ -780,20 +845,30 @@ BTM is supported by the NSF Graduate Research Fellowship grant DGE-1144469.
 % ---
 \begin{thebibliography}{}\raggedright%
 
+\bibitem[Bryson \etal(2010)]{bryson2010}
+Bryson,~S.~T., Tenenbaum,~P., Jenkins,~J.~M., \etal, 2010,
+The Kepler Pixel Response Function,
+\apjl, 713 L97
+
+\bibitem[Fergus \etal(2006)]{fergus2006}
+Fergus, R., Singh, B., Hertzmann, A., Roweis, S.~T., Freeman, W.~T., 2006,
+Removing camera shake from a single image,
+ACM Transactions on Graphics (SIGGRAPH 2006).
+
 \bibitem[Foreman-Mackey \etal(2013)]{emcee}
 Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
 \emcee:\ The MCMC Hammer,
 \pasp, 125, 306--312.
 
+\bibitem[Hirsch \etal(2011)]{hirsch2011}
+Hirsch, M., Schuler, C.~J., Sch\"olkopf, B., \& Harmeling, S., 2011,
+Fast Removal of Non-uniform camera shake,
+Proceedings of the IEEE International Conference on Computer Vision (ICCV 2011).
+
 \bibitem[Hogg \& Lang(2013)]{hoggtractor}
 Hogg,~D.~W. \& Lang,~D., 2013,
 Replacing standard galaxy profiles with mixtures of Gaussians,
 \pasp, 125, 719--730
-
-\bibitem[Lang \& Hogg(2014)]{langtractor}
-Lang,~D. \& Hogg,~D.~W., 2014,
-\TheTractor:\ A framework for image modeling, with applications to \SDSS, \WISE, and \Kepler,
-in preparation
 
 \bibitem[Janzing \& Sch{\"o}lkopf(2010)]{JanSch10}
 Janzing,~D.\ \& Sch{\"o}lkopf,~B., 2010,
@@ -810,6 +885,17 @@ LeCun,~Y., Bottou,~L., Bengio,~Y., \& Haffner, P., 1998,
 Gradient-Based Learning Applied to Document Recognition,
 IEEE, 86, 2278
 
+\bibitem[K\"ohler \etal(2012)]{koehler2012}
+K\"ohler,~R., Hirsch,~M., Mohler~B., Sch\"olkopf~B., \& Harmeling, S., 2012,
+Recording and Playback of Camera Shake:\ Benchmarking Blind Deconvolution with a Real-World Database,
+12th European Conference on Computer Vision (ECCV 2012)
+
+\bibitem[Lang \& Hogg(2014)]{langtractor}
+Lang,~D. \& Hogg,~D.~W., 2014,
+\TheTractor:\ A framework for image modeling, with applications to \SDSS, \WISE, and \Kepler,
+in preparation
+>>>>>>> de7cd76357eb5abde7d542d9f7242f27823574c7
+
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
 Reichenbach,~H., 1956
 \textit{The Direction of Time},
@@ -825,24 +911,11 @@ Stumpe,~M.~C., Smith,~J.~C., Van Cleve,~J.~E., \etal, 2012,
 Kepler Presearch Data Conditioning I.\ Architecture and Algorithms for Error Correction in Kepler Light Curves,
 \pasp, 124, 985
 
-\bibitem[Bryson \etal(2010)]{bryson2010}
-Bryson,~S.~T., Tenenbaum,~P., Jenkins,~J.~M., \etal, 2010,
-The Kepler Pixel Response Function,
-\apjl, 713 L97
-
 \bibitem[Whyte \etal(2010)]{whyte2010}
 Whyte, O., Sivic, J., Zissermann, A., \& Ponce, J., 2010,
 Non-uniform Deblurring for Shaken Images,
-Proceedings of the IEEE International Conference on Computer Vision and Pattern Recognition (CVPR) 2010.
+Proceedings of the IEEE International Conference on Computer Vision and Pattern Recognition (CVPR 2010).
 
-\bibitem[Hirsch \etal(2011)]{hirsch2011}
-Hirsch, M., Schuler, C.~J., Sch\"olkopf, B., \& Harmeling, S., 2011,
-Fast Removal of Non-uniform camera shake,
-Proceedings of the IEEE International Conference on Computer Vision (ICCV) 2011.
-
-\bibitem[Fergus \etal(2006)]{fergus2006}
-Fergus, R., Singh, B., Hertzmann, A., Roweis, S.~T., Freeman, W.~T., 2006,
-Removing camera shake from a single image, ACM Transactions on Graphics (SIGGRAPH) 2006.
 \end{thebibliography}
 
 \clearpage
@@ -872,7 +945,7 @@ The three images shown are the first, middle, and last images
 \includegraphics[width=0.49\textwidth]{sim2-205}
 \includegraphics[width=0.49\textwidth]{sim2-206}
 \includegraphics[width=0.49\textwidth]{sim2-207}
-\caption{Toy simulated true flat-field \textsl{(top)} and point-estimation thereof,
+\caption{Toy simulated true flat-field \textsl{(top left)} and point-estimation thereof \textsl{(top right)},
   found by taking ratios of models to data after fitting the drifted, effective PSF and brightness of every source in the field.
   The true flat-field in the image has Gaussian variation with 1~percent standard deviation.
   We estimated the flat-field with the pixel-wise ratio between the model image and data.\label{fig:toyflat}}
@@ -897,4 +970,25 @@ In practice, we would likely fit much larger series of images (months or more),
 rather than the 48-exposure series used here, so performance could in principle become excellent.\label{fig:intrapixel}}
 \end{figure}
 
-aend{document}
+\begin{figure}
+\begin{center}
+\footnotesize
+\hspace{1mm}PSF \hspace{18mm} Simulated image \hspace{12mm} Model image
+\hspace{16mm} Difference\\
+
+\rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.9\textwidth]{photometry_with_psf_with_frames.png}
+
+\caption{Two-star toy example to demonstrate that precise image
+  modeling can facilitate and improve photometry over aperture
+  averaging. From left to right: high-resolution PSFs, noisy coadds,
+  model and difference images. The top row shows the case for nominal
+  operation with functional reaction wheels, the bottom row shows the
+  case in the two-wheel era with an apparent drift of 27'' in the
+  worst case scenario for a 30 min exposure. The red frames depicted
+  in the observed image in the top panel shows the apertures used for
+  averaging.}
+\end{center}
+\label{fig:photometry}
+\end{figure}
+
+\end{document}
