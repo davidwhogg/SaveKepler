@@ -26,9 +26,9 @@
 \newcommand{\MAST}{\project{MAST}}
 \newcommand{\TheTractor}{\project{The~Tractor}}
 \newcommand{\emcee}{\project{emcee}}
-\newcounter{hoggitem}
-\setcounter{hoggitem}{0}
-\newcommand{\hoggitem}{\refstepcounter{hoggitem}\textbf{\textsl{(\thehoggitem)}}}
+\newcounter{inlineitem}
+\setcounter{inlineitem}{0}
+\newcommand{\inlineitem}{\refstepcounter{inlineitem}\textbf{\textsl{(\theinlineitem)}}}
 \newcounter{address}
 
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
@@ -50,7 +50,7 @@
   Michael~Hirsch\altaffilmark{\ref{UCL}, \ref{MPIIS}},
   Dustin~Lang\altaffilmark{\ref{CMU}},
   Benjamin~T.~Montet\altaffilmark{\ref{Caltech}},
-  David~Schiminovich\altaffilmark{\ref{Columbia}}, \&
+  David~Schiminovich\altaffilmark{\ref{Columbia}} \&
   Bernhard~Sch\"olkopf\altaffilmark{\ref{MPIIS}}%
 }
 
@@ -88,7 +88,7 @@
 \clearpage
 
 \paragraph{executive summary:}
-\hoggitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
+\inlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
   is \emph{image modeling}%
   ---building a detailed model of pixel sensitivities
   (including possibly intra-pixel sensitivity maps),
@@ -120,7 +120,7 @@ We demonstrate that the expected drift or jitter in positions in the two-weel er
 These results are relevant to \emph{almost any} scientific goal for the repurposed mission.
 We have several secondary recommendations:
 
-\hoggitem~If \Kepler\ continues to observe the current \Kepler\ field,
+\inlineitem~If \Kepler\ continues to observe the current \Kepler\ field,
   we would recommend shortening exposure times to about 5\,min, and increasing cadence,
   to reduce the effect of pointing drift and increase the sensitivity of the models.
 If \Kepler\ switches to observing a set of new but specially chosen ``low-torque'' fields,
@@ -128,14 +128,14 @@ If \Kepler\ switches to observing a set of new but specially chosen ``low-torque
 The telemetry burden of any increase in cadence can be offset
   by reducing the number of target stars.
 
-\hoggitem~It will be imperative to operate the spacecraft
+\inlineitem~It will be imperative to operate the spacecraft
   with at least one of the following modifications to operational software:
 Either the pointing will need to be adjusted frequently using
   the two operational wheels and some propellant;
   or else the telemetered focal-plane apertures will have to be enlarged;
   or else the apertures will have to be adapted in real time to follow drifting stars.
 
-\hoggitem~It will also be wise to further capitalize on the ``blessing'' of the drift
+\inlineitem~It will also be wise to further capitalize on the ``blessing'' of the drift
   by diversifying the observations in other ways:
 Deliberate focus pulls, dithers, and integration-time adjustments,
   either throughout the mission
@@ -145,7 +145,7 @@ These calibration observations will not only improve the models of the two-wheel
   they have the promise to substantially improve the precision of our understanding
   of the extant \Kepler\ data that we expect contains many latent and undiscovered signals.
 
-\hoggitem~Whether the two-wheel survey strategy ends up being
+\inlineitem~Whether the two-wheel survey strategy ends up being
   to continue observations in the current \Kepler\ field,
   or to work in the low-torque fields%
   ---we discuss scientific suvey strategies in a companion \documentname\ (by Montet et al.)---%
