@@ -633,7 +633,7 @@ modeling.
 \paragraph{exposure times:}
 In the pointing-stability best-case 371-roll scenario,
   the long cadence of 30-min exposures can be continued without change.
-If the science program decides to stay in the \Kepler\ field
+If the science program decides to stay in the \Kepler\ Field
   (which is consistent with our philosophy)
   then exopsure times will have to get shorter.
 We advise setting exposure times to obtain something close to 1 pixel
@@ -642,6 +642,9 @@ Much less than this, and the exposures are ``over-resolving'' the jitter
   (thereby wasting telemetry bandwidth)
 Much more than this, and the angular resolution and PSF estimation is
   likely to degrade in ways that affect photometric precision.
+One interesting consequence of sticking with the \Kepler\ Field and shortening
+  exposure times is that the mission could deliver better information
+  about transit-timing variations, transit-duration variations, and asteroseismology.
 
 \paragraph{telemetry of pixels:}
 Even in the 371-roll scenario, stars drift steadily across the focal plane,
@@ -649,21 +652,48 @@ Even in the 371-roll scenario, stars drift steadily across the focal plane,
   or else adaptive aperture control from exposure to exposure.
 The former comes at telemetry bandwidth cost,
   the latter at satellite software upgrade cost.
-From an image-modeling perspective, we don't have a position on this.
-From a scientific perspective, we much prefer a change to 
-
-need to make apertures bigger or real-time adaptive?
+From an image-modeling perspective, we don't have a position on this;
+  if anything the larger apertures are good,
+  because more pixels equals more calibration information.
+From a scientific perspective, we much prefer a change to flight software;
+  bandwidth is valuable.
 
 \paragraph{target list:}
-need to reduce targets?
+Exposure time shortening or aperture enlarging will require more telemetry bandwidth per target star.
+If necessary, we recommend shrinking the target list around two parent populations:
+One is M stars, where small, habitable-zone planets seem to be abundant.
+The other is G stars, where only true Earth-analogs can live (and true Jupiter analogs).
+These issues are addressed in greater detail in our companion \documentname\ (Montet \etal).
+In principle a lot is now known about the detectability of interesting planets
+  as a function of stellar variability patterns.
+This knowledge is also valuable for shrinking target lists.
 
 \paragraph{telemetry of housekeeping data:}
-need to telemeter down more housekeeping data?
+Because recovery of pointing history is so important to image modeling,
+  it makes sense to telemeter down housekeeping data from the
+  satellite fine guidance sensors and tracking and pointing software.
+We suspect that even maximal downlink of pointing-related housekeeping data
+  is tiny compared to the scientific data.
+If so---and if it is not already being downlinked---%
+  we would recommend making the relevant changes to the flight software.
 
 \paragraph{calibration observations:}
-Will self-cal be enough?
-
-Should we pull focus and dither and exercise exposure time options?  Yes.
+The image modeling in our demonstration projects (above) is successful
+  because there are data spanning a wide range of conditions
+  (temperature conditions in the data-driven modeling example
+   and pointing conditions in the toy simulations).
+There is no reason to stop at the data diversity delivered by the
+  stochastic forces of Solar insolation.
+In specified calibration periods%
+  ---or more radically throughout the two-wheel mission---%
+  it makes sense to pull the focus (if possible),
+  dither the pointing deliberately (if software permits),
+  and exercise the exposure time control.
+These changes will give vital calibration information about
+  the PSF, the flat-field, and the DC signals.
+In the end, the self-calibration provided by modeling the science
+  data might be sufficient.
+But if or where it isn't, a small amount of calibration data can be enormously valuable.
 
 \section{Acknowledgments}
 
