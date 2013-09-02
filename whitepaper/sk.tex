@@ -101,9 +101,8 @@ This level of modeling has not happened with \Kepler\ up to now
 In the two-wheel era, \Kepler\ will not maintain precise pointing.
 This is a blessing as well as a curse:
 It reduces the precision of naive aperture photometry,
-  but it provides data diversity that permits inference
-  of the sensitivity map and point-spread function
-  that is not perfectly covariant with the morphology of the true scene.
+  but it provides data diversity that permits independent inference
+  of the sensitivity map and the point-spread function.
 We propose capitalizing on this to
   \textbf{develop a probabilistic generative model of the \Kepler\ pixels.}
 We argue that this modeling may permit continuance of photometry at 10-ppm-level precision.
@@ -123,22 +122,17 @@ We have several secondary recommendations:
 \hoggitem~If \Kepler\ continues to observe the current \Kepler\ field,
   we would recommend shortening exposure times to about 5\,min, and increasing cadence,
   to reduce the effect of pointing drift and increase the sensitivity of the models.
-Increased cadence will lead to better value of the data for measuring
-  transit-timing and transit-duration variations.
 If \Kepler\ switches to observing a set of new but specially chosen ``low-torque'' fields,
-  it could continue with its current exposure times (of about 30\,min).
-
-\hoggitem~The telemetry burden of any increase in cadence can be offset
+  it could continue with its current exposure times.
+The telemetry burden of any increase in cadence can be offset
   by reducing the number of target stars.
-We would recommend (for scientific reasons) aggressively shrinking the target lists around
-  bright, non-variable Sun-like and M-type stars.
 
 \hoggitem~It will be imperative to operate the spacecraft
-  with one or both of the following modifications to operational software:
+  with at least one of the following modifications to operational software:
 Either the pointing will need to be adjusted frequently using
   the two operational wheels and some propellant;
-  or else the focal-plane apertures telemetered down at each detector
-  read will have to be adapted in real time to follow drifting stars.
+  or else the telemetered focal-plane apertures will have to be enlarged;
+  or else the apertures will have to be adapted in real time to follow drifting stars.
 
 \hoggitem~It will also be wise to further capitalize on the ``blessing'' of the drift
   by diversifying the observations in other ways:
@@ -225,7 +219,7 @@ That is,
   \Kepler\ data are taken in a mode that is
   near-pessimal%
   \footnote{Neologism ``pessimal'' is the antonym of ``optimal''.}
-  for the determination or inference of calibration parameters.
+  for the determination of calibration parameters.
 
 The death of \Kepler's second wheel (taking it down to two)
   occurred at a tragic moment:
