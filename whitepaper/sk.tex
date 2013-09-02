@@ -453,8 +453,8 @@ task. While many of the confounding signals can be well modeled by
 linear approaches, the residual error will be contain non-linear
 factors in the system which will obscure the transit signal. To leave
 only the transit signal in the residual, these non-linear factors much
-be captured with a more powerful model. This will be done using *Deep
-Learning* approaches that have recently proven very successful for
+be captured with a more powerful model. This will be done using ``Deep
+Learning'' approaches that have recently proven very successful for
 complex image domain tasks such as object recognition \citep{Kriz12}.
 
 The Deep Learning models we intend to apply in this instance will be a
@@ -473,7 +473,7 @@ highly non-linear structure of the input image, since each unit in a
 higher layer is connected to the input by multiple non-linear
 functions.
 
-We intend to adapt this model our application in the following ways:
+We intend to adapt this model to our application in the following ways:
 
 \begin{enumerate}
 \item
@@ -497,7 +497,7 @@ stars) and the time series of the star of interest as output. The
 LeNet model architecture uses 2D convolutions, applied to a 2D input
 image. This must be modified to have a 1-D convolution in the time
 direction, but fully connected across the pixels. The size of the
-convolutional window dictates the amount of "history" the model can
+convolutional window dictates the amount of ``history'' the model can
 use for prediction.
 
 \item
@@ -552,7 +552,7 @@ Motivated by what we call the ``371-roll scenario''%
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
   we produced a series of toy (that is, unrealistic in various ways)
-  simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsec jitter.
+  simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsecond jitter.
 Drift and jitter were simulated by moving the boresight of the simulated telescope
   every 6~seconds during the integration.
 An aperture is examined around a single target,
@@ -591,7 +591,9 @@ The toy data and models are visualized in  \figurename~\ref{fig:toydata}.
 After fitting for the brightness of each source,
    we estimate the flat-field.
 This is estimated simply by taking
-  the geometric mean of the ratio of the model to simulated images.
+  the geometric mean (over the 48 images) of the ratio of the model to simulated images.
+That is, we find a pixelwise flat-field that will make our pixel-by-pixel
+models best match the observations.
 (This method is overly naive; we could do better in principle with simultaneous modeling.)
 The true and recovered flat-fields are shown in \figurename~\ref{fig:toyflat}.
 We do a good job of recovering the flat-field.
@@ -604,7 +606,7 @@ Next, we tested whether there is any chance within these toy simulations
   higher than the read-out data?
 The simulations are similar to the above,
   except this time the simulated images were produced on a pixel grid of twice the true resolution,
-  and randomly generated a flat-field with this same resolution.
+  and we randomly generated a flat-field with this same resolution.
 After scaling the double-resolution by the double-resolution flat-field,
   the images were binned down (summed) $2\times 2$ to produce images at the detector read-out resolution,
   but now with sub-pixel variations in the sensitivity.
@@ -614,7 +616,7 @@ Using our modeling framework,
   it is straightforward to infer such a double-resolution flat-field
   given the normal-resolution images.
 As when producing the simulations,
-  the model images are rendered at twice the resolution and scale by a model (parameterized) flat-field
+  the model images are rendered at twice the resolution and scaled by a model (parameterized) flat-field
   (that has four times as many parameters as there are device pixels)
   before binning and comparing with the observed images.
 As in the previous experiment,
@@ -623,14 +625,14 @@ As in the previous experiment,
   then solve for the (double-resolution) flat field.
 That is, we stay in the fit--fit--fit mode rather than performing simultaneous inference
   of the three components, which should in the end perform better.
-In this version, the the best-fit flat-field is determined by iteratively solving a linearized least-squares problem:
+In this version, the best-fit flat-field is determined by iteratively solving a linearized least-squares problem:
 Starting at a constant flat-field,
   changes to the flat-field pixels are computed that will minimize the difference
   between the model (predicted) images and the observed images.
 As before, we fit simultaneously a stack of 48 images, each a 30-minute coadd.
 In this experiment, the stars drift horizontally across the field,
   and some regions do not see many stars during the exposure.
-To avoid numerical overfitting, we added a smoothness prior on the flat-field values,
+To avoid numerical overfitting, we added a prior on the flat-field values,
   with the same variance as the distribution from which the true flat-field was drawn ($\sigma = 2$~percent).
 
 The results---shown in \figurename~\ref{fig:intrapixel}---%
@@ -712,7 +714,7 @@ modeling.
 In the pointing-stability best-case 371-roll scenario,
   the long cadence of 30-min exposures can be continued without change.
 If the science program obviates the 371-roll,
-  then exopsure times might have to get shorter.
+  then exposure times might have to get shorter.
 In a worst-case scenario%
   ---of either a failure of the 371-roll predictions,
   or else requirements that make it impossible to implement---%
