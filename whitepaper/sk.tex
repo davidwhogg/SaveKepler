@@ -426,7 +426,58 @@ brightness of the joint system.
 This kind of assumption has recently studied in the field of causal inference
 by \citet{JanSch10}.
 
-\section{Toy simulations of future data}\label{sec:future}
+
+\section{Precision image modeling}\label{sec:modeling}
+\begin{itemize}
+\item Drift will cause the PSF to vary from exposure to exposure due
+  to the random nature of the jitter introduced by pointing
+  inaccuracy. While previously due to stable pointing the jitter
+  contributed to the Kepler's optical PSF in form of an enlarged PSF,
+  in the two-wheel era jitter will render the PSF time-varying and
+  to change from exposure to exposure. Therefore, we argue that
+  precise PSF modeling is required on an individual exposure level to
+  maintain high-precision photometry.
+\item The PSF in Kepler's two-wheel era can be decomposed in two
+  distinct components: one that describes Kepler's (unchanged) system
+  PSF and a second that describes the global motion/drift of the
+  spacecraft during exposure. 
+
+  For modeling the former, previous Kepler data is invaluable, which
+  will tie up on the work of \cite{bryson2010} and allow a precise
+  model of Kepler's instrument PSF with the help of a detailed
+  analysis of the temporal stability of Kepler's pixel response
+  function (PRF). While in \cite{bryson} isolated non-saturated star
+  observations during commissioning have been used to build a model of
+  Kepler's PRF as a piecewise-continuous polynomial on a sub-pixel
+  mesh, in principle any non-saturated star images from the Kepler
+  Input Catalog can be used. We argue that more data will in general
+  facilitate the estimation and at the same time improve modeling
+  accuracy. 
+
+  The second PSF component stemming from spacecraft motion/drift is
+  affecting the image in a globally consistent way. Hence, with
+  precise knowledge of the detector's geometry and its possibly time
+  and space-varying PRF, all star images from an individual exposure
+  will help to constrain this motion. Any additional knowledge about
+  the spacecraft's pointing position will facilitate the estimation
+  procedure. Note, that for an individual exposure we can be agnostic
+  about the chronological history and temporal evolution, as we are
+  interested in its time integrated effect on the image only. The
+  incorporation of a geometric model allowing for physically plausible
+  motion only has been applied with great success to the problem of
+  camera shake removal with non-stationary blur within the
+  computational photography and computer vision community (see
+  \cite{hirsch2011}).
+
+\item For PSF modeling we explore two alternative, yet complimentary
+  strategies: parametric and non-parametric description of the PSF.
+\item It hasn't been shown so far that precise PSF modeling does
+  improve photometry. What do we gain over simple aperture averaging
+  and why? Can we backup our claim by references?
+
+\end{itemize}
+
+\subsection{Toy simulations of future data}\label{sec:future}
 
 HOGG IS STILL MERGING THIS SECTION IN
 
@@ -461,6 +512,7 @@ Fig 3 (next two plots): Flat-field recovery.  The true flat-field in the image h
 HOGG: MERGE IN DSTN's NEXT EXPERIMENT HERE.
 
 HOGG: SHOULD THIS SECTION COME BEFORE THE PREVIOUS SECTION?
+
 
 \section{Changes to operations and telemetry}\label{sec:operations}
 
@@ -538,6 +590,12 @@ Smith, J.~C., Stumpe, M.~C., Van Cleve, J.~E., \etal\ 2012, \pasp, 124, 1000
 \bibitem[Stumpe \etal(2012)]{map-pdc1}
 Stumpe, M.~C., Smith, J.~C., Van Cleve, J.~E., \etal\ 2012, \pasp, 124, 985
 
+\bibitem[Bryson \etal(2010)]{bryson2010}
+Bryson, S.~T., The Kepler Pixel Response Function, The Astrophysical Journal Letters 713 (2010) L97. 
+
+\bibitem[Hirsch \etal(2011)]{hirsch2011} Hirsch, M., Schuler, C.~J.,
+  Sch\"olkopf, B., Harmeling, S., Fast Removal of Non-uniform camera
+  shake, International Conference on Computer Vision (ICCV) 2011.
 \end{thebibliography}
 
 \end{document}
