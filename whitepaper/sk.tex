@@ -174,7 +174,8 @@ The great success of this joint strategy is evident in \Kepler's discoveries, to
 
 In the two-wheel era, it will not be possible
   to make each observation as identical to the fiducial observation
-  as it was in the three- and four-wheel eras (HOGG CITE TECH DOCUMENTS).
+  as it was in the three- and four-wheel eras\footnote{\url{http://keplerscience.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}}
+(HOGG CITE TECH DOCUMENTS).
 However, the fact that the telescope and camera were so stable
   (plus perhaps some appeal to the determinism of the macroscopic laws of physics)
   implies that it must be possible to build a deterministic, predictive model
@@ -474,15 +475,15 @@ Motivated by the \emph{371-roll scenario}%
   simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsec jitter.
 Drift and jitter were simulated by moving the boresight of the simulated telescope
   every 6~seconds during the integration.
-We examine an aperture around a target,
+We examine an aperture around a single target,
   where the aperture is large enough to contain the full drift path
   of the target over the 24-hour observing window.
-The input (true) positions of the stars in the simulation are
+The input (true) positions and brightnesses of the stars in the simulation are
   taken from the \Kepler\ Input Catalog.
 The input (true) PSF is a very much simplified double-Gaussian.
 We introduced variations in the flat-field,
    drawn pixelwise iid from a Gaussian with 1~percent standard deviation.
-We produced a series of 48 coadds,
+We produced a series of 48 simulated coadds,
    corresponding to one day's observations between rolls.
 
 In order to simplify the modeling task,
@@ -731,8 +732,11 @@ The three images shown are the first, middle, and last images
 \end{figure}
 
 \begin{figure}
-\includegraphics[trim=0.25in 0.75in 0.25in 0.75in, width=0.49\textwidth]{sim-105.png}%
-\includegraphics[trim=0.25in 0.75in 0.25in 0.75in, width=0.49\textwidth]{sim-106.png}
+%\includegraphics[trim=0.25in 0.75in 0.25in 0.75in, width=0.49\textwidth]{sim-105.png}%
+%\includegraphics[trim=0.25in 0.75in 0.25in 0.75in, width=0.49\textwidth]{sim-106.png}
+\includegraphics[width=0.49\textwidth]{sim2-205}
+\includegraphics[width=0.49\textwidth]{sim2-206}
+\includegraphics[width=0.49\textwidth]{sim2-207}
 \caption{Toy simulated true flat-field \textsl{(top)} and point-estimation thereof,
   found by taking ratios of models to data after fitting the drifted, effective PSF and brightness of every source in the field.
   The true flat-field in the image has Gaussian variation with 1~percent standard deviation.
@@ -740,11 +744,11 @@ The three images shown are the first, middle, and last images
 \end{figure}
 
 \begin{figure}
-\includegraphics[trim=0.75in 0.25in 0.75in 0.25in, width=0.49\textwidth]{sim2-103.png}%
-\includegraphics[trim=0.75in 0.00in 0.75in 0.00in, width=0.49\textwidth]{sim2-200a.png}\\[0.3in]
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-200.png}%
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-201.png}\\[0.4in]
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-202.png}
+\includegraphics[trim=0.75in 0.25in 0.75in 0.25in, width=0.49\textwidth]{sim2-208}%
+\includegraphics[trim=0.75in 0.00in 0.75in 0.00in, width=0.35\textwidth]{sim2-200}\\[0.3in]
+\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-201}%
+\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-202}\\[0.4in]
+\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-203}
 \caption{Demonstration that we can fit the intrapixel flat, at least in principle.
 \textsl{(top two b/w images)}~Three toy images from the simulated data with $2\times 2$ sub-pixel 2-percent flat-field variations,
   and the coadd of all 48 toy images, showing the 371-roll drift and the coverage of this field patch by stars.
