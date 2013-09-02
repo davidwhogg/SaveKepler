@@ -302,17 +302,19 @@ We encourage the \Kepler\ community to fork, build on, and contribute back to th
 
 \section{Data-driven modeling}\label{sec:datadriven}
 
-DFM:  HERE EITHER YOU OR I COULD PUT A SEGUE THAT SAYS
-  ``MODELING CAN BE PHYSICAL OR DATA-DRIVEN''
-  and WE ARE STARTING WITH DATA-DRIVEN.
-ALSO MAYBE INTRODUCE TRAIN, VALID, TEST?
+In this \documentname, we sketch several methods for modeling both existing
+\Kepler\ data and simulated 2-wheel observations.
+The methods fall into two main categories: data-driven models and
+physically motivated generative models.
+We will start by describing some data-driven methods in this section and then
+demonstrate some toy examples of generative modeling in the subsequent
+sections.
+Some of the basic ideas in our discussion of data-driven modeling should sound
+familiar to \Kepler\ experts because the PDC techniques employed by the core
+data reduction pipeline are excellent examples of this type of model.
 
 \subsection{Predicting pixels with pixels}\label{sec:pixels}
-
-One example of data-driven modeling is the set of methods that
-the core Kepler science team has developed for removing some
-systematic instrumental signals from the extracted light curves.
-The set of algorithms called PDC \citep{map-pdc1,map-pdc2} are particularly
+The PDC algorithms \citep{map-pdc1,map-pdc2} are particularly
 successful because they remove instrumental effects (assumed common between
 nearby targets on the detector) while retaining astrophysical signals (assumed
 unique to the target of interest).
@@ -349,20 +351,12 @@ using the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t
 
 We start by making the (reasonable) assumption that the observed signal---the
 flux measured in pixel $i$ at time $t_k$: $y_i (t_k)$---is a function of only
-the following variables:
-\begin{itemize}
-\item
 the ``true'' flux $f_i(t_k)$ arriving at the location of pixel $i$ during the
 integration time,
-
-\item
 bulk variations caused by the conditions of the spacecraft (for example,
 pointing shifts and temperature fluctuations) that affect every pixel in a
 systematic---but not identical---way, and
-
-\item
 instrumental noise due to the detector.
-\end{itemize}
 The goal is to find (or model) the true fluxes $f_i(t_k)$ conditioned on the
 observations $y_i(t_k)$.
 In practice, this is hard because we don't have a physical model accurate at
@@ -458,8 +452,8 @@ task. While many of the confounding signals can be well modeled by
 linear approaches, the residual error will be contain non-linear
 factors in the system which will obscure the transit signal. To leave
 only the transit signal in the residual, these non-linear factors much
-be captured with a more powerful model. This will be done using *Deep
-Learning* approaches that have recently proven very successful for
+be captured with a more powerful model. This will be done using \emph{Deep
+Learning} approaches that have recently proven very successful for
 complex image domain tasks such as object recognition \citep{Kriz12}.
 
 The Deep Learning models we intend to apply in this instance will be a
