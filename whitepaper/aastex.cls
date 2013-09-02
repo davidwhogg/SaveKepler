@@ -1,3 +1,5 @@
+% hacked by HOGG
+
 %%
 %% This is file `aastex.cls',
 %% generated with the docstrip utility.
@@ -576,7 +578,7 @@
 \def\revtex@pageid{%
  \xdef\@thefnmark{\null}%
  \@footnotetext{%
-  This \revtex@genre\space was prepared with the
+  This \textsl{white paper} was prepared with (a lightly hacked version of) the
   \revtex@org\space \LaTeX\ macros v\revtex@ver.%
  }%
 }%
