@@ -137,7 +137,7 @@ These calibration observations will improve any two-wheel data but will also
   improve the precision
   of the extant \Kepler\ data that we expect contains many undiscovered signals.
 
-\inlineitem~We discuss scientific suvey strategies in a companion \documentname\ (Montet et al.);
+\inlineitem~We discuss scientific suvey strategies in a companion \documentname\ (Montet \etal);
   in short, it is our view that \Kepler\ can still accomplish
   what many of the present authors consider its key scientific goal,
   which is \textbf{to find Earth-like planets on year-ish orbits around Sun-like stars}.
@@ -148,8 +148,6 @@ With a multi-pronged image-modeling effort and
   be used to pursue this deep and important mission.
 That said, what's written in this \documentname\ is fundamentally
   agnostic about the scientific program in the two-wheel era.
-
-\clearpage
 
 \section{Philosophy and motivation}
 
@@ -186,7 +184,7 @@ While it is obvious \emph{in principle} that we can infer
   the intra-exposure s/c pointing drift and jitter history,%
   \footnote{Indeed inference of non-trivial intra-exposure
     camera pointing trajectories has been demonstrated in the far more difficult
-    case of single-exposure natural images (\cite{whyte2010,hirsch2011}).
+    case of single-exposure natural images (\citealt{fergus2006,whyte2010,hirsch2011}).
   That is, the three-axis history of camera orientation path
     can be reliably inferred in an individual image,
     without even multiple exposures to use
@@ -194,22 +192,36 @@ While it is obvious \emph{in principle} that we can infer
   Relative to these situations, the \Kepler\ problem is a walk in the park!
   That said, the precision requirements of \Kepler\ science
     are much more challenging than those of natural image de-blurring.}
-  it is not yet obvious that such inference will directly lead to very precise photometry.
-After all, recovery of precise photometry from a source
+  and thus potentially brightness variations of stars limited only by photon noise,
+  we cannot with the existing \Kepler\ data perform a convincing test.
+Recovery of precise photometry from a source
   that is moving across the focal plane
-  requires knowledge of the device geometry and sensitivity
-  (flat-field) at the pixel level,
+  requires knowledge of not just the pointing but the device geometry and sensitivity
+  (flat-field) at the pixel level (or probably at even \emph{higher} resolution),
   along with the point-spread function (PSF) and its variations with time and position.
 When---as with \Kepler---all data have been taken at rigidly fixed pointing,
   it is hard (or maybe impossible) to obtain independent data-supported models of
   the PSF and the flat-field,
   let alone any intra-pixel sensitivity variations
   or pixel-level additive signals (like bias or dark currents).
-That is, 
+That is,
   \Kepler\ data are taken in a mode that is
   near-pessimal%
   \footnote{Neologism ``pessimal'' is the antonym of ``optimal''.}
   for the determination of calibration parameters.
+
+In the demonstrations that follow,
+  we will show that there is great promise for recovery or determination of precise calibration information
+  in the two-wheel era.
+This \documentname\ does not deliver an air-tight proposal for obtaining 10-ppm photometric precision.
+It attempts only to \emph{point the way} towards extremely precise modeling,
+  something which should be a part of any future scientific program with the
+  degraded satellite.
+The key idea is that the drift of the stars across the CCD provides
+  \emph{precisely the data we need} to determine the calibration functions.
+A multi-pronged image modeling effort along the lines outlined here
+  is almost certain to deliver large information gains to any future (or even past) \Kepler\ science program
+  at comparatively low cost.
 
 The death of \Kepler's second wheel (taking it down to two)
   occurred at a tragic moment:
@@ -219,7 +231,7 @@ The mission is on track to discover Earth-like planets
 Indeed, when signals are sparse, significance
   (as estimated by, say, a p-value)
   can grow much faster than any small power of mission lifetime.%
-  \footnote{Shouts out to Ben Weiner (Arizona) for this insight.}
+  \footnote{We thank Ben Weiner (Arizona) for this insight.}
 It is our view that \emph{\Kepler\ core goals remain outrageously interesting}.
 With this in mind, we advocate using \emph{methods of image modeling} to retain
   or approximate three-wheel photometric precision
@@ -597,7 +609,7 @@ The movement of target stars over the device
   allowing for physically plausible motion only has been applied with
   great success to the problem of camera shake removal with
   non-stationary blur within the computational photography and
-  computer vision community (\cite{whyte2010,hirsch2011}).
+  computer vision community (\cite{fergus2006,whyte2010,hirsch2011}).
 
 \item For PSF modeling we explore two alternative, yet complimentary
   strategies: parametric and non-parametric description of the PSF.
