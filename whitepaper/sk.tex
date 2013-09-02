@@ -99,7 +99,7 @@
 \binlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
   is \emph{image modeling}, that is,
   fitting to the pixel values downlinked from the \Kepler\ satellite
-  a quantitative description of pixel sensitivities,
+  a quantitative description of pixel sensitivities (flat-field),
   point-spread function (PSF),
   and sky, bias, and dark signals,
   all as a function of focal-plane position.
@@ -120,14 +120,6 @@ In particular, we show that we can infer the device flat-field at \emph{higher t
 These results are relevant to \emph{almost any} scientific goal for the repurposed mission;
   image modeling ought to play a role no matter what.
 We have several secondary recommendations:
-
-\binlineitem~If \Kepler\ continues to observe its current field,
-  we recommend shortening exposure times to 5\,min, and increasing cadence,
-  to reduce the effect of pointing drift and increase the sensitivity of the models.
-If \Kepler\ switches to observing a set of new but specially chosen ``low-torque'' fields,
-  it could continue with its current exposure times.
-The telemetry burden of any increase in cadence can be offset
-  by reducing the number of target stars.
 
 \binlineitem~It will be imperative to operate the spacecraft
   with modifications to software:
@@ -155,6 +147,7 @@ With a multi-pronged image-modeling effort and
 That said, what's written in this \documentname\ is fundamentally
   agnostic about the scientific program in the two-wheel era.
 
+\clearpage
 \section{Philosophy and motivation}
 
 The \Kepler\ Satellite%
