@@ -2,14 +2,16 @@ LATEX       = pdflatex
 BASH        = bash -c
 ECHO        = echo
 RM          = rm -rf
-RM_TMP      = ${RM} $(foreach suff, ${TMP_SUFFS}, ${NAME}.${suff})
-
 TMP_SUFFS   = pdf aux bbl blg log dvi ps eps out
 SUFF        = pdf
 
+NAME        = sk
+
+RM_TMP      = ${RM} $(foreach suff, ${TMP_SUFFS}, ${NAME}.${suff})
+
 CHECK_RERUN = grep Rerun $*.log
 
-all: sk.pdf
+all: ${NAME}.${SUFF}
 
 %.pdf: %.tex
 	${LATEX} $<

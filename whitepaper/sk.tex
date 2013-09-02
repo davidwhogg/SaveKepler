@@ -441,7 +441,72 @@ by \citet{JanSch10}.
 
 \subsection{Deep learning}\label{sec:deep}
 
-DFM: HERE'S WHERE I WOULD PUT THE FERGUS TEXT.
+In contrast to the linear conditional models outlined above, we also
+intend to explore a range of highly non-linear models for the same
+task. While many of the confounding signals can be well modeled by
+linear approaches, the residual error will be contain non-linear
+factors in the system which will obscure the transit signal. To leave
+only the transit signal in the residual, these non-linear factors much
+be captured with a more powerful model. This will be done using *Deep
+Learning* approaches that have recently proven very successful for
+complex image domain tasks such as object recognition [Kriz12].
+
+The Deep Learning models we intend to apply in this instance will be a
+convolutional neural network (CNN), similar in spirit to the LeNet
+architecture of \citet{LeCun1998}. This model is a
+multi-layered perceptron with a special connectivity structure so that
+each unit in a layer examines only a small window of the previous one
+(rather than all units) and that the weights are shared across
+different windows. Hence each layer computes a convolution of the
+feature map from the previous layer (a 2D map) with a learned filter
+and then the result is passed through a non-linear function. The
+filters are trained by back-propagating the error signal through the
+network to obtain a gradient for each parameter than can be updated
+with stochastic gradient descent. Models with many layers can capture
+highly non-linear structure of the input image, since each unit in a
+higher layer is connected to the input by multiple non-linear
+functions.
+
+We intend to adapt this model our application in the following ways:
+
+1. Spatial-only: In this model, we just attempt to model the spatial
+structure within a single 2D image. The input will be a set of stars
+around a pixel whose brightness we wish to predict (the immediately
+surrounding pixels will be masked).The output will be the brightness
+of the aforementioned pixel. This is a regression task, thus we must
+use an appropriate loss function, such as sum-squared-difference,
+rather than a classification loss such as cross-entropy. When trained
+on a set of 2D images, taken at different times, the early layers of
+the model might be expected to learn the PSF, while the higher layers
+will learn the dependencies between the brightnesses of stars (which
+should just be from confounding sources).
+
+2. Temporal-only: The drawback to the spatial-only model is that it
+cannot capture the temporal dependencies in the data. To do this we
+can take as input time series from pixels (e.g. centers of nearby
+stars) and the time series of the star of interest as output. The
+LeNet model architecture uses 2D convolutions, applied to a 2D input
+image. This must be modified to have a 1-D convolution in the time
+direction, but fully connected across the pixels. The size of the
+convolutional window dictates the amount of "history" the model can
+use for prediction.
+
+3. Spatio-temporal: This combines the above models and allows spatial
+and temporal structure to be learned. The input is a 3D sequence of
+images, with 3D convolutional filters used to produce 3D feature maps.
+The output will be sequence of patches, containing the star of
+interest over time.
+
+All three models will use data split into three disjoint sets for
+training, validation and testing, all carefully screened to avoid any
+transits. Selecting the appropriate model architecture (number of
+layers, number of feature maps per layer) is an unsolved problem in
+machine learning, thus can only be done by training a range of
+different model variants and selecting the best using the validation
+set. If the model is too large it will have too much capacity, thus
+overfit the training set. Conversely, a small model will not have
+sufficient power to predict the target star with enough fidelity to
+reveal the transit.
 
 \section{Physical modeling}\label{sec:physical}
 
@@ -587,7 +652,7 @@ The movement of target stars over the device
 \item The PSF in Kepler's two-wheel era can be decomposed in two
   distinct components: one that describes Kepler's (unchanged) system
   PSF and a second that describes the global motion/drift of the
-  spacecraft during exposure. 
+  spacecraft during exposure.
 
   For modeling the former, previous Kepler data is invaluable, which
   will tie up on the work of \cite{bryson2010} and allow a precise
@@ -730,6 +795,16 @@ Janzing,~D.\ \& Sch{\"o}lkopf,~B., 2010,
 Causal inference using the algorithmic Markov condition,
 IEEE Transactions on Information Theory, 56, 5168
 
+\bibitem[Krizhevsky \etal(1998)]{Kriz12}
+Krizhevsky,~A., Sutskever,~I., \& Hinton, G.E., 2012,
+ImageNet Classification with Deep Convolutional Neural Networks,
+NIPS
+
+\bibitem[LeCun \etal(1998)]{LeCun1998}
+LeCun,~Y., Bottou,~L., Bengio,~Y., \& Haffner, P., 1998,
+Gradient-Based Learning Applied to Document Recognition,
+IEEE, 86, 2278
+
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
 Reichenbach,~H., 1956
 \textit{The Direction of Time},
@@ -817,4 +892,4 @@ In practice, we would likely fit much larger series of images (months or more),
 rather than the 48-exposure series used here, so performance could in principle become excellent.\label{fig:intrapixel}}
 \end{figure}
 
-\end{document}
+aend{document}
