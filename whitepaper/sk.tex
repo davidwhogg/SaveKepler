@@ -627,12 +627,31 @@ The movement of target stars over the device
 
 \section{Changes to operations}\label{sec:operations}
 
-\paragraph{exposure times:}
-jitter / drift of about one pixel.
+Here are some thoughts about operational changes, relevant to image
+modeling.
 
-need to do more active and frequent work with the jets?
+\paragraph{exposure times:}
+In the pointing-stability best-case 371-roll scenario,
+  the long cadence of 30-min exposures can be continued without change.
+If the science program decides to stay in the \Kepler\ field
+  (which is consistent with our philosophy)
+  then exopsure times will have to get shorter.
+We advise setting exposure times to obtain something close to 1 pixel
+  of jitter or drift during the exposure.
+Much less than this, and the exposures are ``over-resolving'' the jitter
+  (thereby wasting telemetry bandwidth)
+Much more than this, and the angular resolution and PSF estimation is
+  likely to degrade in ways that affect photometric precision.
 
 \paragraph{telemetry of pixels:}
+Even in the 371-roll scenario, stars drift steadily across the focal plane,
+  requiring either much larger apertures to be downlinked,
+  or else adaptive aperture control from exposure to exposure.
+The former comes at telemetry bandwidth cost,
+  the latter at satellite software upgrade cost.
+From an image-modeling perspective, we don't have a position on this.
+From a scientific perspective, we much prefer a change to 
+
 need to make apertures bigger or real-time adaptive?
 
 \paragraph{target list:}
