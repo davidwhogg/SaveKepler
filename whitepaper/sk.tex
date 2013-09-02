@@ -95,6 +95,7 @@
 ~
 \clearpage
 
+
 \paragraph{executive summary:}
 \binlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
   is \emph{image modeling}, that is,
@@ -112,7 +113,8 @@ It reduces the precision of aperture photometry,
 \textbf{We propose developing a probabilistic generative model of the \Kepler\ pixels.}
 We argue that this may permit continuance of photometry at 10-ppm-level precision.
 We demonstrate some baby steps towards precise models
-  in both data-driven (flexible) and physics-driven (interpretably parameterized) modes.
+  along both data-driven (flexible) and physics-driven (interpretably parameterized)
+  directions.
 We demonstrate that the expected drift or jitter in positions in the two-weel era
   will help enormously with constraining calibration parameters.
 In particular, we show that we can infer the device flat-field at \emph{higher than pixel resolution};
@@ -309,10 +311,8 @@ We will start by describing some data-driven methods in this section and then
 demonstrate some toy examples of generative modeling in the subsequent
 sections.
 In this section, we draw on expertise in the fields of machine learning,
-causal inference and computer vision to propose non-parametric models to
-remove the systematics in \emph{existing} \Kepler\ observations.
-Most observing strategies possible in 2-wheel mode will result in observations
-where many of the existing systematic effects will be amplified.
+causal inference and computer vision to propose non-parametric models for systematics removal in \emph{existing} \Kepler\ observations.
+Most 2-wheeled observing strategies will amplify existing systematics.
 With this in mind, it is clear that improving the precision of techniques used
 to analyze existing data will likely be applicable to the data taken in
 suboptimal operational modes.
@@ -394,13 +394,13 @@ The idea behind our approach is that if we now try to predict a measurement
 $y_i (t_k)$ from variables known to be \emph{independent} of $f_i (t_k)$ (the
 true flux), then whatever we \emph{can} predict has nothing to do with
 $f_i (t_k)$.
-Whatever is predictable better than chance---whatever statistical dependence
-we find---must, by Reichenbach's principle, be due to joint confounders that
+The statistical dependence
+we find must, by Reichenbach's principle, be due to joint confounders that
 affect both our measurement and the other variables we are using to predict
 it.
 
 For simplicity, we assume that the systematic confounders affect the signal
-additively but it may be possible to generalize the method.
+additively (although it may be possible to generalize the method).
 Under this assumption, the model can be written as
 \begin{eqnarray}
 y_i(t_k) = f_i (t_k) + \sum_{i^\prime,\,k^\prime} c_{i^\prime\,k^\prime}\,
@@ -409,7 +409,7 @@ y_i(t_k) = f_i (t_k) + \sum_{i^\prime,\,k^\prime} c_{i^\prime\,k^\prime}\,
 We propose to estimate the vector of coefficients $\mathbf{c}$ by training a
 regression model on the values $y_{i^\prime} (t_{k^\prime})$.
 In this model, the true flux $f_i (t_k)$ is considered ``noise''---even though
-it the main signal of interest.
+it is the main signal of interest.
 This works because (as described above) the signal is independent of the
 functions $y_{i^\prime} (t_{k^\prime})$ being used to build the model.
 
@@ -420,18 +420,14 @@ induce correlations between these signals in different targets.
 Suppose that we are only interested in temporally compact astrophysical
 signals---exoplanet transits, for example.
 In this case, we can substantially improve the predictive power of the model
-by using information from the (recent) past of the pixels targeting the star
+by using information from the (recent) history of the pixels targeting the star
 that we are trying to model.
 In this context, a weaker version of the independence assumptions still
 applies.
-The signal is independent of the data targeting \emph{other stars} and the
-observations targeting the target of interest for times $t_{k^\prime}$ where
-$|t_k - t_{k^\prime}| > \Delta$ where $\Delta$ is longer than the maximum
+Observations of the target of interest are independent of observations of \emph{other stars} for times $t_{k^\prime}$, where $|t_k - t_{k^\prime}| > \Delta$ and $\Delta$ is longer than the maximum
 duration of a transit.
-This independence assumption also has a physical interpretation: in addition
-to all the above independences, the star's light emission is independent of
-where the planet is located around the star.
-Therefore, the light arriving from the star system contains no information
+This independence assumption has a physical interpretation: in addition
+to all the above independences, the flux of a planet-hosting star is independent of planet position \citep[except in rare cases of close-in planets that produce phase variations,][]{esteves2013}. Therefore, the light arriving from the star system contains no information
 about the transit signal except while the planet is in front of (or behind)
 the star.
 This can be viewed as an assumption of independence of the stellar limb
@@ -449,7 +445,7 @@ by \citet{JanSch10}.
 In contrast to the linear conditional models outlined above, we also
 intend to explore a range of highly non-linear models for the same
 task. While many of the confounding signals can be well modeled by
-linear approaches, the residual error will be contain non-linear
+linear approaches, the residual error will contain non-linear
 factors in the system which will obscure the transit signal. To leave
 only the transit signal in the residual, these non-linear factors much
 be captured with a more powerful model. This will be done using \emph{Deep
@@ -466,7 +462,7 @@ different windows. Hence each layer computes a convolution of the
 feature map from the previous layer (a 2D map) with a learned filter
 and then the result is passed through a non-linear function. The
 filters are trained by back-propagating the error signal through the
-network to obtain a gradient for each parameter than can be updated
+network to obtain a gradient for each parameter that can be updated
 with stochastic gradient descent. Models with many layers can capture
 highly non-linear structure of the input image, since each unit in a
 higher layer is connected to the input by multiple non-linear
@@ -531,7 +527,7 @@ In a physical model, we build highly parameterized models
 These are compared with the data probabilistically,
   through a likelihood function.
 For the purposes of demonstrating the physical modeling direction,
-  in this part of the \documentname\ we use simulated \Kepler\ data,
+  in this part of the \documentname\ we use simulated \Kepler\ data
   to demonstrate feasibility.
 As with the previous \sectionname, the demonstrations and discussions here are designed
   to be \emph{illustrative};
@@ -656,7 +652,7 @@ MH: THE FOLLOWING TEXT NEEDS TO BE REVISED TO BE MORE IN PROPOSAL STYLE.
 
 Drift will cause the PSF to vary from exposure to exposure due to the
 random nature of the jitter introduced by pointing inaccuracy. While
-previously due to stable pointing the jitter contributed to the
+previously, due to stable pointing, the jitter contributed to the
 Kepler's optical PSF in form of an enlarged PSF, in the two-wheel era
 jitter will render the PSF time-varying and to change from exposure to
 exposure. Therefore, we argue that precise PSF modeling is required on
@@ -794,6 +790,11 @@ BTM is supported by the NSF Graduate Research Fellowship grant DGE-1144469.
 Bryson,~S.~T., Tenenbaum,~P., Jenkins,~J.~M., \etal, 2010,
 The Kepler Pixel Response Function,
 \apjl, 713 L97
+
+\bibitem[Esteves \etal(2013)]{esteves2013}
+Esteves,~L.~J., De Mooij,~E.~J.~W., Jayawardhana,~R., \etal, 2013,
+Optical Phase Curves of Kepler Exoplanets,
+\apjl, 772 51E
 
 \bibitem[Fergus \etal(2006)]{fergus2006}
 Fergus, R., Singh, B., Hertzmann, A., Roweis, S.~T., Freeman, W.~T., 2006,
