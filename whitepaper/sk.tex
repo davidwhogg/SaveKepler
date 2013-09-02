@@ -437,6 +437,7 @@ by \citet{JanSch10}.
   to change from exposure to exposure. Therefore, we argue that
   precise PSF modeling is required on an individual exposure level to
   maintain high-precision photometry.
+
 \item The PSF in Kepler's two-wheel era can be decomposed in two
   distinct components: one that describes Kepler's (unchanged) system
   PSF and a second that describes the global motion/drift of the
@@ -458,19 +459,20 @@ by \citet{JanSch10}.
   affecting the image in a globally consistent way. Hence, with
   precise knowledge of the detector's geometry and its possibly time
   and space-varying PRF, all star images from an individual exposure
-  will help to constrain this motion. Any additional knowledge about
-  the spacecraft's pointing position will facilitate the estimation
-  procedure. Note, that for an individual exposure we can be agnostic
-  about the chronological history and temporal evolution, as we are
-  interested in its time integrated effect on the image only. The
-  incorporation of a geometric model allowing for physically plausible
-  motion only has been applied with great success to the problem of
-  camera shake removal with non-stationary blur within the
-  computational photography and computer vision community (see
-  \cite{hirsch2011}).
+  will help to constrain this (to some extent unkown) motion. Any
+  additional knowledge about the spacecraft's pointing position will
+  facilitate the estimation procedure. Note, that for an individual
+  exposure we can be agnostic about the chronological history and
+  temporal evolution, as we are interested in its time integrated
+  effect on the image only. The incorporation of a geometric model
+  allowing for physically plausible motion only has been applied with
+  great success to the problem of camera shake removal with
+  non-stationary blur within the computational photography and
+  computer vision community (see \cite{hirsch2011}).
 
 \item For PSF modeling we explore two alternative, yet complimentary
   strategies: parametric and non-parametric description of the PSF.
+
 \item It hasn't been shown so far that precise PSF modeling does
   improve photometry. What do we gain over simple aperture averaging
   and why? Can we backup our claim by references?
