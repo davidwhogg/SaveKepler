@@ -345,16 +345,10 @@ sensitivity, as encoded in large numbers of pixel histories, provides a
 better estimate of the conditions at a given moment than an
 instantaneous measurement considered alone.
 
-\paragraph{Implementation}
 In this section,
 we will discuss the calibration of pixel $i$ of target star $n$ at time $t_k$
 using the pixels $i^\prime$ on target $m \ne n$ in the sliding window $t_k -
 \delta t \le t_{k^\prime} \le t_k + \delta t$.
-% As an extension, we can also use the data in pixels $i^\prime$ from the target
-% $n$ (including pixel $i$) in the windows $t_k - \Delta - \delta t \le t \le
-% t_k - \Delta$ and $t_k + \Delta \le t \le t_k + \Delta + \delta t $ for
-% $\Delta \gg $ the timescale of the signal of interest (for example, a
-% transit).
 
 We start by making the (reasonable) assumption that the observed signal---the
 flux measured in pixel $i$ at time $t_k$: $y_i (t_k)$---is a function of only
@@ -371,9 +365,7 @@ the required levels.
 Instead, we propose an effective model based on the observations described
 above.
 
-The efficaciousness of our method relies on the following assumptions:
-\begin{itemize}
-\item
+Our method relies on assumptions of ``independence'' and ``join confounding''.
 \emph{Independence}:
 we assume that the true fluxes are independent: $f_i(t_k) \independent
 f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$.
@@ -381,15 +373,13 @@ We also assume there may be additional observables (for example, temperature)
 for which this independence holds.
 It is important to note here that we are only considering pixels $i^\prime$
 from a \emph{different} star than the star targeted by the pixel $i$.
-
-\item
 \emph{Joint confounding}:
 we assume that any confounding effect on $y_i(t_k)$ will also affect a number
 of other values $y_{i^\prime} (t_{k^\prime})$ (where $i \ne i^\prime$ and
 $t_{k^\prime}$ is not necessarily equal to $t_k$).
 This means that the overall systematic affecting $y_i(t_j)$ can (in
 principle) be predicted from from the other $y_{i^\prime}(t_{k^\prime})$.
-\end{itemize}
+
 To motivate our independence assumption, we refer to Reichenbach's principle
 \citep{Reichenbach1956}.
 It states that whenever we find two observables to be statistically dependent,
@@ -423,7 +413,7 @@ it the main signal of interest.
 This works because (as described above) the signal is independent of the
 functions $y_{i^\prime} (t_{k^\prime})$ being used to build the model.
 
-\paragraph{Autoregressive generalization}
+\subsection{Autoregressive generalization}
 The model discussed in the previous section should retain \emph{any true
 astrophysical signals} because there is no physical mechanism that would
 induce correlations between these signals in different targets.
@@ -873,6 +863,12 @@ Proceedings of the IEEE International Conference on Computer Vision and Pattern 
 \end{thebibliography}
 
 \clearpage
+
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{kepler-20.png}%
+\caption{blurgleshorts.\label{fig:regression}}
+\end{figure}
+
 \begin{figure}
 \includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-100.png}%
 \includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-101.png}%
