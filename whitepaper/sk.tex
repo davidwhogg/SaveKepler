@@ -317,19 +317,22 @@ successful because they remove instrumental effects (assumed common between
 nearby targets on the detector) while retaining astrophysical signals (assumed
 unique to the target of interest).
 These methods use a data-driven linear model built directly from the aperture
-photometry of nearby stars; that is, they operate on coadded pixel values, not individual pixels.
+photometry of nearby stars; that is, they operate on coadded pixel values,
+not individual pixels.
 
-Here, we present a demonstration in the form of an extension to this model that takes advantage of the causal
-structure of the problem (CITE SOMETHING).
+Here, we present a demonstration in the form of an extension to this model
+that explicitly takes advantage of the causal structure of the problem (CITE
+SOMETHING).
 We also argue that this procedure is best performed \emph{at the pixel level}
 instead of on the extracted photometric time series.
 To start, we describe a model to remove systematic effects from the time
 series in a single pixel using the fluxes of pixels from some $K\ge1$ nearby
 star(s) and the ``historical'' time series of the target pixel.
 The main insight of this method is that the systematic effects are actually
-\emph{causally predictable}.
-In other words, the (recent) history of the detector sensitivity,
-as encoded in large numbers of pixel histories, provides a
+predictable based on the history of the system and not just on the current
+state.
+In other words, the (recent) history (and possibly the future) of the detector
+sensitivity, as encoded in large numbers of pixel histories, provides a
 better estimate of the conditions at a given moment than an
 instantaneous measurement considered alone.
 
@@ -338,11 +341,11 @@ In this section,
 we will discuss the calibration of pixel $i$ of target star $n$ at time $t_k$
 using the pixels $j$ on target $m \ne n$ in the sliding window $t_k - \delta t
 \le t \le t_k + \delta t$.
-As an extension, we can also use the data in pixels $i^\prime$ from the target
-$n$ (including pixel $i$) in the windows $t_k - \Delta - \delta t \le t \le
-t_k - \Delta$ and $t_k + \Delta \le t \le t_k + \Delta + \delta t $ for
-$\Delta \gg $ the timescale of the signal of interest (for example, a
-transit).
+% As an extension, we can also use the data in pixels $i^\prime$ from the target
+% $n$ (including pixel $i$) in the windows $t_k - \Delta - \delta t \le t \le
+% t_k - \Delta$ and $t_k + \Delta \le t \le t_k + \Delta + \delta t $ for
+% $\Delta \gg $ the timescale of the signal of interest (for example, a
+% transit).
 
 We start by making the (reasonable) assumption that the observed signal---the
 flux measured in pixel $i$ at time $t_k$: $y_i (t_k)$---is a function of only
@@ -375,6 +378,8 @@ we assume that the true fluxes are independent: $f_i(t_k) \independent
 f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$.
 We also assume there may be additional observables (for example, temperature)
 for which this independence holds.
+It is important to note here that we are only considering pixels $i^\prime$
+from a \emph{different} star than the star targeted by the pixel $i$.
 
 \item
 \emph{Joint confounding}:
