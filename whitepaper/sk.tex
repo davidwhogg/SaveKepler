@@ -297,18 +297,30 @@ All of the code used to make the demonstrations in this \documentname\ is availa
   \url{https://github.com/dfm/kplr},
   and most of our probabilistic inference involves ensemble sampling
   with \emcee\ (\citealt{emcee}), which is at
-  \url{http://dan.iel.fm/emcee/}.}
+  \url{http://dan.iel.fm/emcee}.}
 We encourage the \Kepler\ community to fork, build on, and contribute back to these code bases.
 
 \section{Data-driven modeling}\label{sec:datadriven}
 
 In this \documentname, we sketch several methods for modeling both existing
 \Kepler\ data and simulated 2-wheel observations.
-The methods fall into two main categories: data-driven models and
-physically motivated generative models.
+The discussion here should be viewed as an illustration of potentially
+interesting data analysis techniques and not as a definitive (or even
+fully-formed) argument.
+That being said, the preliminary results seem promising.
+The methods that we explore fall into two main categories: data-driven models
+and physically motivated generative models.
 We will start by describing some data-driven methods in this section and then
 demonstrate some toy examples of generative modeling in the subsequent
 sections.
+In this section, we draw on expertise in the fields of machine learning,
+causal inference and computer vision to propose non-parametric models to
+remove the systematics in \emph{existing} \Kepler\ observations.
+Most observing strategies possible in 2-wheel mode will result in observations
+where many of the existing systematic effects will be amplified.
+With this in mind, it is clear that improving the precision of techniques used
+to analyze existing data will likely be applicable to the data taken in
+suboptimal operational modes.
 Some of the basic ideas in our discussion of data-driven modeling should sound
 familiar to \Kepler\ experts because the PDC techniques employed by the core
 data reduction pipeline are excellent examples of this type of model.
