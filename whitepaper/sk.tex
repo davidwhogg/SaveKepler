@@ -471,7 +471,7 @@ As with the previous \sectionname, the demonstrations and discussions here are d
 \subsection{Toy simulation and modeling}\label{sec:toys}
 
 Motivated by what we call the ``371-roll scenario''%
-  \footnote{More-or-less the most stable pointing option according to
+  \footnote{More-or-less the most stable pointing option for the \Kepler~Field according to
     the \textit{Explanatory Appendix to the Kepler Project
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
@@ -633,16 +633,18 @@ modeling.
 \paragraph{exposure times:}
 In the pointing-stability best-case 371-roll scenario,
   the long cadence of 30-min exposures can be continued without change.
-If the science program decides to stay in the \Kepler\ Field
-  (which is consistent with our philosophy)
-  then exopsure times will have to get shorter.
-We advise setting exposure times to obtain something close to 1 pixel
+If the science program obviates the 371-roll,
+  then exopsure times might have to get shorter.
+In a worst-case scenario%
+  ---of either a failure of the 371-roll predictions,
+  or else requirements that make it impossible to implement---%
+  we advise setting exposure times to obtain something close to 1 pixel
   of jitter or drift during the exposure.
 Much less than this, and the exposures are ``over-resolving'' the jitter
   (thereby wasting telemetry bandwidth)
 Much more than this, and the angular resolution and PSF estimation is
   likely to degrade in ways that affect photometric precision.
-One interesting consequence of sticking with the \Kepler\ Field and shortening
+One interesting consequence of sticking with the \Kepler~Field and shortening
   exposure times is that the mission could deliver better information
   about transit-timing variations, transit-duration variations, and asteroseismology.
 
