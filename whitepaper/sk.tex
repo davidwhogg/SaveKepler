@@ -1,7 +1,7 @@
 % This file is part of the SaveKepler project.
 % Copyright 2013 the authors.
 
-\documentclass[letterpaper,12pt,preprint]{aastex}
+\documentclass[letterpaper,12pt,whitepaper]{haastex}
 \usepackage{enumitem, color}
 \definecolor{hypercolor}{RGB}{0,0,127}
 \usepackage[%
@@ -28,7 +28,8 @@
 \newcommand{\emcee}{\project{emcee}}
 \newcounter{inlineitem}
 \setcounter{inlineitem}{0}
-\newcommand{\inlineitem}{\refstepcounter{inlineitem}\textbf{\textsl{(\theinlineitem)}}}
+\newcommand{\binlineitem}{\refstepcounter{inlineitem}\textbf{\textsl{(\theinlineitem)}}}
+\newcommand{\inlineitem}{\refstepcounter{inlineitem}{\textsl{(\theinlineitem)}}}
 \newcounter{address}
 \setlength{\parskip}{0ex}
 
@@ -95,24 +96,23 @@
 \clearpage
 
 \paragraph{executive summary:}
-\inlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
-  is \emph{image modeling}%
-  ---building a detailed model of pixel sensitivities
-  point-spread function,
+\binlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
+  is \emph{image modeling}, that is,
+  fitting to the pixel values downlinked from the \Kepler\ Satellite
+  a quantitative description of pixel sensitivities,
+  point-spread function (PSF),
   and sky, bias, and dark signals,
-  all as a function of focal-plane position%
-  ---along with a model of the position and brightness of every star in the field.
-This level of modeling has been required for \Kepler\ so far
-  because the photometric precision has been maintained through pointing stability.
+  all as a function of focal-plane position.
+This kind of modeling has not been required for \Kepler\ so far
+  because its aperture-photometry precision has been maintained through pointing stability.
 The degraded pointing precision in two-wheel operations will be a blessing as well as a curse:
-It reduces the precision of naive aperture photometry,
-  but it provides data diversity that permits inference
-  of the detector sensitivity map and the point-spread function.
+It reduces the precision of aperture photometry,
+  but it provides diversity that permits inference
+  of the detector sensitivity map and PSF.
 \textbf{We propose developing a probabilistic generative model of the \Kepler\ pixels.}
 We argue that this may permit continuance of photometry at 10-ppm-level precision.
 We demonstrate some baby steps towards precise models
-  along both data-driven (flexible) and physics-driven (interpretably parameterized)n
-  directions.
+  in both data-driven (flexible) and physics-driven (interpretably parameterized) modes.
 We demonstrate that the expected drift or jitter in positions in the two-weel era
   will \textsl{(a)}~help with constraining these kinds of models,
   and \textsl{(b)}~be obviated (in terms of loss of precision) by such modeling.
@@ -121,7 +121,7 @@ We also show that we can infer the device flat-field at \emph{higher than pixel 
 These results are relevant to \emph{almost any} scientific goal for the repurposed mission.
 We have several secondary recommendations:
 
-\inlineitem~If \Kepler\ continues to observe its current field,
+\binlineitem~If \Kepler\ continues to observe its current field,
   we recommend shortening exposure times to 5\,min, and increasing cadence,
   to reduce the effect of pointing drift and increase the sensitivity of the models.
 If \Kepler\ switches to observing a set of new but specially chosen ``low-torque'' fields,
@@ -129,21 +129,21 @@ If \Kepler\ switches to observing a set of new but specially chosen ``low-torque
 The telemetry burden of any increase in cadence can be offset
   by reducing the number of target stars.
 
-\inlineitem~It will be imperative to operate the spacecraft
+\binlineitem~It will be imperative to operate the spacecraft
   with modifications to software:
 Either the pointing will need to be adjusted frequently using
   the two operational wheels and some propellant;
   or else the telemetered focal-plane apertures will have to be enlarged;
   or else the apertures will have to be adapted in real time to follow drifting stars.
 
-\inlineitem~It will be wise to perform
+\binlineitem~It will be wise to perform
   deliberate focus pulls, dithers, and integration-time adjustments;
   these will provide much more data support for hard-to-constrain calibration parameters.
 These calibration observations will improve any two-wheel data but will also
   improve the precision
   of the extant \Kepler\ data that we expect contains many undiscovered signals.
 
-\inlineitem~We discuss scientific suvey strategies in a companion \documentname\ (Montet \etal);
+\binlineitem~We discuss scientific suvey strategies in a companion \documentname\ (Montet \etal);
   in short, it is our view that \Kepler\ can still accomplish
   what many of the present authors consider its key scientific goal,
   which is \textbf{to find Earth-like planets on year-ish orbits around Sun-like stars}.
@@ -297,7 +297,9 @@ All of the code used to make the demonstrations in this \documentname\ is availa
   \url{https://github.com/dfm/kplr},
   and most of our probabilistic inference involves ensemble sampling
   with \emcee\ (\citealt{emcee}), which is at
-  \url{http://dan.iel.fm/emcee}.}
+  \url{http://dan.iel.fm/emcee}.
+  This \documentname\ itself was developed and lives at
+  \url{https://github.com/davidwhogg/SaveKepler}.}
 We encourage the \Kepler\ community to fork, build on, and contribute back to these code bases.
 
 \section{Data-driven modeling}\label{sec:datadriven}
@@ -488,10 +490,7 @@ higher layer is connected to the input by multiple non-linear
 functions.
 
 We intend to adapt this model to our application in the following ways:
-
-\begin{enumerate}
-\item
-\emph{Spatial-only}: In this model, we just attempt to model the spatial
+\setcounter{inlineitem}{0}\inlineitem~\emph{Spatial-only}: In this model, we just attempt to model the spatial
 structure within a single 2D image. The input will be a set of stars
 around a pixel whose brightness we wish to predict (the immediately
 surrounding pixels will be masked).The output will be the brightness
@@ -503,8 +502,7 @@ the model might be expected to learn the PSF, while the higher layers
 will learn the dependencies between the brightnesses of stars (which
 should just be from confounding sources).
 
-\item
-\emph{Temporal-only}: The drawback to the spatial-only model is that it
+\inlineitem~\emph{Temporal-only}: The drawback to the spatial-only model is that it
 cannot capture the temporal dependencies in the data. To do this we
 can take as input time series from pixels (e.g. centers of nearby
 stars) and the time series of the star of interest as output. The
@@ -514,13 +512,11 @@ direction, but fully connected across the pixels. The size of the
 convolutional window dictates the amount of ``history'' the model can
 use for prediction.
 
-\item
-\emph{Spatio-temporal}: This combines the above models and allows spatial
+\inlineitem~\emph{Spatio-temporal}: This combines the above models and allows spatial
 and temporal structure to be learned. The input is a 3D sequence of
 images, with 3D convolutional filters used to produce 3D feature maps.
 The output will be sequence of patches, containing the star of
 interest over time.
-\end{enumerate}
 
 All three models will use data split into three disjoint sets for
 training, validation and testing, all carefully screened to avoid any
