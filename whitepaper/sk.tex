@@ -461,7 +461,7 @@ by \citet{JanSch10}.
 
 To demonstrate this method, we preformed an autoregressive fit to the same
 data as discussed in the previous section (quarter 9; Kepler-20).
-The results of this fit are shown in the bottom panel of
+The results of this fit are shown in the middle panel of
 \figurename~\ref{fig:reg-model}.
 The difference between this and the previous demonstration is that, in this
 case, a 2.5 hour window is included from the pixels in the Kepler-20 aperture
@@ -906,7 +906,16 @@ Proceedings of the IEEE International Conference on Computer Vision and Pattern 
 
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{kepler-20.png}%
-\caption{blurgleshorts.\label{fig:reg-model}}
+\caption{Results of our data-driven pixel-level systematics model applied to
+the quarter 9 observations of Kepler-20 and compared to the PDC light curve.
+\textsl{(top)}~The basic model (equation~\ref{eq:reg-model}) applied to the
+pixel time series. This figure shows the results of coadding the
+\emph{residuals} ($f_i (t_k)$ in equation~\ref{eq:reg-model}) using the
+optimal aperture from the \Kepler\ pipeline.
+\textsl{(middle)}~The same as the top panel using an autoregressive model
+(with $\Delta = 12\,\mathrm{hours}$).
+\textsl{(bottom)}~The results of doing simple aperture photometry and then
+running PDC on the extracted light curve. \label{fig:reg-model}}
 \end{figure}
 
 \begin{figure}
