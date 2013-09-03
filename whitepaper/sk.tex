@@ -368,9 +368,9 @@ Instead, we propose an effective model based on the observations described
 above.
 
 Our method relies on assumptions of ``independence'' and ``join confounding''.
-\emph{Independence}:
+\emph{Independence} (motivated by Reichenbach's principle; \citealt{Reichenbach1956}):
 we assume that the true fluxes are independent: $f_i(t_k) \independent
-f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$.
+f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$ 
 We also assume there may be additional observables (for example, temperature)
 for which this independence holds.
 It is important to note here that we are only considering pixels $i^\prime$
@@ -381,16 +381,6 @@ of other values $y_{i^\prime} (t_{k^\prime})$ (where $i \ne i^\prime$ and
 $t_{k^\prime}$ is not necessarily equal to $t_k$).
 This means that the overall systematic affecting $y_i(t_j)$ can (in
 principle) be predicted from from the other $y_{i^\prime}(t_{k^\prime})$.
-
-To motivate our independence assumption, we refer to Reichenbach's principle
-\citep{Reichenbach1956}.
-It states that whenever we find two observables to be statistically dependent,
-then there must be an underlying causal structure responsible for these
-dependences.
-This structure can be a direct causal link, or an unobserved confounder
-affecting both observables.
-Vice versa, if there is no causal structure connecting both observables, they
-must be statistically independent.
 
 The idea behind our approach is that if we now try to predict a measurement
 $y_i (t_k)$ from variables known to be \emph{independent} of $f_i (t_k)$ (the
@@ -442,9 +432,12 @@ signals---exoplanet transits, for example.
 In this case, we can substantially improve the predictive power of the model
 by using information from the (recent) history of the pixels targeting the star
 that we are trying to model.
-In this context, a weaker version of the independence assumptions still
-applies.
-Observations of the target of interest are independent of observations of
+That is, by using not just pixels from other stars, but using pixels
+from (an appropriately chosen) time-window in past history of the
+current star, we can model not just the instrumental variations but
+also the stellar variations, without messing up the transits.
+
+In this case, observations of the target of interest are independent of observations of
 \emph{other stars} for times $t_{k^\prime}$, where $|t_k - t_{k^\prime}| >
 \Delta$ and $\Delta$ is longer than the maximum duration of a transit.
 This independence assumption has a physical interpretation: in addition
@@ -477,12 +470,12 @@ be extremely valuable and these results show promise.
 \subsection{Deep learning}\label{sec:deep}
 
 In contrast to the linear conditional models outlined above, we also
-intend to explore a range of highly non-linear models for the same
-task. While many of the confounding signals can be well modeled by
-linear approaches, the residual error will contain non-linear
-factors in the system which will obscure the transit signal. To leave
-only the transit signal in the residual, these non-linear factors much
-be captured with a more powerful model. This will be done using \emph{Deep
+recommend exploring a range of highly non-linear models for the same
+task. While many of the confounding signals will be linear-ish,
+the residuals will contain non-linear
+factors in the system that might obscure the transit signal. To leave
+only the transit signal in the residual, these non-linear but unknown factors much
+be captured with a more powerful model. This can be done using \emph{Deep
 Learning} approaches that have recently proven very successful for
 complex image domain tasks such as object recognition \citep{Kriz12}.
 
@@ -496,25 +489,22 @@ feature map from the previous layer (a 2D map) with a learned filter
 and then the result is passed through a non-linear function.  Models with many layers can capture
 highly non-linear structure of the input image, since each unit in a
 higher layer is connected to the input by multiple non-linear
-functions.
+functions.  We recommend three approaches:
 
-We intend to adapt this model to our application in the following ways:
 \setcounter{inlineitem}{0}\inlineitem~\emph{Spatial-only}: In this model, we just attempt to model the spatial
 structure within a single 2D image. The input will be a set of stars
 around a pixel whose brightness we wish to predict (the immediately
-surrounding pixels will be masked).The output will be the brightness
-of the aforementioned pixel. This is a regression task, thus we must
-use an appropriate loss function, such as sum-squared-difference,
-rather than a classification loss such as cross-entropy. When trained
+surrounding pixels will be masked). The output will be the brightness
+of the aforementioned pixel.  When trained
 on a set of 2D images, taken at different times, the early layers of
 the model might be expected to learn the PSF, while the higher layers
 will learn the dependencies between the brightnesses of stars (which
 should just be from confounding sources).
 
 \inlineitem~\emph{Temporal-only}: The drawback to the spatial-only model is that it
-cannot capture the temporal dependencies in the data. To do this we
-can take as input time series from pixels (e.g. centers of nearby
-stars) and the time series of the star of interest as output. The
+cannot capture the temporal dependencies in the data.  Instead, we
+can take as input time series from pixels (centers of nearby
+stars, say) and the time series of the star of interest as output. The
 LeNet model architecture uses 2D convolutions, applied to a 2D input
 image. This must be modified to have a 1-D convolution in the time
 direction, but fully connected across the pixels. The size of the
@@ -528,8 +518,8 @@ The output will be sequence of patches, containing the star of
 interest over time.
 
 All three models will use data split into three disjoint sets for
-training, validation and testing, all carefully screened to avoid any
-transits. Selecting the appropriate model architecture (number of
+\emph{training, validation and testing}, all screened to avoid any
+transits where possible. Selecting the appropriate model architecture (number of
 layers, number of feature maps per layer) is an unsolved problem in
 machine learning, thus can only be done by training a range of
 different model variants and selecting the best using the validation
@@ -856,10 +846,11 @@ It is a pleasure to thank Sameer Agarwal (Google) and Keir Mierle
   (Locu) for releasing the \project{Ceres} non-linear least squares
   solver (\url{https://code.google.com/p/ceres-solver/}) and for making
   suggestions that enabled this work.
-We benefitted from useful conversations with
+We benefitted from useful conversations with and assistance from
   Ross Fadely (NYU),
-  Malte Kuhlmann (MPI-IS), and
-  Hans-Walter Rix (MPIA).
+  Malte Kuhlmann (MPI-IS),
+  Hans-Walter Rix (MPIA), and
+  Ben Weiner (Arizona).
 DWH, RF, and DFM are all partially supported by NSF grant IIS-1124794.
 MH acknowledges support from the European Research Council in the form of a Starting Grant with number 240672.
 BTM is supported by the NSF Graduate Research Fellowship grant DGE-1144469.
