@@ -407,7 +407,7 @@ To demonstrate this method, we applied equation~\ref{eq:reg-model} to the
 quarter 9 observations of \Kepler-20, a G-type star with 5 known transiting
 exoplanets \citep{kepler20}.
 The results are shown in the top panel of \figurename~\ref{fig:reg-model}.
-To generate this figure, we downloaded the target pixel files from
+To generate this \figurename, we downloaded the target pixel files from
 \MAST\footnote{The Mikulski Archive for Space Telescopes;
 \url{http://archive.stsci.edu/}} using
 \kplr\footnote{\url{http://dan.iel.fm/kplr}}
@@ -676,7 +676,7 @@ coadd.  This extreme example is designed to maximize the observable impact of mo
 
 Again, drift and jitter were simulated by moving the boresight
 of the simulated telescope every 6 seconds during a total integration
-time of 30 minutes. The left panel of Fig.~\ref{fig:photometry} shows
+time of 30 minutes. The left panel of \figurename~\ref{fig:photometry} shows
 4x higher-resolved images of the generated PSFs at a resolution of
 0.995~arcsec. The panel right next to it shows the convolved and
 noisy simulated images of two stars with variable brightness,
@@ -686,13 +686,13 @@ iid from a Gaussian with a standard deviation of 150 e$^-$ assuming a
 dynamic range of $1.1\times 10^6$ e$^{-}$ \cite{gilliland2011}. For model
 fitting we assume knowledge of both the star positions (for real data
 provided by \emph{Kepler's Input Catalog}) and PSF. The third and
-fourth columns of Fig.~\ref{fig:photometry} show the model images and
+fourth columns of \figurename~\ref{fig:photometry} show the model images and
 their corresponding differences when compared to the simulated
 images.
 
 Table~\ref{tab:photometry} summarizes the photometric results
 of our model fitting approach and compares them with the results of
-optimal aperture averaging. The figures reported in
+optimal aperture averaging. The values reported in
 Table~\ref{tab:photometry} have been averaged over 100 noise
 realisations and suggest that image modeling does improve over simple
 aperture photometry even in \Kepler's two-wheel era. Note that the
@@ -964,7 +964,7 @@ IEEE International Conference on Computer Vision and Pattern Recognition (CVPR 2
 \caption{Results of our data-driven pixel-level systematics model applied to
 the quarter 9 observations of \Kepler-20 and compared to the PDC light curve.
 \textsl{(top)}~The basic model (equation~\ref{eq:reg-model}) applied to the
-pixel time series. This figure shows the results of coadding the
+pixel time series. This \figurename\ shows the results of coadding the
 \emph{residuals} ($f_i (t_k)$ in equation~\ref{eq:reg-model}) using the
 optimal aperture from the \Kepler\ pipeline.
 \textsl{(middle)}~The same as the top panel using an autoregressive model
@@ -1072,7 +1072,7 @@ Modeling approach &  $8.21 \pm 4.46$ \\
   photometric accuracy over aperture averaging even in the two-wheel
   era with a drift as large as 27~arcsec for a 30~min exposure.
   For averaging optimal apertures have been used (exemplary one is depicted as red
-  frame in the top panel in the figure above). Note, that in the drift case the footprints of the two
+  frame in the top panel in the \figurename\ above). Note, that in the drift case the footprints of the two
   stars overlap, such that photometric measurement is not possible by
   simple aperture photometry.}
 
