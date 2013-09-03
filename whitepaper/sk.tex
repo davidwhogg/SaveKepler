@@ -676,36 +676,48 @@ The movement of target stars over the device
 
 \subsection{Photometry and modeling}\label{sec:photometry}
 
-
-In a toy experiment we show that precise image modeling can facilitate
-and improve photometry. To this end we first simulate high-resolution
-PSFs for both Kepler's nominal and two-wheel operation era. As in the
-experiment above, we use a simplified two component Gaussian PSF model
-and assume jitter, normally distributed with a standard deviation of
-one arcsecond. While in the previous experiment we assumed a minimal
-drift in the ``371-roll scenario'', here we work with a much larger
-drift of 1.4 degrees in 4 days as described on page 6 of the
-call. Again, drift and jitter were simulated by moving the boresight
+Here we demonstrate in a toy example that precise image modeling can
+facilitate and improve photometry. To this end we first simulate
+high-resolution PSFs for both Kepler's nominal and two-wheel operation
+era. As in the experiment above, we use a simplified two component
+Gaussian PSF model and assume jitter, normally distributed with a
+standard deviation of one arcsecond. While in the previous experiment
+we assumed a minimal drift in the ``371-roll scenario'', here we work
+with a much larger drift of 1.4 degrees in 4 days as described in the
+call\footnote{\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}},
+which adds up to a total drift length of 27 arcseconds for a 30 minute
+coadd.  Again, drift and jitter were simulated by moving the boresight
 of the simulated telescope every 6 seconds during a total integration
 time of 30 minutes. The left panel of Fig.~\ref{fig:photometry} shows
 4x higher-resolved images of the generated PSFs at a resolution of
 0.995 arcseconds. The panel right next to it shows the convolved and
-noisy simulated images of the two stars with variable
-brightness. Noise was simulated by drawing iid from a Gaussian with a
-standard deviation of 150 e$^-$ (\cite{gilliland2011}) with a dynamic
-range of $1.1e^{-6}$. For model fitting we assume knowledge of both the
-star positions and PSF. The third and fourth columns of
-Fig.~\ref{fig:photometry} show the model images and their
-corresponding differences to the simulated
+noisy simulated images of two stars with variable brightness,
+approximately 25 arcseconds apart. The resolution is at Kepler's
+native pixel scale of 3.98 arcseconds. Noise was simulated by drawing
+iid from a Gaussian with a standard deviation of 150 e$^-$ assuming a
+dynamic range of $1.1 * 10^6$ e$^{-}$ \cite{gilliland2011}. For model
+fitting we assume knowledge of both the star positions (for real data
+provided by \emph{Kepler's Input Catalog}) and PSF. The third and
+fourth columns of Fig.~\ref{fig:photometry} show the model images and
+their corresponding differences when compared to the simulated
 images. Table~\ref{tab:photometry} summarizes the photometric results
-of our model fitting approach and optimal aperture averaging. Note,
-that the footprints of stars separated less than the drift per
-expsure, will overlap in general. If this is the case, it is no longer
-possible to define an optimal aperture that allows for high-precision
-photometry. The figures reported in Table~\ref{tab:photometry} have
-been averaged over 100 noise realisations and suggest that image
-modeling does improve over simple aperture averaging even in Kepler's
-two-wheel era.
+of our model fitting approach and compares them with the results of
+optimal aperture averaging. The figures reported in
+Table~\ref{tab:photometry} have been averaged over 100 noise
+realisations and suggest that image modeling does improve over simple
+aperture photometry even in Kepler's two-wheel era. Note, that the
+footprints of stars separated less than the drift length within a
+coadd, will overlap in general (which is the case in our toy
+example). In this case it is no longer possible to define an aperture
+that would allow for high-precision photometry, such that aperture
+photometry won't work for nearby stars (with a distance less than the
+drift length per coadd). In contrast, our modeling approach is still
+able to yield photometric information with a higher accuracy than
+aperture photometry in the nominal case! The slight loss in accuracy
+and precision suggests that a smaller drift is in general preferable,
+which could be accomplished by shorter exposure times. However, there
+is tradeoff to be explored between smaller drift and lower SNR through
+shorter exposure times.
 
 
 \subsection{PSF modeling}\label{sec:psf}
@@ -1048,9 +1060,9 @@ Modeling approach &  $8.21 \pm 4.46$ \\
   (Fig.~\ref{fig:photometry}). The PSF modeling approach improves
   photometric accuracy over aperture averaging even in the two-wheel
   era with a drift as large as 27 arcseconds for a 30 min exposure.
-  For averaging optimal apertures have been used, depicted as a red
+  For averaging optimal apertures have been used, depicted as red
   frame in the top panel in the figure above. Note, that in the drift case the footprints of the two
-  stars overlap, such that photometric measurement is not possible via
+  stars overlap, such that photometric measurement is not possible by
   simple aperture averaging.}
 
 \label{tab:photometry}
