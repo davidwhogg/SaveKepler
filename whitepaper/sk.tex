@@ -24,6 +24,7 @@
 \newcommand{\WISE}{\observatory{WISE}}
 \newcommand{\project}[1]{\textsl{#1}}
 \newcommand{\MAST}{\project{MAST}}
+\newcommand{\kplr}{\project{kplr}}
 \newcommand{\TheTractor}{\project{The~Tractor}}
 \newcommand{\emcee}{\project{emcee}}
 \newcounter{inlineitem}
@@ -402,16 +403,25 @@ it.
 For simplicity, we assume that the systematic confounders affect the signal
 additively (although it may be possible to generalize the method).
 Under this assumption, the model can be written as
-\begin{eqnarray}
-y_i(t_k) = f_i (t_k) + \sum_{i^\prime,\,k^\prime} c_{i^\prime\,k^\prime}\,
+\begin{eqnarray}\label{eq:reg-model}
+y_i(t_k) &=& f_i (t_k) + \sum_{i^\prime,\,k^\prime} c_{i^\prime\,k^\prime}\,
     y_{i^\prime} (t_{k^\prime}) \quad.
 \end{eqnarray}
-We propose to estimate the vector of coefficients $\mathbf{c}$ by training a
-regression model on the values $y_{i^\prime} (t_{k^\prime})$.
-In this model, the true flux $f_i (t_k)$ is considered ``noise''---even though
-it is the main signal of interest.
-This works because (as described above) the signal is independent of the
-functions $y_{i^\prime} (t_{k^\prime})$ being used to build the model.
+Since (by our independence assumption) $f_i(t_k) \independent
+y_{i^\prime} (t_{k^\prime})$, the vector of coefficients $\mathbf{c}$ can be
+computed using using standard linear least-squares techniques on the system
+in equation~\ref{eq:reg-model}, treating $f_i (t_k)$ as the noise term.
+
+To demonstrate this method, we applied equation~\ref{eq:reg-model} to the
+quarter 9 observations of Kepler-20, a G-type star with 5 known transiting
+exoplanets \citep{kepler20}.
+The results are shown in the top panel of \figurename~\ref{fig:reg-model}.
+To generate this figure, we downloaded the target pixel files from
+\MAST\footnote{The Mikulski Archive for Space Telescopes;
+\url{http://archive.stsci.edu/}} using
+\kplr\footnote{\url{http://dan.iel.fm/kplr}}
+and computed the vector $\mathbf{c}$ for each pixel using the pixel time
+series from the two nearest stars on the detector as the basis.
 
 \subsection{Autoregressive generalization}
 The model discussed in the previous section should retain \emph{any true
@@ -806,6 +816,12 @@ Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
 \emcee:\ The MCMC Hammer,
 \pasp, 125, 306--312.
 
+\bibitem[Gautier \etal(2012)]{kepler20}
+Gautier,~T.~N.,~III, Charbonneau,~D., Rowe,~J.~F., \etal\ 2012,
+Kepler-20: A Sun-like Star with Three Sub-Neptune Exoplanets and Two
+Earth-size Candidates
+\apj, 749, 15
+
 \bibitem[Hirsch \etal(2011)]{hirsch2011}
 Hirsch, M., Schuler, C.~J., Sch\"olkopf, B., \& Harmeling, S., 2011,
 Fast Removal of Non-uniform camera shake,
@@ -867,7 +883,7 @@ Proceedings of the IEEE International Conference on Computer Vision and Pattern 
 
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{kepler-20.png}%
-\caption{blurgleshorts.\label{fig:regression}}
+\caption{blurgleshorts.\label{fig:reg-model}}
 \end{figure}
 
 \begin{figure}
