@@ -544,7 +544,7 @@ reveal the transit.
 Data-driven models of the types described above can work
   because the relationships between the different data flowing from the system
   (telemetered pixel values, in this case)
-  are set by an underlying set of physical devices
+  are determined by an underlying set of physical devices
   (s/c, optics, detectors, and electronics, in this case),
   each of which is deterministic or stationary or at least predictable probabilistically.
 Data-driven models have the advantage of flexibility%
@@ -558,7 +558,7 @@ In a physical model, we build highly parameterized models
 These are compared with the data probabilistically,
   through a likelihood function.
 For the purposes of demonstrating the physical modeling direction,
-  in this part of the \documentname\ we use simulated \Kepler\ data
+  in this part of the \documentname\, we use simulated \Kepler\ data
   to demonstrate feasibility.
 As with the previous \sectionname, the demonstrations and discussions here are designed
   to be \emph{illustrative};
@@ -655,7 +655,7 @@ In this experiment, the stars drift horizontally across the field,
 To avoid numerical overfitting, we added a prior on the flat-field values,
   with the same variance as the distribution from which the true flat-field was drawn ($\sigma = 2$~percent).
 
-The results---shown in \figurename~\ref{fig:intrapixel}---%
+The results---shown in \figurename s~\ref{fig:intra-data} and \ref{fig:intrapixel}---%
   are that we can successfully recover a sub-pixel flat-field (sensitivity map),
   especially in regions that are jointly constrained by having stars drift through.
 In other words, the quality of the intrapixel flat recovery is a strong function of the history
@@ -673,13 +673,19 @@ The movement of target stars over the device
 
 \subsection{PSF modeling}\label{sec:psf}
 
-MH: DESCRIPTION OF TOY EXAMPLE FOR PHOTOMETRY WITH PSF MODELING FOLLOWS SHORTLY.
+To show that precise image modeling does facilitate and improve
+photometry, we 
 
-steady    $0.0190 \pm 0.0103$
-drift     $0.0281 \pm 0.0153$
-average   $0.0462 \pm 0.0221$
 
-MH: THE FOLLOWING TEXT NEEDS TO BE REVISED TO BE MORE IN PROPOSAL STYLE.
+Explain why PSF modeling is needed in the two-wheel era at least for
+nearby stars and that precise PSF modeling can be used for
+high-precision photometry
+
+Describe the toy example in detail and refer to table. 
+
+Talk about more advanced PSF modeling, i.e. nonparametric,
+spatially-varying PSF with geometric model of the spacecraft.
+
 
 Drift will cause the PSF to vary from exposure to exposure due to the
 random nature of the jitter introduced by pointing inaccuracy. While
@@ -917,9 +923,9 @@ running PDC on the extracted light curve. \label{fig:reg-model}}
 \end{figure}
 
 \begin{figure}
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-100.png}%
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-101.png}%
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.32\textwidth]{sim-102.png}
+\includegraphics[width=0.49\textwidth]{sim-100.png}
+\includegraphics[width=0.49\textwidth]{sim-101.png}
+\includegraphics[width=0.49\textwidth]{sim-102.png}
 \caption{Toy simulated two-wheel \Kepler\ PSF-determination data and models.
 \textsl{(left)}~``Perfect'' (that is, extremely high signal-to-noise) PSF simulated image, shown on a log scale with a dynamic range of $10^6$.  These simulations were made with a simple PSF model but then 371-roll-level drift and jitter in s/c pointing.
 \textsl{(middle)}~Model maximum-likelihood PSFs.  These are 4-component Gaussian mixtures (23 parameters total); that is, the model used to fit the PSF lives in a different space than the model used to generate the toy data.
@@ -939,9 +945,9 @@ The three images shown are the first, middle, and last images
 \begin{figure}
 %\includegraphics[trim=0.25in 0.75in 0.25in 0.75in, width=0.49\textwidth]{sim-105.png}%
 %\includegraphics[trim=0.25in 0.75in 0.25in 0.75in, width=0.49\textwidth]{sim-106.png}
-\includegraphics[width=0.49\textwidth]{sim2-205}
-\includegraphics[width=0.49\textwidth]{sim2-206}
-\includegraphics[width=0.49\textwidth]{sim2-207}
+\includegraphics[width=0.85\textwidth]{sim2-205}
+\includegraphics[width=0.85\textwidth]{sim2-206}
+\includegraphics[width=0.85\textwidth]{sim2-207}
 \caption{Toy simulated true flat-field \textsl{(top left)} and point-estimation thereof \textsl{(top right)},
   found by taking ratios of models to data after fitting the drifted, effective PSF and brightness of every source in the field.
   The true flat-field in the image has Gaussian variation with 1~percent standard deviation.
@@ -950,14 +956,18 @@ The three images shown are the first, middle, and last images
 
 \begin{figure}
 \includegraphics[trim=0.75in 0.25in 0.75in 0.25in, width=0.49\textwidth]{sim2-208}%
-\includegraphics[trim=0.75in 0.00in 0.75in 0.00in, width=0.35\textwidth]{sim2-200}\\[0.3in]
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-201}%
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-202}\\[0.4in]
-\includegraphics[trim=0.5in 0.5in 0.5in 0.5in, width=0.49\textwidth]{sim2-203}
-\caption{Demonstration that we can fit the intrapixel flat---a flat-field with multiple parameters per pixel---at least in principle.
-\textsl{(top two b/w images)}~Three toy images from the simulated data with $2\times 2$ sub-pixel 2-percent flat-field variations,
+\includegraphics[trim=0.75in 0.00in 0.75in 0.00in, width=0.49\textwidth]{sim2-200}
+\caption{Three toy images from the simulated data with $2\times 2$ sub-pixel 2-percent flat-field variations,
   and the coadd of all 48 toy images, showing the 371-roll drift and the coverage of this field patch by stars.
-\textsl{(bottom three color images)}~True sub-pixel flat-field, estimated sub-pixel flat-field, and residuals.
+\label{fig:intra-data}}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.85\textwidth]{sim2-201}
+\includegraphics[width=0.85\textwidth]{sim2-202}
+\includegraphics[width=0.85\textwidth]{sim2-203}
+\caption{Demonstration that we can fit the intrapixel flat---a flat-field with multiple parameters per pixel---at least in principle.
+True sub-pixel flat-field, estimated sub-pixel flat-field, and residuals.
   These objects have four times as many parameters as pixels in each of the 48 individual simulated data read-outs.
   Because of the regularization we added to avoid overfitting,
   regions that did not see a fairly bright star are relatively poorly constrained
@@ -966,26 +976,56 @@ Regions through which bright stars drift are much better constained and very clo
 In practice, we would likely fit much larger series of images (months or more),
 rather than the 48-exposure series used here, so performance could in principle become excellent.\label{fig:intrapixel}}
 \end{figure}
+\clearpage
 
-\begin{figure}
+
+\begin{figure}[t]
 \begin{center}
 \footnotesize
-\hspace{1mm}PSF \hspace{18mm} Simulated image \hspace{12mm} Model image
-\hspace{16mm} Difference\\
-
-\rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.9\textwidth]{photometry_with_psf_with_frames.png}
+\hspace{-2mm}Hi-res PSF \hspace{18mm} Simulated image \hspace{16mm} Model image
+\hspace{18mm} Difference\\
+\rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.95\textwidth]{photometry_with_psf_with_frame2.png}
 
 \caption{Two-star toy example to demonstrate that precise image
   modeling can facilitate and improve photometry over aperture
-  averaging. From left to right: high-resolution PSFs, noisy coadds,
-  model and difference images. The top row shows the case for nominal
-  operation with functional reaction wheels, the bottom row shows the
-  case in the two-wheel era with an apparent drift of 27'' in the
-  worst case scenario for a 30 min exposure. The red frames depicted
-  in the observed image in the top panel shows the apertures used for
-  averaging.}
+  averaging. From \emph{left} to \emph{right}: high-resolution PSFs
+  (4x higher-resolved, i.e. at a resolution of 0.995 arcseconds),
+  noisy coadds, model and difference images (at Kepler's native
+  resolution of 3.98 arcseconds). In the simulation and model images
+  the dynamic stretch is $10^6$, in the difference image $10^2$. The
+  \emph{top} row shows the case for nominal operation with functional
+  reaction wheels, the \emph{bottom} row shows the case in the
+  two-wheel era with an evident drift of 27 arcseconds for a 30 min
+  exposure in the worst case scenario (cp.
+  \url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}). The
+  red frame depicted in the observed image in the top panel shows the
+  aperture used for pixel averaging.}
 \end{center}
 \label{fig:photometry}
 \end{figure}
+
+\begin{table}[b]
+\begin{center}
+\begin{tabular}{c|c}
+\emph{Nominal operation} & Relative error ($\times 10^{-4}$)\\ \hline
+Aperture averaging &  $21.50 \pm 10.35$ \\ 
+Modeling approach  &  $5.55 \pm 3.00$ \\[5mm] 
+\emph{Two-wheel operation}  & \\ \hline
+Modeling approach &  $8.21 \pm 4.46$ \\
+\end{tabular}
+\end{center}
+
+
+\caption{Photometric results for the toy example shown above
+  (Fig.~\ref{fig:photometry}). The PSF modeling approach improves
+  photometric accuracy over aperture averaging even in the two-wheel
+  era with a drift as large as 27 arcseconds for a 30 min exposure.
+  For averaging optimal apertures have been used, depicted as a red
+  frame in the top panel in the figure above. Note, that in the drift case the footprints of the two
+  stars overlap, such that photometric measurement is not possible via
+  simple aperture averaging.}
+
+\label{tab:photometry}
+\end{table}
 
 \end{document}
