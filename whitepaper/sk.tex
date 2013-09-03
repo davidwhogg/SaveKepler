@@ -737,7 +737,8 @@ during Kepler's commissioning phase have been used to build a model of
 Kepler's PRF as a piecewise-continuous polynomial on a sub-pixel mesh,
 in principle any non-saturated star images from the Kepler Input
 Catalog can be used. In general more data will facilitate the
-estimation and at the same time improve modeling accuracy.
+estimation and at the same time improve modeling accuracy as
+demonstrated in \cite{magain2007}.
 
 The second PSF component is stemming from spacecraft motion/drift and
 is affecting the image in a globally consistent way. Hence, with
@@ -751,9 +752,12 @@ interested in its time integrated effect on the image only. The
 incorporation of a geometric model allowing for physically plausible
 motion only has been applied with great success to the problem of
 camera shake removal with non-stationary blur within the computational
-photography and computer vision community
-(\citealt{fergus2006,whyte2010,hirsch2011,koehler2012})
-recently. 
+photography and computer vision community recently
+(\citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).  
+
+%There blur is stemming from the unknown camera shake during image
+%capture and has to be estimated from the recorded blurry image
+%itself. Roll around the optical axis renders the PSF non-stationary.
 
 Although from an image processing perspective all necessary tools are
 readily available and have proven extremely successful in a number of
@@ -925,6 +929,10 @@ Recording and Playback of Camera Shake:\ Benchmarking Blind Deconvolution with a
 Lang,~D. \& Hogg,~D.~W., 2014,
 \TheTractor:\ A framework for image modeling, with applications to \SDSS, \WISE, and \Kepler,
 in preparation
+
+\bibitem[Magain \etal(2007)]{magain2007}
+Magain, P., Courbin, F., Gillon, M., 2007, A deconvolution-based algorithm for crowded ﬁeld photometry
+with unknown Point Spread Function, A\&A 461, 373-379 
 
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
 Reichenbach,~H., 1956
