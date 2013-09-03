@@ -23,5 +23,5 @@ This is a possible comment for the arXiv submission:
 
 A white paper submitted in response to the "Kepler Project Office Call
 for White Papers: Soliciting Community Input for Alternate Science
-Investigations for the Kepler Spacecraft"; 23 pages in length (that
-is, 13 pages over the white-paper page limit).
+Investigations for the Kepler Spacecraft"; 24 pages in length (that
+is, 14 pages over the white-paper page limit).
