@@ -1,20 +1,20 @@
 This is a possible abstract for the arXiv submission
 
-Kepler's immense photometric precision to date was maintained by a
-combination of satellite stability and precise pointing.  In this
-white paper, we argue that image modeling--fitting the
-Kepler-downlinked raw pixel data--can vastly improve the precision of
-Kepler in pointing-degraded two-wheel mode.  We argue that a
-non-trivial modeling effort may permit continuance of photometry at
-10-ppm-level precision.  We demonstrate some baby steps towards
-precise models in both data-driven (flexible) and physics-driven
-(interpretably parameterized) modes.  We demonstrate that the expected
-drift or jitter in positions in the two-weel era will help with
-constraining calibration parameters.  In particular, we show that we
-can infer the device flat-field at higher than pixel resolution; that
-is, we can infer pixel-to-pixel variations in intra-pixel sensitivity.
-These results are relevant to almost any scientific goal for the
-repurposed mission; image modeling ought to be a part of any two-wheel
-repurpose for the satellite.  We make other recommendations for Kepler
-operations, but fundamentally advocate that the project stick with its
-core mission of finding Earth analogs. [abridged]
+Kepler's immense photometric precision to date was maintained through
+satellite stability and precise pointing.  In this white paper, we
+argue that image modeling--fitting the Kepler-downlinked raw pixel
+data--can vastly improve the precision of Kepler in pointing-degraded
+two-wheel mode.  We argue that a non-trivial modeling effort may
+permit continuance of photometry at 10-ppm-level precision.  We
+demonstrate some baby steps towards precise models in both data-driven
+(flexible) and physics-driven (interpretably parameterized) modes.  We
+demonstrate that the expected drift or jitter in positions in the
+two-weel era will help with constraining calibration parameters.  In
+particular, we show that we can infer the device flat-field at higher
+than pixel resolution; that is, we can infer pixel-to-pixel variations
+in intra-pixel sensitivity.  These results are relevant to almost any
+scientific goal for the repurposed mission; image modeling ought to be
+a part of any two-wheel repurpose for the satellite.  We make other
+recommendations for Kepler operations, but fundamentally advocate that
+the project stick with its core mission of finding and characterizing
+Earth analogs. [abridged]
