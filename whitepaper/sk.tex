@@ -261,7 +261,7 @@ Since \Kepler's mission so far has taught us a lot about the variability
 We present some of these scientific proposals in a separate, companion white paper (Montet \etal),
   because although we specifically happen to love eta-Earth,
   \emph{what we say here about image modeling is equally applicable
-  to any two-wheel repurpose} for the \Kepler satellite.
+  to any two-wheel repurpose} for the \Kepler\ satellite.
 
 Right now, all of \Kepler's spine-tingling precision
   has been obtained by peforming rigid integer-pixel aperture photometry
@@ -404,7 +404,7 @@ computed using using standard linear least-squares techniques on the system
 in equation~\ref{eq:reg-model}, treating $f_i (t_k)$ as the noise term.
 
 To demonstrate this method, we applied equation~\ref{eq:reg-model} to the
-quarter 9 observations of Kepler-20, a G-type star with 5 known transiting
+quarter 9 observations of \Kepler-20, a G-type star with 5 known transiting
 exoplanets \citep{kepler20}.
 The results are shown in the top panel of \figurename~\ref{fig:reg-model}.
 To generate this figure, we downloaded the target pixel files from
@@ -454,11 +454,11 @@ This kind of assumption has recently studied in the field of causal inference
 (\citealt{JanSch10}).
 
 To demonstrate this method, we preformed an autoregressive fit to the same
-data as discussed in the previous section (quarter 9; Kepler-20).
+data as discussed in the previous section (quarter 9; \Kepler-20).
 The results of this fit are shown in the middle panel of
 \figurename~\ref{fig:reg-model}.
 The difference between this and the previous demonstration is that, in this
-case, a 2.5 hour window is included from the pixels in the Kepler-20 aperture
+case, a 2.5 hour window is included from the pixels in the \Kepler-20 aperture
 $\Delta = 12\,\mathrm{hours}$ before and after the target time are included in
 the basis.
 This model removes most of the stellar variability in the light curve
@@ -652,7 +652,7 @@ In other words, the quality of the intrapixel flat recovery is a strong function
 This experiment used only 48 exposures,
   while in practice we would likely attempt to infer a finer sensitivity map
   over a much larger number of exposures: likely months or more of observations.
-The degraded pointing and drift of Kepler in two-wheel mode is actually a boon here,
+The degraded pointing and drift of \Kepler\ in two-wheel mode is actually a boon here,
   since it increases the diversity of stars that touch different combinations of pixels.
 
 \textbf{These experiments justify great optimism about the prospects for modeling the \Kepler\ data in the two-wheel era.}
@@ -662,9 +662,9 @@ The movement of target stars over the device
 
 \subsection{Photometry and modeling}\label{sec:photometry}
 
-Here we demonstrate in a toy example that precise image modeling can
+Here we demonstrate in an extreme toy example that precise image modeling can
 facilitate and improve photometry. To this end we first simulate
-high-resolution PSFs for both Kepler's nominal and two-wheel operation
+high-resolution PSFs for both \Kepler's nominal and two-wheel operation
 era. As in the experiment above, we use a simplified two component
 Gaussian PSF model and assume jitter, normally distributed with a
 standard deviation of one arcsecond. While in the previous experiment
@@ -672,26 +672,30 @@ we assumed a minimal drift in the ``371-roll scenario'', here we work
 with a much larger drift of 1.4 degrees in 4 days as described in the
 call\footnote{\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}},
 which adds up to a total drift length of 27 arcseconds for a 30 minute
-coadd.  Again, drift and jitter were simulated by moving the boresight
+coadd.  This extreme example is designed to maximize the observable impact of modeling.
+
+Again, drift and jitter were simulated by moving the boresight
 of the simulated telescope every 6 seconds during a total integration
 time of 30 minutes. The left panel of Fig.~\ref{fig:photometry} shows
 4x higher-resolved images of the generated PSFs at a resolution of
 0.995 arcseconds. The panel right next to it shows the convolved and
 noisy simulated images of two stars with variable brightness,
-approximately 25 arcseconds apart. The resolution is at Kepler's
+approximately 25 arcseconds apart. The resolution is at \Kepler's
 native pixel scale of 3.98 arcseconds. Noise was simulated by drawing
 iid from a Gaussian with a standard deviation of 150 e$^-$ assuming a
-dynamic range of $1.1 * 10^6$ e$^{-}$ \cite{gilliland2011}. For model
+dynamic range of $1.1\times 10^6$ e$^{-}$ \cite{gilliland2011}. For model
 fitting we assume knowledge of both the star positions (for real data
 provided by \emph{Kepler's Input Catalog}) and PSF. The third and
 fourth columns of Fig.~\ref{fig:photometry} show the model images and
 their corresponding differences when compared to the simulated
-images. Table~\ref{tab:photometry} summarizes the photometric results
+images.
+
+Table~\ref{tab:photometry} summarizes the photometric results
 of our model fitting approach and compares them with the results of
 optimal aperture averaging. The figures reported in
 Table~\ref{tab:photometry} have been averaged over 100 noise
 realisations and suggest that image modeling does improve over simple
-aperture photometry even in Kepler's two-wheel era. Note, that the
+aperture photometry even in \Kepler's two-wheel era. Note that the
 footprints of stars separated less than the drift length within a
 coadd, will overlap in general (which is the case in our toy
 example). In this case it is no longer possible to define an aperture
@@ -706,36 +710,35 @@ is tradeoff to be explored between smaller drift and lower SNR through
 shorter exposure times (also see our discussion on exposure time in
 Section \ref{sec:operations}).
 
-
 \subsection{PSF modeling}\label{sec:psf}
 
-Precise PSF modeling is crucial for any modeling approach in order to
-meet Kepler's high accuracy requirements. In this section we outline
-and discuss some promising approaches and recent developments, that
-have proven extremely versatile and powerful in various computer
-vision and computational photography applications. 
+We have shown (above) that fitting images with a good PSF provides better
+  photometry than aperture photometry.
+What we can't show just yet is that the PSF will be comprehensible or known
+  at the requisite precision.
+This represents a very important challenge for the data-processing side of two-wheel \Kepler\ operations.
 
 Drift will cause the PSF to vary from exposure to exposure due to the
 random nature of the jitter introduced by the pointing inaccuracy of
 the spacecraft. While previously, due to stable pointing, the jitter
-contributed to the Kepler's optical PSF in form of an enlarged PSF, in
+contributed to the \Kepler's optical PSF in form of an enlarged PSF, in
 the two-wheel era jitter will render the PSF to change from exposure
 to exposure. Therefore, we believe that precise PSF modeling is required
 on an individual exposure level to maintain high-precision photometry.
 
-The PSF in Kepler's two-wheel era can be decomposed in two distinct
-components: one that describes Kepler's (unchanged) system PSF and a
+The PSF in two-wheel mode can be decomposed in two distinct
+components: one that describes \Kepler's (unchanged) system PSF and a
 second component that describes the global motion/drift of the
 spacecraft during exposure.
 
-For modeling the former, previous Kepler data is invaluable, which
+For modeling the former, previous \Kepler\ data is invaluable, which
 will tie up on the work of \cite{bryson2010} and allow a precise model
-of Kepler's instrument PSF with the help of a detailed analysis of the
-temporal stability of Kepler's pixel response function (PRF). While in
+of \Kepler's instrument PSF with the help of a detailed analysis of the
+temporal stability of \Kepler's pixel response function (PRF). While in
 \cite{bryson2010} only isolated non-saturated star images recorded
-during Kepler's commissioning phase have been used to build a model of
+during \Kepler's commissioning phase have been used to build a model of
 Kepler's PRF as a piecewise-continuous polynomial on a sub-pixel mesh,
-in principle any non-saturated star images from the Kepler Input
+in principle any non-saturated star images from the \Kepler\ Input
 Catalog can be used. In general more data will facilitate the
 estimation and at the same time improve modeling accuracy as
 demonstrated in \cite{magain2007}.
@@ -759,17 +762,15 @@ photography and computer vision community recently
 %capture and has to be estimated from the recorded blurry image
 %itself. Roll around the optical axis renders the PSF non-stationary.
 
-Although from an image processing perspective all necessary tools are
+Although from an image-processing perspective all necessary tools are
 readily available and have proven extremely successful in a number of
 non-trivial imaging applications recently, PSF modeling with
-high-precision photometric accuracy is a non-trivial task, however at the
-same time a promising and exciting direction to be explored for
-existing Kepler data and data yet to come. 
-
+high-precision photometric accuracy is a non-trivial task.  At the
+same time this is a promising and exciting direction to be explored for
+existing \Kepler\ data and two-wheel data in the future.
 
 % For PSF modeling we explore two alternative, yet complimentary
 %  strategies: parametric and non-parametric description of the PSF.
-
 
 \section{Changes to operations}\label{sec:operations}
 
@@ -871,7 +872,7 @@ The Kepler Pixel Response Function,
 
 \bibitem[Esteves \etal(2013)]{esteves2013}
 Esteves,~L.~J., De Mooij,~E.~J.~W., Jayawardhana,~R., \etal, 2013,
-Optical Phase Curves of Kepler Exoplanets,
+Optical Phase Curves of \Kepler\ Exoplanets,
 \apjl, 772 51E
 
 \bibitem[Fergus \etal(2006)]{fergus2006}
@@ -886,13 +887,13 @@ Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
 
 \bibitem[Gautier \etal(2012)]{kepler20}
 Gautier,~T.~N.,~III, Charbonneau,~D., Rowe,~J.~F., \etal, 2012,
-Kepler-20: A Sun-like Star with Three Sub-Neptune Exoplanets and Two
+\Kepler-20: A Sun-like Star with Three Sub-Neptune Exoplanets and Two
 Earth-size Candidates
 \apj, 749, 15
 
 \bibitem[Gilliland \etal(2011)]{gilliland2011}
 Gilliland, R.~L., Chaplin, W.~J., Dunham, E.~W., \etal, 2011,
-Kepler mission stellar and instrument noise properties,
+\Kepler\ mission stellar and instrument noise properties,
 \apj, 197, 1
 
 \bibitem[Hirsch \etal(2011)]{hirsch2011}
@@ -941,12 +942,12 @@ University of California Press
 
 \bibitem[Smith \etal(2012)]{map-pdc2}
 Smith,~J.~C., Stumpe,~M.~C., Van Cleve,~J.~E., \etal, 2012,
-Kepler Presearch Data Conditioning II.\ A Bayesian Approach to Systematic Error Correction,
+\Kepler\ Presearch Data Conditioning II.\ A Bayesian Approach to Systematic Error Correction,
 \pasp, 124, 1000
 
 \bibitem[Stumpe \etal(2012)]{map-pdc1}
 Stumpe,~M.~C., Smith,~J.~C., Van Cleve,~J.~E., \etal, 2012,
-Kepler Presearch Data Conditioning I.\ Architecture and Algorithms for Error Correction in Kepler Light Curves,
+\Kepler\ Presearch Data Conditioning I.\ Architecture and Algorithms for Error Correction in \Kepler\ Light Curves,
 \pasp, 124, 985
 
 \bibitem[Whyte \etal(2010)]{whyte2010}
@@ -961,7 +962,7 @@ IEEE International Conference on Computer Vision and Pattern Recognition (CVPR 2
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{kepler-20.png}%
 \caption{Results of our data-driven pixel-level systematics model applied to
-the quarter 9 observations of Kepler-20 and compared to the PDC light curve.
+the quarter 9 observations of \Kepler-20 and compared to the PDC light curve.
 \textsl{(top)}~The basic model (equation~\ref{eq:reg-model}) applied to the
 pixel time series. This figure shows the results of coadding the
 \emph{residuals} ($f_i (t_k)$ in equation~\ref{eq:reg-model}) using the
@@ -1040,7 +1041,7 @@ rather than the 48-exposure series used here, so performance could in principle 
   photometry. The stars are approximately 25 arcseconds apart. 
   From \emph{left} to \emph{right}: high-resolution PSFs
   (4x higher-resolved, i.e. at a resolution of 0.995 arcseconds),
-  noisy coadds, model and difference images (at Kepler's nominal
+  noisy coadds, model and difference images (at \Kepler's nominal
   resolution of 3.98 arcseconds). In the simulation and model images
   the dynamic stretch is $10^6$, in the difference image $5*10^2$. The
   \emph{top} row shows the case for nominal operation with functional
