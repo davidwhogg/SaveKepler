@@ -561,7 +561,7 @@ Motivated by what we call the ``371-roll scenario''%
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf}).}
   we produced a series of toy (that is, unrealistic in various ways)
-  simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsecond jitter.
+  simulated 30-minute coadd images with $\sim$ half-pixel drift and 1-arcsec jitter.
 Drift and jitter were simulated by moving the boresight of the simulated telescope
   every 6~seconds during the integration.
 An aperture is examined around a single target,
@@ -667,21 +667,21 @@ facilitate and improve photometry. To this end we first simulate
 high-resolution PSFs for both \Kepler's nominal and two-wheel operation
 era. As in the experiment above, we use a simplified two component
 Gaussian PSF model and assume jitter, normally distributed with a
-standard deviation of one arcsecond. While in the previous experiment
+standard deviation of 1~arcsec. While in the previous experiment
 we assumed a minimal drift in the ``371-roll scenario'', here we work
-with a much larger drift of 1.4 degrees in 4 days as described in the
+with a much larger drift of 1.4~deg in 4 days as described in the
 call\footnote{\url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}},
-which adds up to a total drift length of 27 arcseconds for a 30 minute
+which adds up to a total drift length of 27~arcsec for a 30~min
 coadd.  This extreme example is designed to maximize the observable impact of modeling.
 
 Again, drift and jitter were simulated by moving the boresight
 of the simulated telescope every 6 seconds during a total integration
 time of 30 minutes. The left panel of Fig.~\ref{fig:photometry} shows
 4x higher-resolved images of the generated PSFs at a resolution of
-0.995 arcseconds. The panel right next to it shows the convolved and
+0.995~arcsec. The panel right next to it shows the convolved and
 noisy simulated images of two stars with variable brightness,
-approximately 25 arcseconds apart. The resolution is at \Kepler's
-native pixel scale of 3.98 arcseconds. Noise was simulated by drawing
+approximately 25~arcsec apart. The resolution is at \Kepler's
+native pixel scale of 3.98~arcsec. Noise was simulated by drawing
 iid from a Gaussian with a standard deviation of 150 e$^-$ assuming a
 dynamic range of $1.1\times 10^6$ e$^{-}$ \cite{gilliland2011}. For model
 fitting we assume knowledge of both the star positions (for real data
@@ -1038,16 +1038,15 @@ rather than the 48-exposure series used here, so performance could in principle 
 \rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.95\textwidth]{photometry_with_psf_with_frame2.png}
 \caption{Two-star toy example to demonstrate that precise image
   modeling can facilitate and improve photometry over aperture
-  photometry. The stars are approximately 25 arcseconds apart. 
+  photometry. The stars are approximately 25~arcsec apart. 
   From \emph{left} to \emph{right}: high-resolution PSFs
-  (4x higher-resolved, i.e. at a resolution of 0.995 arcseconds),
+  ($4\times$ higher-resolved, that is, at a resolution of 0.995~arcsec),
   noisy coadds, model and difference images (at \Kepler's nominal
-  resolution of 3.98 arcseconds). In the simulation and model images
+  resolution of 3.98~arcsec). In the simulation and model images
   the dynamic stretch is $10^6$, in the difference image $5*10^2$. The
   \emph{top} row shows the case for nominal operation with functional
   reaction wheels, the \emph{bottom} row shows the case in the
-  two-wheel era with an evident drift of 27 arcseconds for a 30
-  minutes exposure in the worst case scenario (cp.
+  two-wheel era with an evident drift of 27~arcsec for a 30~min exposure in the worst case scenario (cp.
   \url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}). The
   red frame depicted in the observed image in the top panel shows the
   optimal (in the sense of least error) aperture used for aperture
@@ -1069,9 +1068,9 @@ Modeling approach &  $8.21 \pm 4.46$ \\
 
 
 \caption{Photometric results for the toy example shown above
-  (Fig.~\ref{fig:photometry}). The PSF modeling approach improves
+  (\figurename~\ref{fig:photometry}). The PSF modeling approach improves
   photometric accuracy over aperture averaging even in the two-wheel
-  era with a drift as large as 27 arcseconds for a 30 min exposure.
+  era with a drift as large as 27~arcsec for a 30~min exposure.
   For averaging optimal apertures have been used (exemplary one is depicted as red
   frame in the top panel in the figure above). Note, that in the drift case the footprints of the two
   stars overlap, such that photometric measurement is not possible by
