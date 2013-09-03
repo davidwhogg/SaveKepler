@@ -75,7 +75,7 @@
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Ames}%
   NASA Ames Research Center}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{CfA}%
-  Havard--Smithsonian Center for Astrophysics}
+  Harvard--Smithsonian Center for Astrophysics}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{Courant}%
   Courant Institute of Mathematical Sciences, New York University}
 \altaffiltext{\theaddress}{\stepcounter{address}\label{MPIIS}%
@@ -97,8 +97,9 @@
 \clearpage
 
 
-\paragraph{executive summary:}
-\binlineitem~Fundamentally, the \textbf{primary recommendation} of this \documentname\
+\section{Executive summary}
+
+\binlineitem~The \textbf{primary recommendation} of this \documentname\
   is \emph{image modeling}, that is,
   fitting to the pixel values downlinked from the \Kepler\ satellite
   a quantitative description of pixel sensitivities (flat-field),
@@ -145,7 +146,7 @@ These calibration observations will improve any two-wheel data but will also
 With a multi-pronged image-modeling effort and
   a bit of good luck
   (with respect to assumptions about spacecraft hardware and data-modeling software),
-  it is our view that a two-wheeled \Kepler\ can do even more
+  it is our view that in the next few years \Kepler\ can do even more
   than it already has on this deep and important mission.
 That said, what's written in this \documentname\ is fundamentally
   agnostic about the scientific program in the two-wheel era.
@@ -157,7 +158,7 @@ The \Kepler\ Satellite%
   ---like other very precise time-domain photometric projects---%
   achieves its precision by keeping the camera and telescope exquisitely controlled and stable,
   leading to identical conditions for each observation.
-This strategy has yielded an enormous numbers of planets of a wide range of sizes and periods.
+This strategy has yielded large numbers of planets in a wide range of sizes and periods.
 
 In the two-wheel era, it will not be possible
   to make each observation as identical to the fiducial observation
@@ -165,29 +166,23 @@ In the two-wheel era, it will not be possible
   \footnote{See, for example, the \textit{Explanatory Appendix to the Kepler Project
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf})}
-However, the fact that the telescope and camera were so stable
-  (plus perhaps some appeal to the determinism of the macroscopic laws of physics)
-  implies that it must be possible to build a deterministic, predictive model
-  of the imager that can account for pointing changes or drift over time.
-One way of stating it is this:
-Bad spacecraft (s/c) pointing leads to the existence of
-  three unknown functions of time
-  (which can be thought of as the three solid-body Euler angles).
-These three Euler-angle functions affect%
-  ---in a predictable way---%
+The imprecise pointing introduces, into any description of the data, three unknown functions of time
+  (that is, the three solid-body Euler angles).
+These three Euler-angle functions affect—--in a predictable way---%
   every single one of the hundreds of thousands of detectable stars
   in the camera field of view,
   each of which affects the intensity field touching a few to many pixels.
-There is an \emph{overwhelming abundance} of information in the data
-  to constrain these three functions,
-  and even \emph{more} information if the particular functions
-  are different for every exposure (as they are expected to be).
+Therefore the photometry can be used to constrain these three functions,
+  which are sampled at different value during each exposure;
+  indeed, there is an \emph{overwhelming abundance} of information in the data
+  to constrain these three functions.
 
 While it is obvious \emph{in principle} that we can infer
-  the intra-exposure s/c pointing drift and jitter history,%
+  the intra-exposure s/c pointing and orientation history,%
   \footnote{Indeed inference of non-trivial intra-exposure
     camera pointing trajectories has been demonstrated in the far more difficult
-    case of single-exposure natural images (\citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).
+    case of single-exposure ``natural'' images
+    (meaning ordinary personal photographs of everyday scenes; \citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).
   That is, the three-axis history of camera orientation path
     can be reliably inferred in an individual image,
     without even multiple exposures to use
@@ -196,7 +191,7 @@ While it is obvious \emph{in principle} that we can infer
   That said, the precision requirements of \Kepler\ science
     are much more challenging than those of natural image de-blurring.}
   and thus potentially brightness variations of stars limited only by photon noise,
-  we cannot with the existing \Kepler\ data perform a convincing test.
+  we cannot perform a convincing test with the existing \Kepler\ data.
 Recovery of precise photometry from a source
   that is moving across the focal plane
   requires knowledge of not just the pointing but the device geometry and sensitivity
@@ -235,13 +230,19 @@ Indeed, when signals are sparse, significance
   (as estimated by, say, a p-value)
   can grow much faster than any small power of mission lifetime.%
   \footnote{We thank Ben Weiner (Arizona) for this insight.}
-It is our view that \emph{\Kepler\ core goals remain outrageously interesting}.
+It is our view that discovery and characterization of exoplanets is so important,
+  it should remain \Kepler's top priority.
+Additional data collected with two-wheel \Kepler\ could
+  significantly enhance the number and fidelity of Earth-analog-candidates
+  discovered by \Kepler %
+  (and also be extremely valuable for Kepler’s other science goals).
 With this in mind, we advocate using \emph{methods of image modeling} to retain
   or approximate three-wheel photometric precision
   in an era of two-wheel pointing degradation.
 If that is possible---and we think it will be---we would recommend continuing work
   along the direction of \Kepler's core mission,
-  which (in our view) is to find Earth analogs and other habitable-zone oceany rocks.
+  which (in our view) is to continue finding and characterizing
+  Earth analogs and other habitable-zone oceany rocks.
 
 Of course the two-wheel mode will bring other challenges, like
   possible hard constraints on field choice,
@@ -428,7 +429,7 @@ of \figurename~\ref{fig:reg-model}) to see that we achieve similar stellar
 variability signatures and preserve the transit signal.
 We have not yet performed any quantitative comparison of these two methods but
 the fact that we were able to achieve qualitatively competitive performance
-without exploiting the full flexibility of the model is promising.
+without exploiting the full flexibility of this kind of model is very promising.
 
 \subsection{Autoregressive generalization}
 The model discussed in the previous section should retain \emph{any true
@@ -465,9 +466,9 @@ The difference between this and the previous demonstration is that, in this
 case, a 2.5 hour window is included from the pixels in the Kepler-20 aperture
 $\Delta = 12\,\mathrm{hours}$ before and after the target time are included in
 the basis.
-This model removes most of the stellar variability in the light curve without
-significantly reducing the transit signal.
-Again, we do not have a sound quantitative argument demonstrating the power of
+This model removes most of the stellar variability in the light curve
+  \emph{without significantly reducing the transit signal.}
+Again, we do not yet have a sound quantitative argument demonstrating the power of
 this method but a robust detrending algorithm applied at the pixel level could
 be extremely valuable and these results show promise.
 
@@ -666,7 +667,7 @@ This experiment used only 48 exposures,
 The degraded pointing and drift of Kepler in two-wheel mode is actually a boon here,
   since it increases the diversity of stars that touch different combinations of pixels.
 
-These experiments justify great optimism about the prospects for modeling the \Kepler\ data in the two-wheel era.
+\textbf{These experiments justify great optimism about the prospects for modeling the \Kepler\ data in the two-wheel era.}
 They also show that the drift is not just a curse but also a blessing:
 The movement of target stars over the device
   permits determination of very detailed instrument calibration information.
