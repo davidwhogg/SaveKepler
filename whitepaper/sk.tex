@@ -675,21 +675,41 @@ They also show that the drift is not just a curse but also a blessing:
 The movement of target stars over the device
   permits determination of very detailed instrument calibration information.
 
+\subsection{Photometry and modeling}\label{sec:photometry}
+
+
+In a toy experiment we show that precise image modeling can facilitate
+and improve photometry. To this end we first simulate high-resolution
+PSFs for both Kepler's nominal and two-wheel operation era. As in the
+experiment above, we use a simplified two component Gaussian PSF model
+and assume jitter, normally distributed with a standard deviation of
+one arcsecond. While in the previous experiment we assumed a minimal
+drift in the ``371-roll scenario'', here we work with a much larger
+drift of 1.4 degrees in 4 days as described on page 6 of the
+call. Again, drift and jitter were simulated by moving the boresight
+of the simulated telescope every 6 seconds during a total integration
+time of 30 minutes. The left panel of Fig.~\ref{fig:photometry} shows
+4x higher-resolved images of the generated PSFs at a resolution of
+0.995 arcseconds. The panel right next to it shows the convolved and
+noisy simulated images of the two stars with variable
+brightness. Noise was simulated by drawing iid from a Gaussian with a
+standard deviation of 150 e$^-$ (\cite{gilliland2011}) with a dynamic
+range of $1.1e^{-6}$. For model fitting we assume knowledge of both the
+star positions and PSF. The third and fourth columns of
+Fig.~\ref{fig:photometry} show the model images and their
+corresponding differences to the simulated
+images. Table~\ref{tab:photometry} summarizes the photometric results
+of our model fitting approach and optimal aperture averaging. Note,
+that the footprints of stars separated less than the drift per
+expsure, will overlap in general. If this is the case, it is no longer
+possible to define an optimal aperture that allows for high-precision
+photometry. The figures reported in Table~\ref{tab:photometry} have
+been averaged over 100 noise realisations and suggest that image
+modeling does improve over simple aperture averaging even in Kepler's
+two-wheel era.
+
+
 \subsection{PSF modeling}\label{sec:psf}
-
-To show that precise image modeling does facilitate and improve
-photometry, we 
-
-
-Explain why PSF modeling is needed in the two-wheel era at least for
-nearby stars and that precise PSF modeling can be used for
-high-precision photometry
-
-Describe the toy example in detail and refer to table. 
-
-Talk about more advanced PSF modeling, i.e. nonparametric,
-spatially-varying PSF with geometric model of the spacecraft.
-
 
 Drift will cause the PSF to vary from exposure to exposure due to the
 random nature of the jitter introduced by pointing inaccuracy. While
@@ -853,9 +873,14 @@ Kepler-20: A Sun-like Star with Three Sub-Neptune Exoplanets and Two
 Earth-size Candidates
 \apj, 749, 15
 
+\bibitem[Gilliland \etal(2011)]{gilliland2011}
+Gilliland, R.~L., Chaplin, W.~J., Dunham, E.~W., \etal 2011,
+Kepler mission stellar and instrument noise properties
+\apj, 197, 1
+
 \bibitem[Hirsch \etal(2011)]{hirsch2011}
 Hirsch, M., Schuler, C.~J., Sch\"olkopf, B., \& Harmeling, S., 2011,
-Fast Removal of Non-uniform camera shake,
+Fast removal of non-uniform camera shake,
 Proceedings of the IEEE International Conference on Computer Vision (ICCV 2011).
 
 \bibitem[Hogg \& Lang(2013)]{hoggtractor}
@@ -999,7 +1024,7 @@ rather than the 48-exposure series used here, so performance could in principle 
   the dynamic stretch is $10^6$, in the difference image $10^2$. The
   \emph{top} row shows the case for nominal operation with functional
   reaction wheels, the \emph{bottom} row shows the case in the
-  two-wheel era with an evident drift of 27 arcseconds for a 30 min
+  two-wheel era with an evident drift of 27 arcseconds for a 30 minutes
   exposure in the worst case scenario (cp.
   \url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}). The
   red frame depicted in the observed image in the top panel shows the
