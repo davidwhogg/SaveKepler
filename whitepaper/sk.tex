@@ -656,6 +656,10 @@ The movement of target stars over the device
 
 \subsection{PSF modeling}\label{sec:psf}
 
+To show that precise image modeling does facilitate and improve
+photometry, we 
+
+
 Explain why PSF modeling is needed in the two-wheel era at least for
 nearby stars and that precise PSF modeling can be used for
 high-precision photometry
@@ -665,11 +669,6 @@ Describe the toy example in detail and refer to table.
 Talk about more advanced PSF modeling, i.e. nonparametric,
 spatially-varying PSF with geometric model of the spacecraft.
 
-
-MH: DESCRIPTION OF TOY EXAMPLE FOR PHOTOMETRY WITH PSF MODELING FOLLOWS SHORTLY.
-
-
-MH: THE FOLLOWING TEXT NEEDS TO BE REVISED TO BE MORE IN PROPOSAL STYLE.
 
 Drift will cause the PSF to vary from exposure to exposure due to the
 random nature of the jitter introduced by pointing inaccuracy. While
@@ -936,9 +935,9 @@ rather than the 48-exposure series used here, so performance could in principle 
 \begin{figure}[t]
 \begin{center}
 \footnotesize
-\hspace{-1mm}Hi-res PSF \hspace{14mm} Simulated image \hspace{14mm} Model image
+\hspace{-2mm}Hi-res PSF \hspace{18mm} Simulated image \hspace{16mm} Model image
 \hspace{18mm} Difference\\
-\rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.9\textwidth]{photometry_with_psf_with_frames.png}
+\rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.95\textwidth]{photometry_with_psf_with_frame2.png}
 
 \caption{Two-star toy example to demonstrate that precise image
   modeling can facilitate and improve photometry over aperture
@@ -952,8 +951,8 @@ rather than the 48-exposure series used here, so performance could in principle 
   two-wheel era with an evident drift of 27 arcseconds for a 30 min
   exposure in the worst case scenario (cp.
   \url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}). The
-  red frames depicted in the observed image in the top panel show the
-  apertures used for pixel averaging.}
+  red frame depicted in the observed image in the top panel shows the
+  aperture used for pixel averaging.}
 \end{center}
 \label{fig:photometry}
 \end{figure}
@@ -969,12 +968,13 @@ Modeling approach &  $8.21 \pm 4.46$ \\
 \end{tabular}
 \end{center}
 
+
 \caption{Photometric results for the toy example shown above
   (Fig.~\ref{fig:photometry}). The PSF modeling approach improves
   photometric accuracy over aperture averaging even in the two-wheel
   era with a drift as large as 27 arcseconds for a 30 min exposure.
-  For averaging optimal apertures have been used, depicted as red
-  frames in the top panel in the figure above. Note, that in the drift case the footprints of the two
+  For averaging optimal apertures have been used, depicted as a red
+  frame in the top panel in the figure above. Note, that in the drift case the footprints of the two
   stars overlap, such that photometric measurement is not possible via
   simple aperture averaging.}
 
