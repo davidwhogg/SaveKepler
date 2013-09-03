@@ -157,7 +157,7 @@ The \Kepler\ Satellite%
   ---like other very precise time-domain photometric projects---%
   achieves its precision by keeping the camera and telescope exquisitely controlled and stable,
   leading to identical conditions for each observation.
-This strategy has yielded an enormous numbers of planets of a wide range of sizes and periods.
+This strategy has yielded large numbers of planets in a wide range of sizes and periods.
 
 In the two-wheel era, it will not be possible
   to make each observation as identical to the fiducial observation
@@ -165,29 +165,23 @@ In the two-wheel era, it will not be possible
   \footnote{See, for example, the \textit{Explanatory Appendix to the Kepler Project
       call for white papers:\ Kepler 2-Wheel Pointing Control}
     (\url{http://keplergo.arc.nasa.gov/docs/Kepler-2-Wheel-pointing-performance.pdf})}
-However, the fact that the telescope and camera were so stable
-  (plus perhaps some appeal to the determinism of the macroscopic laws of physics)
-  implies that it must be possible to build a deterministic, predictive model
-  of the imager that can account for pointing changes or drift over time.
-One way of stating it is this:
-Bad spacecraft (s/c) pointing leads to the existence of
-  three unknown functions of time
-  (which can be thought of as the three solid-body Euler angles).
-These three Euler-angle functions affect%
-  ---in a predictable way---%
+The imprecise pointing introduces, into any description of the data, three unknown functions of time
+  (that is, the three solid-body Euler angles).
+These three Euler-angle functions affect—--in a predictable way---%
   every single one of the hundreds of thousands of detectable stars
   in the camera field of view,
   each of which affects the intensity field touching a few to many pixels.
-There is an \emph{overwhelming abundance} of information in the data
-  to constrain these three functions,
-  and even \emph{more} information if the particular functions
-  are different for every exposure (as they are expected to be).
+Therefore the photometry can be used to constrain these three functions,
+  which are sampled at different value during each exposure;
+  indeed, there is an \emph{overwhelming abundance} of information in the data
+  to constrain these three functions.
 
 While it is obvious \emph{in principle} that we can infer
-  the intra-exposure s/c pointing drift and jitter history,%
+  the intra-exposure s/c pointing and orientation history,%
   \footnote{Indeed inference of non-trivial intra-exposure
     camera pointing trajectories has been demonstrated in the far more difficult
-    case of single-exposure natural images (\citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).
+    case of single-exposure ``natural'' images
+    (meaning ordinary personal photographs of everyday scenes; \citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).
   That is, the three-axis history of camera orientation path
     can be reliably inferred in an individual image,
     without even multiple exposures to use
@@ -235,13 +229,19 @@ Indeed, when signals are sparse, significance
   (as estimated by, say, a p-value)
   can grow much faster than any small power of mission lifetime.%
   \footnote{We thank Ben Weiner (Arizona) for this insight.}
-It is our view that \emph{\Kepler\ core goals remain outrageously interesting}.
+It is our view that discovery and characterization of exoplanets is so important,
+  it should remain \Kepler's top priority.
+Additional data collected with two-wheel \Kepler
+  could significantly enhance the number and fidelity of Earth-analog-candidates
+  discovered by \Kepler
+  (and also be extremely valuable for Kepler’s other science goals).
 With this in mind, we advocate using \emph{methods of image modeling} to retain
   or approximate three-wheel photometric precision
   in an era of two-wheel pointing degradation.
 If that is possible---and we think it will be---we would recommend continuing work
   along the direction of \Kepler's core mission,
-  which (in our view) is to find Earth analogs and other habitable-zone oceany rocks.
+  which (in our view) is to continue finding and characterizing
+  Earth analogs and other habitable-zone oceany rocks.
 
 Of course the two-wheel mode will bring other challenges, like
   possible hard constraints on field choice,
