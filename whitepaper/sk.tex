@@ -422,6 +422,15 @@ To generate this figure, we downloaded the target pixel files from
 \kplr\footnote{\url{http://dan.iel.fm/kplr}}
 and computed the vector $\mathbf{c}$ for each pixel using the pixel time
 series from the two nearest stars on the detector as the basis.
+The result shown in the top panel of \figurename~\ref{fig:reg-model} is the
+result of coadding the time series using the optimal aperture provided by the
+\Kepler\ photometry module.
+It is instructive to compare this to the PDC result (shown in the bottom panel
+of \figurename~\ref{fig:reg-model}) to see that we achieve similar stellar
+variability signatures and preserve the transit signal.
+We have not yet performed any quantitative comparison of these two methods but
+the fact that we were able to achieve qualitatively competitive performance
+without exploiting the full flexibility of the model is promising.
 
 \subsection{Autoregressive generalization}
 The model discussed in the previous section should retain \emph{any true
@@ -449,6 +458,20 @@ star-planet system ``converts'' the star brightness into an observable
 brightness of the joint system.
 This kind of assumption has recently studied in the field of causal inference
 by \citet{JanSch10}.
+
+To demonstrate this method, we preformed an autoregressive fit to the same
+data as discussed in the previous section (quarter 9; Kepler-20).
+The results of this fit are shown in the bottom panel of
+\figurename~\ref{fig:reg-model}.
+The difference between this and the previous demonstration is that, in this
+case, a 2.5 hour window is included from the pixels in the Kepler-20 aperture
+$\Delta = 12\,\mathrm{hours}$ before and after the target time are included in
+the basis.
+This model removes most of the stellar variability in the light curve without
+significantly reducing the transit signal.
+Again, we do not have a sound quantitative argument demonstrating the power of
+this method but a robust detrending algorithm applied at the pixel level could
+be extremely valuable and these results show promise.
 
 \subsection{Deep learning}\label{sec:deep}
 
