@@ -42,5 +42,9 @@ Hogg declares *Save Kepler Day*; all hands on deck to build ideas and toy models
 along with understanding of s/c capabilities.
 
 **2013 August 27:**
-Decision to split the project into two white papers,
+Decision is made to split the project into two white papers,
 one (Hogg *et al*) on image modeling and one (Montet *et al*) on field and target selection.
+
+**2013 September 03:**
+White paper submitted to Kepler Project Office, and the arXiv.
+It contains at least three completely novel results in astronomical image modeling and calibration.
