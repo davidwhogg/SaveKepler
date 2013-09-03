@@ -1025,23 +1025,24 @@ rather than the 48-exposure series used here, so performance could in principle 
 \hspace{-2mm}Hi-res PSF \hspace{18mm} Simulated image \hspace{16mm} Model image
 \hspace{18mm} Difference\\
 \rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.95\textwidth]{photometry_with_psf_with_frame2.png}
-
 \caption{Two-star toy example to demonstrate that precise image
   modeling can facilitate and improve photometry over aperture
-  averaging. From \emph{left} to \emph{right}: high-resolution PSFs
+  photometry. The stars are approximately 25 arcseconds apart. 
+  From \emph{left} to \emph{right}: high-resolution PSFs
   (4x higher-resolved, i.e. at a resolution of 0.995 arcseconds),
-  noisy coadds, model and difference images (at Kepler's native
+  noisy coadds, model and difference images (at Kepler's nominal
   resolution of 3.98 arcseconds). In the simulation and model images
-  the dynamic stretch is $10^6$, in the difference image $10^2$. The
+  the dynamic stretch is $10^6$, in the difference image $5*10^2$. The
   \emph{top} row shows the case for nominal operation with functional
   reaction wheels, the \emph{bottom} row shows the case in the
-  two-wheel era with an evident drift of 27 arcseconds for a 30 minutes
-  exposure in the worst case scenario (cp.
+  two-wheel era with an evident drift of 27 arcseconds for a 30
+  minutes exposure in the worst case scenario (cp.
   \url{http://keplergo.arc.nasa.gov/docs/Kepler-2wheels-call-1.pdf}). The
   red frame depicted in the observed image in the top panel shows the
-  aperture used for pixel averaging.}
+  optimal (in the sense of least error) aperture used for aperture
+  photometry.
+  \label{fig:photometry}}
 \end{center}
-\label{fig:photometry}
 \end{figure}
 
 \begin{table}[b]
@@ -1060,10 +1061,10 @@ Modeling approach &  $8.21 \pm 4.46$ \\
   (Fig.~\ref{fig:photometry}). The PSF modeling approach improves
   photometric accuracy over aperture averaging even in the two-wheel
   era with a drift as large as 27 arcseconds for a 30 min exposure.
-  For averaging optimal apertures have been used, depicted as red
-  frame in the top panel in the figure above. Note, that in the drift case the footprints of the two
+  For averaging optimal apertures have been used (exemplary one is depicted as red
+  frame in the top panel in the figure above). Note, that in the drift case the footprints of the two
   stars overlap, such that photometric measurement is not possible by
-  simple aperture averaging.}
+  simple aperture photometry.}
 
 \label{tab:photometry}
 \end{table}
