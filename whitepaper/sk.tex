@@ -228,7 +228,7 @@ The death of \Kepler's second wheel (taking it down to two)
 The mission is on track to discover Earth-like planets
   orbiting Sun-like stars on year-ish (habitable-zone) orbits,
   and for such targets, five or six years is a lot better than four.
-Indeed, when signals are sparse, significance
+Indeed, when signals are sparse, statistical significance
   (as estimated by, say, a p-value)
   can grow much faster than any small power of mission lifetime.%
   \footnote{We thank Ben Weiner (Arizona) for this insight.}
@@ -489,15 +489,11 @@ complex image domain tasks such as object recognition \citep{Kriz12}.
 The Deep Learning models we intend to apply in this instance will be a
 convolutional neural network (CNN), similar in spirit to the LeNet
 architecture (\citealt{LeCun1998}). This model is a
-multi-layered perceptron with a special connectivity structure so that
+multi-layered (hence ``deep'') and has special connectivity structure so that
 each unit in a layer examines only a small window of the previous one
-(rather than all units) and that the weights are shared across
-different windows. Hence each layer computes a convolution of the
+(rather than all units). Each layer computes a convolution of the
 feature map from the previous layer (a 2D map) with a learned filter
-and then the result is passed through a non-linear function. The
-filters are trained by back-propagating the error signal through the
-network to obtain a gradient for each parameter that can be updated
-with stochastic gradient descent. Models with many layers can capture
+and then the result is passed through a non-linear function.  Models with many layers can capture
 highly non-linear structure of the input image, since each unit in a
 higher layer is connected to the input by multiple non-linear
 functions.
