@@ -1,4 +1,4 @@
-This is a possible abstract for the arXiv submission
+This is a possible abstract for the arXiv submission:
 
 Kepler's immense photometric precision to date was maintained through
 satellite stability and precise pointing.  In this white paper, we
@@ -18,3 +18,10 @@ a part of any two-wheel repurpose for the satellite.  We make other
 recommendations for Kepler operations, but fundamentally advocate that
 the project stick with its core mission of finding and characterizing
 Earth analogs. [abridged]
+
+This is a possible comment for the arXiv submission:
+
+A white paper submitted in response to the "Kepler Project Office Call
+for White Papers: Soliciting Community Input for Alternate Science
+Investigations for the Kepler Spacecraft"; 23 pages in length (that
+is, 13 pages over the white-paper page limit).
