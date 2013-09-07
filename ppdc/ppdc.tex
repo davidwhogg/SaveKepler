@@ -9,7 +9,7 @@
 % - write discussion
 % - make sure all the references have been cited
 
-\documentclass[letterpaper,12pt,whitepaper]{aastex}
+\documentclass[letterpaper,12pt,preprint]{aastex}
 \usepackage{enumitem, color}
 \definecolor{hypercolor}{RGB}{0,0,127}
 \usepackage[%
@@ -46,14 +46,15 @@
 
 \begin{document}\sloppy\sloppypar\thispagestyle{empty}
 
-\title{Improving the accuracy of \Kepler\ lightcurves with a data-driven model}
+\title{Improving the accuracy of \Kepler\ photometry: \\
+  A data-driven model of the pixels.}
 
 \author{%
   Dan~Foreman-Mackey\altaffilmark{\ref{CCPP},\ref{email}},
   David~W.~Hogg\altaffilmark{\ref{CCPP},\ref{MPIA}},
   Rob~Fergus\altaffilmark{\ref{Courant}},
   Stefan~Harmeling\altaffilmark{\ref{MPIIS}},
-  Dustin~Lang\altaffilmark{\ref{CMU},\ref{physical}},
+  Dustin~Lang\altaffilmark{\ref{CMU}},
   Bernhard~Sch\"olkopf\altaffilmark{\ref{MPIIS}},
   others%
 }
@@ -85,7 +86,13 @@
 %  Department of Astronomy, Columbia University}
 
 \begin{abstract}
-The PDC is good; we are better.
+There are many tiny features in \Kepler\ light-curves that are
+  thought to be caused by small changes in spacecraft pointing, orientation, and temperature.
+These features are small, but much larger than the transit signals of greatest interest;
+  they also mask or confuse intrinsic stellar variability signals.
+Because they are spacecraft-induced, the features can be seen repeated
+  across many pixels across the focal plane, albeit with different
+  amplitudes and signs.
 \end{abstract}
 
 \section{Introduction}
