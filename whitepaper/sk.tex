@@ -369,7 +369,7 @@ above.
 Our method relies on assumptions of ``independence'' and ``join confounding''.
 \emph{Independence} (motivated by Reichenbach's principle; \citealt{Reichenbach1956}):
 we assume that the true fluxes are independent: $f_i(t_k) \independent
-f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$ 
+f_{i^\prime} (t_{k^\prime})$ for all $i \ne i^\prime$
 We also assume there may be additional observables (for example, temperature)
 for which this independence holds.
 It is important to note here that we are only considering pixels $i^\prime$
@@ -755,7 +755,7 @@ incorporation of a geometric model allowing for physically plausible
 motion only has been applied with great success to the problem of
 camera shake removal with non-stationary blur within the computational
 photography and computer vision community recently
-(\citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).  
+(\citealt{fergus2006,whyte2010,hirsch2011,koehler2012}).
 
 %There blur is stemming from the unknown camera shake during image
 %capture and has to be estimated from the recorded blurry image
@@ -846,13 +846,14 @@ But if or where it isn't, a small amount of calibration data can be enormously v
 
 \section{Acknowledgments}
 
-It is a pleasure to thank Sameer Agarwal (Google) and Keir Mierle
-  (Locu) for releasing the \project{Ceres} non-linear least squares
+It is a pleasure to thank  for releasing the \project{Ceres} non-linear least squares
   solver (\url{https://code.google.com/p/ceres-solver/}) and for making
   suggestions that enabled this work.
 We benefitted from useful conversations with and assistance from
+  Sameer Agarwal (Google),
   Ross Fadely (NYU),
   Malte Kuhlmann (MPI-IS),
+  Keir Mierle (Locu)
   Hans-Walter Rix (MPIA), and
   Ben Weiner (Arizona).
 DWH, RF, and DFM are all partially supported by NSF grant IIS-1124794.
@@ -935,7 +936,7 @@ in preparation
 
 \bibitem[Magain \etal(2007)]{magain2007}
 Magain, P., Courbin, F., Gillon, M., 2007, A deconvolution-based algorithm for crowded field photometry
-with unknown Point Spread Function, A\&A 461, 373-379 
+with unknown Point Spread Function, A\&A 461, 373-379
 
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
 Reichenbach,~H., 1956
@@ -1040,7 +1041,7 @@ rather than the 48-exposure series used here, so performance could in principle 
 \rotatebox{90}{\hspace{6mm}Drift case \hspace{6mm}Nominal operation }\includegraphics[width=0.95\textwidth]{photometry_with_psf_with_frame2.png}
 \caption{Two-star toy example to demonstrate that precise image
   modeling can facilitate and improve photometry over aperture
-  photometry. The stars are approximately 25~arcsec apart. 
+  photometry. The stars are approximately 25~arcsec apart.
   From \emph{left} to \emph{right}: high-resolution PSFs
   ($4\times$ higher-resolved, that is, at a resolution of 0.995~arcsec),
   noisy coadds, model and difference images (at \Kepler's nominal
@@ -1061,8 +1062,8 @@ rather than the 48-exposure series used here, so performance could in principle 
 \begin{center}
 \begin{tabular}{c|c}
 \emph{Nominal operation} & Relative error ($\times 10^{-4}$)\\ \hline
-Aperture averaging &  $21.50 \pm 10.35$ \\ 
-Modeling approach  &  $5.55 \pm 3.00$ \\[5mm] 
+Aperture averaging &  $21.50 \pm 10.35$ \\
+Modeling approach  &  $5.55 \pm 3.00$ \\[5mm]
 \emph{Two-wheel operation}  & \\ \hline
 Modeling approach &  $8.21 \pm 4.46$ \\
 \end{tabular}
