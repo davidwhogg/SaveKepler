@@ -46,8 +46,8 @@
 
 \begin{document}\sloppy\sloppypar\thispagestyle{empty}
 
-\title{Improving the accuracy of \Kepler\ photometry: \\
-  A data-driven model of the pixels.}
+\title{Improving \Kepler\ photometry: \\
+  A data-driven model of the pixels for pre-search data conditioning}
 
 \author{%
   Dan~Foreman-Mackey\altaffilmark{\ref{CCPP},\ref{email}},
@@ -86,13 +86,32 @@
 %  Department of Astronomy, Columbia University}
 
 \begin{abstract}
-There are many tiny features in \Kepler\ light-curves that are
-  thought to be caused by small changes in spacecraft pointing, orientation, and temperature.
-These features are small, but much larger than the transit signals of greatest interest;
+There are many tiny features in \Kepler\ light-curves
+  that are thought to be caused by small changes
+  in spacecraft pointing, orientation, and temperature.
+These features are small,
+  but much larger than the transit signals of greatest interest;
   they also mask or confuse intrinsic stellar variability signals.
 Because they are spacecraft-induced, the features can be seen repeated
-  across many pixels across the focal plane, albeit with different
-  amplitudes and signs.
+  across many pixels across the focal plane,
+  albeit with different amplitudes and signs.
+Inspired by ideas from causal inference,
+  we learn a model
+  in which the brightness recorded at time $t$ from any target pixel $j$
+  is predicted using a weighted linear combination of many other pixels
+  spatially separated from $j$ (so they don't overlap the same star)
+  and in a finite time window around $t$.
+We use a train-and-test framework to avoid over-fitting.
+The model produces photometric light-curves ``cleaned''
+  of spacecraft-induced variability,
+  ideal for studying stellar variability or searching for exoplanet transits.
+We learn also a second model that uses,
+  in addition to spatially separated pixels,
+  cospatial pixels but separated by time lags longer than expected transit signals.
+These latter models remove stellar variability signals along with spacecraft-induced signals;
+  they are even better for pure exoplanet searching.
+We demonstrate the methods on a few different \Kepler\ targets
+  and release open-source code.
 \end{abstract}
 
 \section{Introduction}
