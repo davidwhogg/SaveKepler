@@ -98,7 +98,7 @@ Because they are spacecraft-induced, the features can be seen repeated
 Inspired by ideas from causal inference,
   we learn a model
   in which the brightness recorded at time $t$ from any target pixel $j$
-  is predicted using a weighted linear combination of many other pixels
+  is predicted using a weighted linear combination of many other pixel recordings
   spatially separated from $j$ (so they don't overlap the same star)
   and in a finite time window around $t$.
 We use a train-and-test framework to avoid over-fitting.
@@ -106,9 +106,11 @@ The model produces photometric light-curves ``cleaned''
   of spacecraft-induced variability,
   ideal for studying stellar variability or searching for exoplanet transits.
 We learn also a second model that uses,
-  in addition to spatially separated pixels,
-  cospatial pixels but separated by time lags longer than expected transit signals.
-These latter models remove stellar variability signals along with spacecraft-induced signals;
+  in addition to spatially separated pixel recordings,
+  nearby and cospatial pixel recordings,
+  but separated by time lags longer than expected transit signals.
+These latter models remove stellar variability signals
+  along with spacecraft-induced signals;
   they are even better for pure exoplanet searching.
 We demonstrate the methods on a few different \Kepler\ targets
   and release open-source code.
@@ -116,7 +118,38 @@ We demonstrate the methods on a few different \Kepler\ targets
 
 \section{Introduction}
 
+In 2013~May,
+  the \Kepler\ Satellite (CITE)%
+  ---having discovered thousands of confirmed and likely exoplanets around other stars---%
+  lost the use of the second of four of its reaction wheels,
+  rendering it substantially impaired.
+In 2013~August,
+  the \Kepler\ Project Office asked for help and suggestions from the community; and
+  in 2013~September many groups submitted white papers.
+One of the suggestions we made (\citealt{whitepaper}) to the \Kepler\ Project Office
+  was to improve the precision of the mission photometry
+  by building predictive models of the pixel values read out by the device.
+We were thinking about operations in the ``two-wheel era'',
+  in which (in the absence of good image modeling)
+  pointing inaccuracy leads to photometric inaccuracy;
+  we argued that photometric accuracy could be restored with a good model
+  of the (drifting) spacecraft attitude, the focal plane, and the device pixels.
+In the process of testing these ideas,
+  we discovered that we can perhaps improve the \emph{extant} \Kepler\ data
+  as much as we might improve any future data.
+Here we present one of these discoveries.
+
+...The PDC is useful but not perfect...give an example or two...
+
+...What does the PDC lack or assume?..
+
+...Here we are going to do what?..
+
 \section{Generalities}
+
+...What's the big idea, and how does it flow from ideas about causal inference?..
+
+...Set up the general frameworks (especially notation) for the experiments section...
 
 \section{Experiments}
 
@@ -137,11 +170,6 @@ Esteves,~L.~J., De Mooij,~E.~J.~W., Jayawardhana,~R., \etal, 2013,
 Optical Phase Curves of \Kepler\ Exoplanets,
 \apjl, 772 51E
 
-\bibitem[Fergus \etal(2006)]{fergus2006}
-Fergus, R., Singh, B., Hertzmann, A., Roweis, S.~T., Freeman, W.~T., 2006,
-Removing camera shake from a single image,
-ACM Transactions on Graphics (SIGGRAPH 2006)
-
 \bibitem[Foreman-Mackey \etal(2013)]{emcee}
 Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
 \emcee:\ The MCMC Hammer,
@@ -154,19 +182,14 @@ Earth-size Candidates
 \apj, 749, 15
 
 \bibitem[Gilliland \etal(2011)]{gilliland2011}
-Gilliland, R.~L., Chaplin, W.~J., Dunham, E.~W., \etal, 2011,
+Gilliland,~R.~L., Chaplin,~W.~J., Dunham,~E.~W., \etal, 2011,
 \Kepler\ mission stellar and instrument noise properties,
 \apj, 197, 1
 
-\bibitem[Hirsch \etal(2011)]{hirsch2011}
-Hirsch, M., Schuler, C.~J., Sch\"olkopf, B., \& Harmeling, S., 2011,
-Fast removal of non-uniform camera shake,
-IEEE International Conference on Computer Vision (ICCV 2011)
-
-\bibitem[Hogg \& Lang(2013)]{hoggtractor}
-Hogg,~D.~W. \& Lang,~D., 2013,
-Replacing standard galaxy profiles with mixtures of Gaussians,
-\pasp, 125, 719
+\bibitem[Hogg \etal(2013)]{whitepaper}
+Hogg,~D.~W. \etal, 2013,
+Maximizing \Kepler\ science return per telemetered pixel:\ Detailed models of the focal plane in the two-wheel era,
+arXiv, 1309.0653
 
 \bibitem[Janzing \& Sch{\"o}lkopf(2010)]{JanSch10}
 Janzing,~D.\ \& Sch{\"o}lkopf,~B., 2010,
@@ -183,20 +206,6 @@ LeCun,~Y., Bottou,~L., Bengio,~Y., \& Haffner, P., 1998,
 Gradient-Based Learning Applied to Document Recognition,
 Proceedings of the IEEE, 86, 2278
 
-\bibitem[K\"ohler \etal(2012)]{koehler2012}
-K\"ohler,~R., Hirsch,~M., Mohler~B., Sch\"olkopf~B., \& Harmeling, S., 2012,
-Recording and Playback of Camera Shake:\ Benchmarking Blind Deconvolution with a Real-World Database,
-12th European Conference on Computer Vision (ECCV 2012)
-
-\bibitem[Lang \& Hogg(2014)]{langtractor}
-Lang,~D. \& Hogg,~D.~W., 2014,
-\TheTractor:\ A framework for image modeling, with applications to \SDSS, \WISE, and \Kepler,
-in preparation
-
-\bibitem[Magain \etal(2007)]{magain2007}
-Magain, P., Courbin, F., Gillon, M., 2007, A deconvolution-based algorithm for crowded field photometry
-with unknown Point Spread Function, A\&A 461, 373-379 
-
 \bibitem[Reichenbach(1956)]{Reichenbach1956}
 Reichenbach,~H., 1956
 \textit{The Direction of Time},
@@ -211,11 +220,6 @@ Smith,~J.~C., Stumpe,~M.~C., Van Cleve,~J.~E., \etal, 2012,
 Stumpe,~M.~C., Smith,~J.~C., Van Cleve,~J.~E., \etal, 2012,
 \Kepler\ Presearch Data Conditioning I.\ Architecture and Algorithms for Error Correction in \Kepler\ Light Curves,
 \pasp, 124, 985
-
-\bibitem[Whyte \etal(2010)]{whyte2010}
-Whyte, O., Sivic, J., Zissermann, A., \& Ponce, J., 2010,
-Non-uniform Deblurring for Shaken Images,
-IEEE International Conference on Computer Vision and Pattern Recognition (CVPR 2010)
 
 \end{thebibliography}
 
