@@ -46,5 +46,5 @@ Decision is made to split the project into two white papers,
 one (Hogg *et al*) on image modeling and one (Montet *et al*) on field and target selection.
 
 **2013 September 03:**
-White paper submitted to Kepler Project Office, and the arXiv.
+White papers submitted to the Kepler Project Office, and the arXiv.
 It contains at least three completely novel results in astronomical image modeling and calibration.
